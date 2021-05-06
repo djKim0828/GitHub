@@ -25,6 +25,9 @@ namespace GitTest
             InitializeComponent();
 
             int a = 0;
+
+            bool isOpen = false;
+
         }
     }
 }
