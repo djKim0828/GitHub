@@ -28,6 +28,8 @@ namespace GitTest
 
             bool isOpen = false;
 
+            int b = 3;
+
         }
     }
 }
