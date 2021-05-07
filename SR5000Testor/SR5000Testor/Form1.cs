@@ -69,7 +69,7 @@ namespace SR5000Testor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            int cc = 0;
         }
     }
 }
