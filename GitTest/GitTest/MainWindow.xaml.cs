@@ -34,6 +34,8 @@ namespace GitTest
 
             int d = 5;
 
+            int e = 6;
+
         }
     }
 }
