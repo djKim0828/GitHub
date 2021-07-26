@@ -37,8 +37,10 @@
             this.tabMesData = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pnlPseudo = new System.Windows.Forms.Panel();
-            this.cmbDeviceId = new System.Windows.Forms.ComboBox();
+            this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnRead = new System.Windows.Forms.Button();
+            this.btnAbort = new System.Windows.Forms.Button();
+            this.cmbAxicId = new System.Windows.Forms.ComboBox();
             this.btnMove1 = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.chkEnableAmp = new System.Windows.Forms.CheckBox();
@@ -59,15 +61,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_roi_width = new System.Windows.Forms.TextBox();
             this.txt_roi_height = new System.Windows.Forms.TextBox();
-            this.btnAbort = new System.Windows.Forms.Button();
-            this.btnRead = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtJogAccl = new System.Windows.Forms.TextBox();
+            this.txtAcclTime = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtSCurvetime = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtHomingSpeed = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtHoimngOffset = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnHomePick = new System.Windows.Forms.Button();
             this.pnlToolbar.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.tabMesData.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.pnlPseudo.SuspendLayout();
+            this.pnlMain.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIo)).BeginInit();
             this.pnlCommand.SuspendLayout();
@@ -161,46 +173,78 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.Controls.Add(this.pnlPseudo);
+            this.panel3.Controls.Add(this.pnlMain);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1044, 503);
             this.panel3.TabIndex = 52;
             // 
-            // pnlPseudo
+            // pnlMain
             // 
-            this.pnlPseudo.BackColor = System.Drawing.Color.Gray;
-            this.pnlPseudo.Controls.Add(this.btnRead);
-            this.pnlPseudo.Controls.Add(this.btnAbort);
-            this.pnlPseudo.Controls.Add(this.cmbDeviceId);
-            this.pnlPseudo.Controls.Add(this.btnMove1);
-            this.pnlPseudo.Controls.Add(this.progressBar);
-            this.pnlPseudo.Controls.Add(this.chkEnableAmp);
-            this.pnlPseudo.Controls.Add(this.btnSearchHome);
-            this.pnlPseudo.Controls.Add(this.groupBox2);
-            this.pnlPseudo.Controls.Add(this.btnJogMinus2);
-            this.pnlPseudo.Controls.Add(this.btnJogPlus2);
-            this.pnlPseudo.Controls.Add(this.lblMotorPosValue);
-            this.pnlPseudo.Controls.Add(this.label6);
-            this.pnlPseudo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPseudo.Location = new System.Drawing.Point(0, 0);
-            this.pnlPseudo.Name = "pnlPseudo";
-            this.pnlPseudo.Size = new System.Drawing.Size(1044, 503);
-            this.pnlPseudo.TabIndex = 4;
+            this.pnlMain.BackColor = System.Drawing.Color.Gray;
+            this.pnlMain.Controls.Add(this.btnHomePick);
+            this.pnlMain.Controls.Add(this.txtHoimngOffset);
+            this.pnlMain.Controls.Add(this.label9);
+            this.pnlMain.Controls.Add(this.txtHomingSpeed);
+            this.pnlMain.Controls.Add(this.label8);
+            this.pnlMain.Controls.Add(this.txtSCurvetime);
+            this.pnlMain.Controls.Add(this.label7);
+            this.pnlMain.Controls.Add(this.txtAcclTime);
+            this.pnlMain.Controls.Add(this.label3);
+            this.pnlMain.Controls.Add(this.txtJogAccl);
+            this.pnlMain.Controls.Add(this.label5);
+            this.pnlMain.Controls.Add(this.label4);
+            this.pnlMain.Controls.Add(this.btnRead);
+            this.pnlMain.Controls.Add(this.btnAbort);
+            this.pnlMain.Controls.Add(this.cmbAxicId);
+            this.pnlMain.Controls.Add(this.btnMove1);
+            this.pnlMain.Controls.Add(this.progressBar);
+            this.pnlMain.Controls.Add(this.chkEnableAmp);
+            this.pnlMain.Controls.Add(this.btnSearchHome);
+            this.pnlMain.Controls.Add(this.groupBox2);
+            this.pnlMain.Controls.Add(this.btnJogMinus2);
+            this.pnlMain.Controls.Add(this.btnJogPlus2);
+            this.pnlMain.Controls.Add(this.lblMotorPosValue);
+            this.pnlMain.Controls.Add(this.label6);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMain.Location = new System.Drawing.Point(0, 0);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(1044, 503);
+            this.pnlMain.TabIndex = 4;
             // 
-            // cmbDeviceId
+            // btnRead
             // 
-            this.cmbDeviceId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDeviceId.FormattingEnabled = true;
-            this.cmbDeviceId.Location = new System.Drawing.Point(336, 19);
-            this.cmbDeviceId.Name = "cmbDeviceId";
-            this.cmbDeviceId.Size = new System.Drawing.Size(159, 23);
-            this.cmbDeviceId.TabIndex = 54;
+            this.btnRead.Location = new System.Drawing.Point(663, 104);
+            this.btnRead.Name = "btnRead";
+            this.btnRead.Size = new System.Drawing.Size(159, 45);
+            this.btnRead.TabIndex = 56;
+            this.btnRead.Text = "Read";
+            this.btnRead.UseVisualStyleBackColor = true;
+            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
+            // 
+            // btnAbort
+            // 
+            this.btnAbort.Location = new System.Drawing.Point(409, 216);
+            this.btnAbort.Name = "btnAbort";
+            this.btnAbort.Size = new System.Drawing.Size(159, 111);
+            this.btnAbort.TabIndex = 55;
+            this.btnAbort.Text = "Abort";
+            this.btnAbort.UseVisualStyleBackColor = true;
+            this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
+            // 
+            // cmbAxicId
+            // 
+            this.cmbAxicId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAxicId.FormattingEnabled = true;
+            this.cmbAxicId.Location = new System.Drawing.Point(336, 19);
+            this.cmbAxicId.Name = "cmbAxicId";
+            this.cmbAxicId.Size = new System.Drawing.Size(159, 23);
+            this.cmbAxicId.TabIndex = 54;
             // 
             // btnMove1
             // 
-            this.btnMove1.Location = new System.Drawing.Point(5, 217);
+            this.btnMove1.Location = new System.Drawing.Point(603, 282);
             this.btnMove1.Name = "btnMove1";
             this.btnMove1.Size = new System.Drawing.Size(159, 45);
             this.btnMove1.TabIndex = 53;
@@ -210,7 +254,7 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(5, 171);
+            this.progressBar.Location = new System.Drawing.Point(336, 455);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(490, 23);
             this.progressBar.TabIndex = 52;
@@ -219,7 +263,7 @@
             // chkEnableAmp
             // 
             this.chkEnableAmp.AutoSize = true;
-            this.chkEnableAmp.Location = new System.Drawing.Point(33, 130);
+            this.chkEnableAmp.Location = new System.Drawing.Point(409, 91);
             this.chkEnableAmp.Name = "chkEnableAmp";
             this.chkEnableAmp.Size = new System.Drawing.Size(106, 19);
             this.chkEnableAmp.TabIndex = 51;
@@ -228,7 +272,7 @@
             // 
             // btnSearchHome
             // 
-            this.btnSearchHome.Location = new System.Drawing.Point(5, 69);
+            this.btnSearchHome.Location = new System.Drawing.Point(22, 262);
             this.btnSearchHome.Name = "btnSearchHome";
             this.btnSearchHome.Size = new System.Drawing.Size(159, 45);
             this.btnSearchHome.TabIndex = 50;
@@ -295,7 +339,7 @@
             // 
             // btnJogMinus2
             // 
-            this.btnJogMinus2.Location = new System.Drawing.Point(336, 69);
+            this.btnJogMinus2.Location = new System.Drawing.Point(409, 165);
             this.btnJogMinus2.Name = "btnJogMinus2";
             this.btnJogMinus2.Size = new System.Drawing.Size(159, 45);
             this.btnJogMinus2.TabIndex = 47;
@@ -306,7 +350,7 @@
             // 
             // btnJogPlus2
             // 
-            this.btnJogPlus2.Location = new System.Drawing.Point(171, 69);
+            this.btnJogPlus2.Location = new System.Drawing.Point(409, 116);
             this.btnJogPlus2.Name = "btnJogPlus2";
             this.btnJogPlus2.Size = new System.Drawing.Size(159, 45);
             this.btnJogPlus2.TabIndex = 46;
@@ -403,25 +447,115 @@
             this.txt_roi_height.TabIndex = 18;
             this.txt_roi_height.Text = "0.5";
             // 
-            // btnAbort
+            // label4
             // 
-            this.btnAbort.Location = new System.Drawing.Point(170, 217);
-            this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(159, 45);
-            this.btnAbort.TabIndex = 55;
-            this.btnAbort.Text = "Abort";
-            this.btnAbort.UseVisualStyleBackColor = true;
-            this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Gulim", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(10, 66);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 17);
+            this.label4.TabIndex = 58;
+            this.label4.Text = "Homing";
             // 
-            // btnRead
+            // label5
             // 
-            this.btnRead.Location = new System.Drawing.Point(663, 104);
-            this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(159, 45);
-            this.btnRead.TabIndex = 56;
-            this.btnRead.Text = "Read";
-            this.btnRead.UseVisualStyleBackColor = true;
-            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Gulim", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(10, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 17);
+            this.label5.TabIndex = 59;
+            this.label5.Text = "Jog Accl";
+            // 
+            // txtJogAccl
+            // 
+            this.txtJogAccl.Location = new System.Drawing.Point(121, 97);
+            this.txtJogAccl.Name = "txtJogAccl";
+            this.txtJogAccl.Size = new System.Drawing.Size(140, 25);
+            this.txtJogAccl.TabIndex = 60;
+            this.txtJogAccl.Text = "1";
+            // 
+            // txtAcclTime
+            // 
+            this.txtAcclTime.Location = new System.Drawing.Point(121, 128);
+            this.txtAcclTime.Name = "txtAcclTime";
+            this.txtAcclTime.Size = new System.Drawing.Size(140, 25);
+            this.txtAcclTime.TabIndex = 62;
+            this.txtAcclTime.Text = "1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Gulim", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(10, 129);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 17);
+            this.label3.TabIndex = 61;
+            this.label3.Text = "Accl Time";
+            // 
+            // txtSCurvetime
+            // 
+            this.txtSCurvetime.Location = new System.Drawing.Point(121, 159);
+            this.txtSCurvetime.Name = "txtSCurvetime";
+            this.txtSCurvetime.Size = new System.Drawing.Size(140, 25);
+            this.txtSCurvetime.TabIndex = 64;
+            this.txtSCurvetime.Text = "1";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Gulim", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(10, 160);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(107, 17);
+            this.label7.TabIndex = 63;
+            this.label7.Text = "S-Curve Time";
+            // 
+            // txtHomingSpeed
+            // 
+            this.txtHomingSpeed.Location = new System.Drawing.Point(121, 190);
+            this.txtHomingSpeed.Name = "txtHomingSpeed";
+            this.txtHomingSpeed.Size = new System.Drawing.Size(140, 25);
+            this.txtHomingSpeed.TabIndex = 66;
+            this.txtHomingSpeed.Text = "1";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Gulim", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(10, 191);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(54, 17);
+            this.label8.TabIndex = 65;
+            this.label8.Text = "Speed";
+            // 
+            // txtHoimngOffset
+            // 
+            this.txtHoimngOffset.Location = new System.Drawing.Point(121, 221);
+            this.txtHoimngOffset.Name = "txtHoimngOffset";
+            this.txtHoimngOffset.Size = new System.Drawing.Size(140, 25);
+            this.txtHoimngOffset.TabIndex = 68;
+            this.txtHoimngOffset.Text = "1";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Gulim", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(10, 222);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 17);
+            this.label9.TabIndex = 67;
+            this.label9.Text = "Offset";
+            // 
+            // btnHomePick
+            // 
+            this.btnHomePick.Location = new System.Drawing.Point(187, 262);
+            this.btnHomePick.Name = "btnHomePick";
+            this.btnHomePick.Size = new System.Drawing.Size(159, 45);
+            this.btnHomePick.TabIndex = 69;
+            this.btnHomePick.Text = "Home Pick";
+            this.btnHomePick.UseVisualStyleBackColor = true;
+            this.btnHomePick.Click += new System.EventHandler(this.btnHomePick_Click);
             // 
             // FrmTest
             // 
@@ -434,6 +568,7 @@
             this.Name = "FrmTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmTest";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmTest_FormClosed);
             this.Load += new System.EventHandler(this.FrmTest_Load);
             this.pnlToolbar.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
@@ -442,8 +577,8 @@
             this.tabMesData.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.pnlPseudo.ResumeLayout(false);
-            this.pnlPseudo.PerformLayout();
+            this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIo)).EndInit();
@@ -473,7 +608,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_roi_width;
         private System.Windows.Forms.TextBox txt_roi_height;
-        private System.Windows.Forms.Panel pnlPseudo;
+        private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Label lblMotorPosValue;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -487,8 +622,20 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.CheckBox chkEnableAmp;
         private System.Windows.Forms.Button btnSearchHome;
-        private System.Windows.Forms.ComboBox cmbDeviceId;
+        private System.Windows.Forms.ComboBox cmbAxicId;
         private System.Windows.Forms.Button btnAbort;
         private System.Windows.Forms.Button btnRead;
+        private System.Windows.Forms.TextBox txtHoimngOffset;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtHomingSpeed;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtSCurvetime;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtAcclTime;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtJogAccl;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnHomePick;
     }
 }

@@ -8,16 +8,23 @@ namespace PMACTest
 {
     public class Config
     {
-        //public string Port;
-        //public string Bardrate;
-        //public string sendData;
+        public string DeviceIndex = "0";
 
-        //public string[] receiveDatas;
-        //public string[] sendDatas;
+        public string MotionIndexX = "0";
+        public string MotionCmdPosX = "0";
+        public string MotionRelPosX = "0";
+
+        public string MotionIndexY = "2";
+        public string MotionCmdPosY = "0";
+        public string MotionRelPosY = "0";
+
+        public string MotionIndexZ = "4";
+        public string MotionCmdPosZ = "0";
+        public string MotionRelPosZ = "0";
 
         public Config()
         {
-            //Port = Bardrate = string.Empty;
+
         }
 
         ~Config()

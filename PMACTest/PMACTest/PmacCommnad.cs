@@ -9,6 +9,7 @@ namespace PMACTest
 {
     public class PmacCommnad
     {
+        public bool _isOpen = false;
 
         private UInt32 _DeviceId;
 
@@ -21,18 +22,29 @@ namespace PMACTest
             _DeviceId = deviceId;
         }
 
-        public void command(string cmd,uint maxChar= 255)
+        public bool command(string cmd,uint maxChar= 255)
         {
-            StringBuilder strResponse = new StringBuilder();
-            PMAC.PmacGetResponseA(_DeviceId, strResponse, maxChar,
-                new StringBuilder(Convert.ToString(cmd)));
+            WriteLog("start command : " + cmd);
 
-            WriteLog(cmd);
+            StringBuilder strResponse = new StringBuilder();
+            int result = PMAC.PmacGetResponseA(_DeviceId, strResponse, maxChar,
+                new StringBuilder(Convert.ToString(cmd)));
 
             if (strResponse.ToString() != "")
             {
-                //int aaa = 0;
+                WriteLog("Failed command : " + cmd);
+                return false;
             }
+
+            WriteLog("Complete command : " + cmd);
+
+            return true;
+
+            //if (result != 0)
+            //{
+            //    return false;
+            //}
+            
         }
 
 
@@ -53,6 +65,15 @@ namespace PMACTest
         {
             string cmd = "#" + axicNo.ToString() + "J/";
             command(cmd);
+        }
+
+        internal string GetCount()
+        {
+            StringBuilder strResponse = new StringBuilder();
+            PMAC.PmacGetResponseA(_DeviceId, strResponse, 255, new StringBuilder(Convert.ToString("M8100")));
+
+            return strResponse.ToString();
+
         }
 
         public void WriteLog(string msg)
@@ -127,9 +148,49 @@ namespace PMACTest
             //DeviceGetResponse(m_dwDeviceNo, response, 255, "P8000=0");
         }
 
-        internal void HomeSearch(int v)
+        internal void HomeSearch(int axicNo)
         {
-            //command("M", 239");
+            string cmd = "#" + axicNo.ToString() + "HM";
+
+            command(cmd);
+        }
+
+        internal void SetHomingProp(int axicNo,
+                                    string jogTime,
+                                    string acclTime,
+                                    string sCurveTime,
+                                    string homeSpeed,
+                                    string offset)
+        {
+            command("I" + axicNo.ToString() + CommandNumber.HomingJogTime + jogTime);
+            command("I" + axicNo.ToString() + CommandNumber.HomingAccelTime + acclTime);
+            command("I" + axicNo.ToString() + CommandNumber.HomingSCurveTime + sCurveTime);
+            command("I" + axicNo.ToString() + CommandNumber.HomingSpeed + homeSpeed);
+            command("I" + axicNo.ToString() + CommandNumber.HomingOffset + offset);
+
+            //command("I" + axicNo.ToString() + "19" + jogTime);
+            //command("I" + axicNo.ToString() + "20" + acclTime);
+            //command("I" + axicNo.ToString() + "21" + sCurveTime);
+            //command("I" + axicNo.ToString() + "23" + homeSpeed);
+            //command("I" + axicNo.ToString() + "26" + offset);
+        }
+
+
+        public class CommandNumber
+        {
+            public const string HomingJogTime = "19";
+            public const string HomingAccelTime = "20";
+            public const string HomingSCurveTime = "21";
+            public const string HomingSpeed = "23";
+            public const string HomingOffset = "26";
+
+        }
+
+        internal void HomePick(int axicNo)
+        {
+            string cmd = "#" + axicNo.ToString() + "HMZ";
+
+            command(cmd);
         }
     }
 }
