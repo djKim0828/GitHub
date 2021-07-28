@@ -52,9 +52,20 @@ namespace StEm
 
         private void _serial_ReceiveMessage(string message)
         {
+            string[] receive = message.Split('/');
+            string reviceString = receive[0];
+
+            if (chkIsHex.Checked == true)
+            {
+                // 헥사를 사용하면 헥사값으로 비교
+                reviceString = receive[1];
+                reviceString = reviceString.Replace(" ", "").Trim();
+            } // else
+            
             for (int i = 0; i < dgv1.RowCount - 1; i++)
             {
-                if (dgv1.Rows[i].Cells[0].Value.ToString() == message)
+                string temp = dgv1.Rows[i].Cells[0].Value.ToString().Trim();
+                if (temp == reviceString)
                 {
                     string sendMessage = dgv2.Rows[i].Cells[0].Value.ToString();
                     _serial.Send(sendMessage, chkIsHex.Checked);

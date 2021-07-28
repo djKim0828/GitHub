@@ -89,6 +89,9 @@ namespace StEm
             if (isHex == false)
             {
                 _SerialPort.Write(data);
+
+                // 로그 출력
+                LogMessage("Send Data : " + data);
             }
             else
             {
@@ -108,6 +111,11 @@ namespace StEm
                 }
 
                 _SerialPort.Write(sendData, 0, sendData.Length);
+
+                // 로그 출력
+                string debugData = ConvertByteToStringByte(sendData);
+                LogMessage("Send Data : " + debugData);
+
             }
             
 
@@ -129,17 +137,33 @@ namespace StEm
             ASCIIEncoding ascii = new ASCIIEncoding();
             String ReceivedData = ascii.GetString(comBuffer).Replace("\0", "");
 
-            string debugData = string.Empty;
-            for (int i=0;i<bytes;i++)
-            {
-                debugData = debugData + string.Format("{0:X2} ", comBuffer[i]);
-            }
+            string debugData = ConvertByteToStringByte(comBuffer);
 
-            LogMessage("Receive Data : " + ReceivedData);
-            LogMessage("Receive Data[Hex] : " + debugData);
+            LogMessage("Receive Data : " + ReceivedData + " [ Hex : " + debugData + "]");            
 
             // 이벤트 호출
-            ReceiveMessage(debugData);
+            ReceiveMessage(ReceivedData + "/" + debugData);
+        }
+
+        private string ConvertByteToStringByte(byte[] comBuffer)
+        {
+            string returnData = string.Empty;
+
+            try
+            {
+                for (int i = 0; i < comBuffer.Length; i++)
+                {
+                    returnData = returnData + string.Format("{0:X2} ", comBuffer[i]);
+                }
+
+                return returnData;
+            }
+            catch (System.Exception ex)
+            {
+                LogMessage(ex.ToString());
+                return string.Empty;
+            }
+            
         }
 
         #endregion Methods
