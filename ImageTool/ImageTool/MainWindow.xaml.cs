@@ -62,7 +62,7 @@ namespace ImageTool
 
         private void BtnAngle_Click(object sender, RoutedEventArgs e)
         {
-            ucCanvas.Command(ImageModel.ToolType.Angel);
+            ucCanvas.Command(ImageModel.ToolType.Angle);
         }
 
         private void BtnLength_Click(object sender, RoutedEventArgs e)
@@ -189,7 +189,11 @@ namespace ImageTool
 
             if (this.ucCanvas.LoadImage(filePath) == true)
             {
+                btnNormal.IsChecked = true;
+                ucCanvas.Command(ImageModel.ToolType.None);
+
                 this.grdLeft.IsEnabled = true;
+
             }
         }
     }

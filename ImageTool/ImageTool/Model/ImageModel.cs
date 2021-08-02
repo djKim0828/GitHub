@@ -15,7 +15,7 @@ namespace ImageTool
             public const int RotateCW = ZoomFit + 1;
             public const int RotateCCW = RotateCW + 1;
             public const int Length = RotateCCW + 1;
-            public const int Angel = Length + 1;
+            public const int Angle = Length + 1;
 
         }
     }

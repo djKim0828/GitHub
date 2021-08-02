@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\AngleTool.cs" />
     <Compile Include="Control\LengthTool.cs" />
     <Compile Include="Control\NoneTool.cs" />
     <Compile Include="Control\ToolBase.cs" />

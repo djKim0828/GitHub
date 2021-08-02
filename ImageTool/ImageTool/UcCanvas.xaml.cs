@@ -31,7 +31,7 @@ namespace ImageTool
         #region Methods
 
         private LengthTool lengthTool;
-
+        private AngleTool angleTool;
         private NoneTool noneTool;
 
         public void Command(int commandId)
@@ -85,6 +85,10 @@ namespace ImageTool
             {
                 lengthTool.MouseEnter(sender, e);
             }
+            else if (_toolMode == ImageModel.ToolType.Angle)
+            {
+                angleTool.MouseEnter(sender, e);
+            }
             else
             {
             }
@@ -96,6 +100,10 @@ namespace ImageTool
             {
                 lengthTool.MouseLeave(sender, e);
             }
+            else if (_toolMode == ImageModel.ToolType.Angle)
+            {
+                angleTool.MouseLeave(sender, e);
+            }
             else
             {
             }
@@ -106,6 +114,10 @@ namespace ImageTool
             if (_toolMode == ImageModel.ToolType.Length)
             {
                 lengthTool.MouseMove(sender, e);
+            }
+            else if (_toolMode == ImageModel.ToolType.Angle)
+            {
+                angleTool.MouseMove(sender, e);
             }
             else
             {
@@ -119,6 +131,10 @@ namespace ImageTool
             {
                 lengthTool.PreviewMouseLeftButtonDown(sender, e);
             }
+            else if (_toolMode == ImageModel.ToolType.Angle)
+            {
+                angleTool.PreviewMouseLeftButtonDown(sender, e);
+            }
             else
             {
                 noneTool.PreviewMouseLeftButtonDown(sender, e);
@@ -130,6 +146,10 @@ namespace ImageTool
             if (_toolMode == ImageModel.ToolType.Length)
             {
                 lengthTool.PreviewMouseLeftButtonUp(sender, e);
+            }
+            else if (_toolMode == ImageModel.ToolType.Angle)
+            {
+                angleTool.PreviewMouseLeftButtonUp(sender, e);
             }
             else
             {
@@ -155,6 +175,7 @@ namespace ImageTool
         {
             noneTool = new NoneTool(this);
             lengthTool = new LengthTool(this);
+            angleTool = new AngleTool(this);
 
             InitControl();
 

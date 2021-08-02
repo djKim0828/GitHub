@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -9,9 +10,23 @@ namespace ImageTool
     {
         #region Fields
 
-        private Line _line;
+        public LengthObject _LengthObject;
 
         #endregion Fields
+
+        #region Classes
+
+        public class LengthObject
+        {
+            #region Fields
+
+            public System.Windows.Controls.Label label;
+            public Line line;
+
+            #endregion Fields
+        }
+
+        #endregion Classes
 
         #region Constructors
 
@@ -62,8 +77,8 @@ namespace ImageTool
 
             Point p = e.MouseDevice.GetPosition(_window.grdCanvas);
 
-            _line.X2 = p.X;
-            _line.Y2 = p.Y;
+            _LengthObject.line.X2 = p.X;
+            _LengthObject.line.Y2 = p.Y;
         }
 
         public override void PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -73,18 +88,54 @@ namespace ImageTool
                 return;
             } // else
 
+            _LengthObject = new LengthObject();
+
             Point startPoint = e.GetPosition(_window.grdCanvas);
 
-            _line = CreateLine(startPoint.X, startPoint.Y, startPoint.X, startPoint.Y, Brushes.Green, 1, null);
+            _LengthObject.line = CreateLine(startPoint.X, startPoint.Y, startPoint.X, startPoint.Y, Brushes.Green, 1, null);
 
-            _window.grdCanvas.Children.Add(_line);
+            _window.grdCanvas.Children.Add(_LengthObject.line);
 
             _window.grdCanvas.CaptureMouse();
         }
 
         public override void PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            // 길이 구하기
+            double distance = GetLength();
+
+            // 라벨 출력
+            insertLabel(distance);
+
+            if (distance == 0)
+            {
+                _window.grdCanvas.Children.Remove(_LengthObject.line);
+                _window.grdCanvas.Children.Remove(_LengthObject.label);
+            }
+
             _window.grdCanvas.ReleaseMouseCapture();
+        }
+
+        private double GetLength()
+        {
+            double deltaX = this._LengthObject.line.X2 - this._LengthObject.line.X1;
+            double deltaY = this._LengthObject.line.Y2 - this._LengthObject.line.Y1;
+
+            double distance = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+
+            return distance;
+        }
+
+        private void insertLabel(double distance)
+        {
+            _LengthObject.label = new System.Windows.Controls.Label();
+            double displayValue = Math.Round(distance, 2);
+            _LengthObject.label.Content = displayValue.ToString() + "px";
+            _LengthObject.label.Style = (Style)Application.Current.Resources["lblToolResult"];
+            _LengthObject.label.FontSize = 8;
+            _LengthObject.label.Margin = new System.Windows.Thickness(_LengthObject.line.X2, _LengthObject.line.Y2, 0, 0);
+
+            _window.grdCanvas.Children.Add(_LengthObject.label);
         }
 
         #endregion Methods
