@@ -27,8 +27,8 @@
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Grid x:Name="grdCenter" Grid.Column ="1" Background ="Black">
-                <local:UcCanvas x:Name="ucCanvas"></local:UcCanvas>
+            <Grid x:Name="grdCenter" Grid.Column ="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <local:UcCanvas x:Name="ucCanvas" />
             </Grid>
             <Grid x:Name="grdLeft" Grid.Column ="0" Background ="Gray">
                 <Grid.RowDefinitions>
