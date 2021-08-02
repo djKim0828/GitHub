@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Threading;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -12,11 +10,9 @@ namespace ImageTool
     {
         #region Fields
 
-        private double _initScaleValue = 0;
-        private System.Windows.Point _lastPoint;
         private ImageBrush _LoadImagebrush;
-        private System.Windows.Point _originPosition;
-        private double _scale = 1.1;
+
+        private int _toolMode = ImageModel.ToolType.None;
 
         #endregion Fields
 
@@ -34,6 +30,34 @@ namespace ImageTool
 
         #region Methods
 
+        private LengthTool lengthTool;
+
+        private NoneTool noneTool;
+
+        public void Command(int commandId)
+        {
+            noneTool.ChangeCursor(Cursors.Arrow);
+
+            switch (commandId)
+            {
+                case ImageModel.ToolType.ZoomFit:
+                    noneTool.ZoomFit(_LoadImagebrush);
+                    break;
+
+                case ImageModel.ToolType.RotateCW:
+                    noneTool.Rotate(true);
+                    break;
+
+                case ImageModel.ToolType.RotateCCW:
+                    noneTool.Rotate(false);
+                    break;
+
+                default:
+                    _toolMode = commandId;
+                    break;
+            }
+        }
+
         public bool LoadImage(string imagePath)
         {
             try
@@ -44,7 +68,7 @@ namespace ImageTool
 
                 this.cvsImage.Background = _LoadImagebrush;
 
-                ZoomFit();
+                noneTool.ZoomFit(_LoadImagebrush);
 
                 return true;
             }
@@ -55,44 +79,72 @@ namespace ImageTool
             }
         }
 
+        private void GrdMain_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (_toolMode == ImageModel.ToolType.Length)
+            {
+                lengthTool.MouseEnter(sender, e);
+            }
+            else
+            {
+            }
+        }
+
+        private void GrdMain_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (_toolMode == ImageModel.ToolType.Length)
+            {
+                lengthTool.MouseLeave(sender, e);
+            }
+            else
+            {
+            }
+        }
+
         private void GrdMain_MouseMove(object sender, MouseEventArgs e)
         {
-            Point p = e.MouseDevice.GetPosition(grdMain);
-
-            // Move FOV
-            Panning(p);
+            if (_toolMode == ImageModel.ToolType.Length)
+            {
+                lengthTool.MouseMove(sender, e);
+            }
+            else
+            {
+                noneTool.MouseMove(sender, e);
+            }
         }
 
         private void GrdMain_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (grdCanvas.IsMouseCaptured)
+            if (_toolMode == ImageModel.ToolType.Length)
             {
-                return;
-            } // else
-
-            _originPosition.X = grdCanvas.RenderTransform.Value.OffsetX;
-            _originPosition.Y = grdCanvas.RenderTransform.Value.OffsetY;
-
-            _lastPoint = e.GetPosition(grdMain);
-
-            grdCanvas.CaptureMouse();
+                lengthTool.PreviewMouseLeftButtonDown(sender, e);
+            }
+            else
+            {
+                noneTool.PreviewMouseLeftButtonDown(sender, e);
+            }
         }
 
         private void GrdMain_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            grdCanvas.ReleaseMouseCapture();
+            if (_toolMode == ImageModel.ToolType.Length)
+            {
+                lengthTool.PreviewMouseLeftButtonUp(sender, e);
+            }
+            else
+            {
+                noneTool.PreviewMouseLeftButtonUp(sender, e);
+            }
         }
 
         private void GrdMain_PreviewMouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
-            ZoomFit();
+            noneTool.ZoomFit(_LoadImagebrush);
         }
 
         private void GrdMain_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            Point p = e.MouseDevice.GetPosition(grdCanvas);
-
-            ZoomInOut(p, e.Delta);
+            noneTool.ZoomInOut(e);
         }
 
         private void InitControl()
@@ -101,23 +153,12 @@ namespace ImageTool
 
         private void Initialize()
         {
+            noneTool = new NoneTool(this);
+            lengthTool = new LengthTool(this);
+
             InitControl();
 
             RegistEvents();
-        }
-
-        private void Panning(Point p)
-        {
-            if (grdCanvas.IsMouseCaptured == false)
-            {
-                return;
-            } // else
-
-            Matrix m = grdCanvas.RenderTransform.Value;
-            m.OffsetX = _originPosition.X + (p.X - _lastPoint.X);
-            m.OffsetY = _originPosition.Y + (p.Y - _lastPoint.Y);
-
-            grdCanvas.RenderTransform = new MatrixTransform(m);
         }
 
         /// <summary>
@@ -131,79 +172,12 @@ namespace ImageTool
             this.grdMain.MouseLeftButtonDown += GrdMain_PreviewMouseLeftButtonDown;
             this.grdMain.MouseLeftButtonUp += GrdMain_PreviewMouseLeftButtonUp;
             this.grdMain.MouseMove += GrdMain_MouseMove;
+            this.grdMain.MouseEnter += GrdMain_MouseEnter;
+            this.grdMain.MouseLeave += GrdMain_MouseLeave;
 
             return 1;
         }
 
-
-        private void ZoomFit()
-        {
-            double width = this.ActualWidth;
-            double height = this.ActualHeight;
-            double hZoom = height / _LoadImagebrush.ImageSource.Height; // 세로를 기준으로 
-            double zoom = hZoom;            
-
-            // 가로 가운데값 구하기
-            double initOffsetX = 0;
-            double initOffsetY = 0;
-
-            // 실제 크기 절반 - 줄어들 컨트롤의 절반
-            initOffsetX = width / 2 - (grdCanvas.ActualWidth * zoom / 2);
-            initOffsetY = height / 2 - (grdCanvas.ActualHeight * zoom / 2);
-
-            //Canvas
-            Matrix m = grdCanvas.RenderTransform.Value;
-            m.M11 = zoom;
-            m.M22 = zoom;
-            m.OffsetX = initOffsetX;
-            m.OffsetY = initOffsetY;
-
-            _initScaleValue = m.M11;
-
-            grdCanvas.RenderTransform = new MatrixTransform(m);
-            grdCanvas.Visibility = Visibility.Visible;
-        }
-
-        public void Rotate(bool isCW)
-        {
-            Matrix m = cvsImage.RenderTransform.Value;
-
-            if (isCW == true)
-            {
-                m.RotateAt(90, cvsImage.ActualWidth / 2, cvsImage.ActualHeight / 2);
-            }
-            else
-            {
-                m.RotateAt(-90, cvsImage.ActualWidth / 2, cvsImage.ActualHeight / 2);
-            }
-
-            cvsImage.RenderTransform = new MatrixTransform(m);
-
-        }
-
-        private void ZoomInOut(Point p, int delta)
-        {
-            Matrix m = grdCanvas.RenderTransform.Value;
-
-            if (delta > 0)
-            {
-                m.ScaleAtPrepend(_scale, _scale, p.X, p.Y);
-            }
-            else
-            {
-                m.ScaleAtPrepend(1 / _scale, 1 / _scale, p.X, p.Y);
-            }
-
-            if (m.M11 <= _initScaleValue)
-            {
-                // Fit 보다 작게 축소는 리턴
-                return;
-            } // else
-
-            grdCanvas.RenderTransform = new MatrixTransform(m);
-        }
-
         #endregion Methods
-
     }
 }

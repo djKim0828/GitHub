@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ImageTool"
              mc:Ignorable="d"
-             d:DesignHeight="800" d:DesignWidth="800" >
-    <Grid x:Name="grdMain" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White" >
+             d:DesignHeight="800" d:DesignWidth="800">
+    <Grid x:Name="grdMain" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource colorBgDialog}">
         <Grid x:Name="grdCanvas">
             <Canvas x:Name="cvsImage">
             </Canvas>

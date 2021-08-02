@@ -59,7 +59,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\LengthTool.cs" />
+    <Compile Include="Control\NoneTool.cs" />
+    <Compile Include="Control\ToolBase.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Model\ImageModel.cs" />
     <Compile Include="UcCanvas.xaml.cs">
       <DependentUpon>UcCanvas.xaml</DependentUpon>
     </Compile>

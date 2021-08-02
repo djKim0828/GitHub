@@ -44,20 +44,52 @@ namespace ImageTool
             this.btnMini.Click += BtnMini_Click;
 
             this.btnLoad.Click += BtnLoad_Click;
+
+            //1
+            this.btnNormal.Click += BtnNormal_Click;
+            this.btnZoom.Click += BtnZoom_Click;
+
+            //2
+            this.btnLength.Click += BtnLength_Click;
+            this.btnAngle.Click += BtnAngle_Click;
+
             this.btnRotationCCW.Click += BtnRotationCCW_Click;
             this.btnRotationCW.Click += BtnRotationCW_Click;
+            
 
             return 0;
         }
 
+        private void BtnAngle_Click(object sender, RoutedEventArgs e)
+        {
+            ucCanvas.Command(ImageModel.ToolType.Angel);
+        }
+
+        private void BtnLength_Click(object sender, RoutedEventArgs e)
+        {
+            ucCanvas.Command(ImageModel.ToolType.Length);
+        }
+
+        private void BtnNormal_Click(object sender, RoutedEventArgs e)
+        {
+            ucCanvas.Command(ImageModel.ToolType.None);
+        }
+
+        private void BtnZoom_Click(object sender, RoutedEventArgs e)
+        {
+            ucCanvas.Command(ImageModel.ToolType.ZoomFit);
+        }
+
         private void BtnRotationCCW_Click(object sender, RoutedEventArgs e)
         {
-            ucCanvas.Rotate(false);
+            ucCanvas.Command(ImageModel.ToolType.RotateCCW);
+            
         }
 
         private void BtnRotationCW_Click(object sender, RoutedEventArgs e)
         {
-            ucCanvas.Rotate(true);
+            ucCanvas.Command(ImageModel.ToolType.RotateCW);
+            
         }
 
         private void BtnMini_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -155,7 +187,10 @@ namespace ImageTool
                 return;
             }
 
-            this.ucCanvas.LoadImage(filePath);
+            if (this.ucCanvas.LoadImage(filePath) == true)
+            {
+                this.grdLeft.IsEnabled = true;
+            }
         }
     }
 }

@@ -30,21 +30,21 @@
             <Grid x:Name="grdCenter" Grid.Column ="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <local:UcCanvas x:Name="ucCanvas" />
             </Grid>
-            <Grid x:Name="grdLeft" Grid.Column ="0" Background ="Gray">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="48" />
-                    <RowDefinition Height="48" />
-                    <RowDefinition Height="48" />
-                    <RowDefinition Height="48" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*" />
-                    <ColumnDefinition Width="0.5*" />
-                </Grid.ColumnDefinitions>
-                <Button x:Name="btnRotationCCW" Grid.Column="0" Grid.Row="0" Content="Open" Style="{DynamicResource btnRotation}" />
-                <Button x:Name="btnRotationCW" Grid.Column="1" Grid.Row="0" Content="Open" Style="{DynamicResource btnRotation90}" />
-                <Button x:Name="btnZoom" Grid.Column="0" Grid.Row="1" Content="Open" Style="{DynamicResource btnFit}" />
+            <Grid x:Name="grdLeft" Grid.Column ="0" Background ="Gray" IsEnabled="False">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton x:Name="btnNormal" GroupName="mode" Style="{DynamicResource rdbSelect}" />
+                        <Button x:Name="btnZoom" Grid.Column="0" Grid.Row="1" Content="Open" Style="{DynamicResource btnFit}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btnRotationCCW" Content="Open" Style="{DynamicResource btnRotation}" />
+                        <Button x:Name="btnRotationCW" Content="Open" Style="{DynamicResource btnRotation90}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton x:Name="btnAngle" GroupName="mode" Style="{DynamicResource rdbAngle}" />
+                        <RadioButton x:Name="btnLength" GroupName="mode" Style="{DynamicResource rdbLength}" />
+                    </StackPanel>
+                </StackPanel>
             </Grid>
         </Grid>
         <Grid x:Name="grdStatusbar" Grid.Row="3" Background="{DynamicResource colorBgDialog}" />
