@@ -26,6 +26,11 @@ namespace ImageTool
 
         #region Methods
 
+        public void DeleteAll()
+        {
+            _window.grdAnno.Children.Clear();
+        }
+
         public override void MouseMove(object sender, MouseEventArgs e)
         {
             Point p = e.MouseDevice.GetPosition(_window.grdMain);

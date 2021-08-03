@@ -49,15 +49,24 @@ namespace ImageTool
             this.btnNormal.Click += BtnNormal_Click;
             this.btnZoom.Click += BtnZoom_Click;
 
-            //2
+            // 2
+            this.btnDeleteAll.Click += BtnDeleteAll_Click;
+
+            //3
             this.btnLength.Click += BtnLength_Click;
             this.btnAngle.Click += BtnAngle_Click;
 
+            //4
             this.btnRotationCCW.Click += BtnRotationCCW_Click;
             this.btnRotationCW.Click += BtnRotationCW_Click;
             
 
             return 0;
+        }
+
+        private void BtnDeleteAll_Click(object sender, RoutedEventArgs e)
+        {
+            ucCanvas.Command(ImageModel.ToolType.DeleteAll);
         }
 
         private void BtnAngle_Click(object sender, RoutedEventArgs e)

@@ -605,7 +605,35 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style x:Key="btnSave" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="48"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Height" Value="48"/>
+        <Setter Property="Foreground" Value="{DynamicResource colorTopBar_N}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Name="grid">
+                        <Rectangle Name="bg" Fill="{DynamicResource colorTransparent}"/>
+                        <Path Data="{DynamicResource icoSaveAs}" Fill="{TemplateBinding Foreground}" Width="24" Height="24" Stretch="Fill"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource colorTopBar_H}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Fill" TargetName="bg" Value="{DynamicResource colorBtnTopBar_P}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource colorTopBar_P}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style x:Key="btnClose" TargetType="{x:Type Button}">
         <Setter Property="Width" Value="42"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
@@ -676,6 +704,35 @@
                     <Grid Name="grid">
                         <Rectangle Name="bg" Fill="{DynamicResource colorTransparent}"/>
                         <Path Data="{DynamicResource icoExport}" Fill="{TemplateBinding Foreground}" Width="24" Height="24" Stretch="Fill"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource colorTopBar_H}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Fill" TargetName="bg" Value="{DynamicResource colorBtnTopBar_P}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource colorTopBar_P}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="btnDeleteAll" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="48"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Height" Value="48"/>
+        <Setter Property="Foreground" Value="{DynamicResource colorTopBar_N}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Name="grid">
+                        <Rectangle Name="bg" Fill="{DynamicResource colorTransparent}"/>
+                        <Path Data="{DynamicResource icoDelete}" Fill="{TemplateBinding Foreground}" Width="24" Height="24" Stretch="Fill"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

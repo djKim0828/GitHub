@@ -16,6 +16,7 @@ namespace ImageTool
             public const int RotateCCW = RotateCW + 1;
             public const int Length = RotateCCW + 1;
             public const int Angle = Length + 1;
+            public const int DeleteAll = Angle + 1;
 
         }
     }

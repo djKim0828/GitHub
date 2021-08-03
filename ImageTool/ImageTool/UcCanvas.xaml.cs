@@ -51,7 +51,9 @@ namespace ImageTool
                 case ImageModel.ToolType.RotateCCW:
                     noneTool.Rotate(false);
                     break;
-
+                case ImageModel.ToolType.DeleteAll:
+                    noneTool.DeleteAll();
+                    break;
                 default:
                     _toolMode = commandId;
                     break;

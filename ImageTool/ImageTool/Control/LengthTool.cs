@@ -70,12 +70,12 @@ namespace ImageTool
 
         public override void MouseMove(object sender, MouseEventArgs e)
         {
-            if (_window.grdCanvas.IsMouseCaptured == false)
+            if (_window.grdAnno.IsMouseCaptured == false)
             {
                 return;
             } // else
 
-            Point p = e.MouseDevice.GetPosition(_window.grdCanvas);
+            Point p = e.MouseDevice.GetPosition(_window.grdAnno);
 
             _LengthObject.line.X2 = p.X;
             _LengthObject.line.Y2 = p.Y;
@@ -83,20 +83,20 @@ namespace ImageTool
 
         public override void PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (_window.grdCanvas.IsMouseCaptured)
+            if (_window.grdAnno.IsMouseCaptured)
             {
                 return;
             } // else
 
             _LengthObject = new LengthObject();
 
-            Point startPoint = e.GetPosition(_window.grdCanvas);
+            Point startPoint = e.GetPosition(_window.grdAnno);
 
             _LengthObject.line = CreateLine(startPoint.X, startPoint.Y, startPoint.X, startPoint.Y, Brushes.Green, 1, null);
 
-            _window.grdCanvas.Children.Add(_LengthObject.line);
+            _window.grdAnno.Children.Add(_LengthObject.line);
 
-            _window.grdCanvas.CaptureMouse();
+            _window.grdAnno.CaptureMouse();
         }
 
         public override void PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -109,11 +109,11 @@ namespace ImageTool
 
             if (distance == 0)
             {
-                _window.grdCanvas.Children.Remove(_LengthObject.line);
-                _window.grdCanvas.Children.Remove(_LengthObject.label);
+                _window.grdAnno.Children.Remove(_LengthObject.line);
+                _window.grdAnno.Children.Remove(_LengthObject.label);
             }
 
-            _window.grdCanvas.ReleaseMouseCapture();
+            _window.grdAnno.ReleaseMouseCapture();
         }
 
         private double GetLength()
@@ -135,7 +135,7 @@ namespace ImageTool
             _LengthObject.label.FontSize = 8;
             _LengthObject.label.Margin = new System.Windows.Thickness(_LengthObject.line.X2, _LengthObject.line.Y2, 0, 0);
 
-            _window.grdCanvas.Children.Add(_LengthObject.label);
+            _window.grdAnno.Children.Add(_LengthObject.label);
         }
 
         #endregion Methods
