@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,9 @@ namespace ImageTool
             this.btnChange.Click += BtnDialogWindowStatueChange_Click;
             this.btnMini.Click += BtnMini_Click;
 
+            // Toolbar
             this.btnLoad.Click += BtnLoad_Click;
+            this.btnSave.Click += BtnSave_Click;
 
             //1
             this.btnNormal.Click += BtnNormal_Click;
@@ -62,6 +65,39 @@ namespace ImageTool
             
 
             return 0;
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            //openFileDialog.InitialDirectory = OutputPath;
+            saveFileDialog.Filter = "Bmp files (*.bmp)|*.bmp|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
+
+            string filePath = string.Empty;
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                SaveImage(ucCanvas, saveFileDialog.FileName);
+            }                
+        }
+
+        public void SaveImage(FrameworkElement frameworkElement, string filePath)
+        {
+            RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(
+                (int)frameworkElement.ActualWidth,
+                (int)frameworkElement.ActualHeight,
+                96d,
+                96d,
+                PixelFormats.Default);
+
+            renderTargetBitmap.Render(frameworkElement);
+
+            using (Stream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap)); encoder.Save(stream);
+            }
         }
 
         private void BtnDeleteAll_Click(object sender, RoutedEventArgs e)
