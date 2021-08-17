@@ -67,6 +67,10 @@ namespace PMACTest
 
             tslStatus.BackColor = Color.Green;
 
+            this.ucMotionX.initControl("Motion X", _pmacCommand);
+            this.ucMotionY.initControl("Motion Y", _pmacCommand);
+            this.ucMotionZ.initControl("Motion Z", _pmacCommand);
+
             _CheckCountThread = new Thread(runCheckCount);
             _CheckCountThread.Start();
 
@@ -79,7 +83,7 @@ namespace PMACTest
 
             _isLoop = false;
 
-            if (_CheckCountThread == null)
+            if (_CheckCountThread != null)
             {
                 _CheckCountThread.Abort();
             } // else
@@ -88,10 +92,6 @@ namespace PMACTest
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.ucMotionX.initControl("Motion X", _pmacCommand);
-            this.ucMotionY.initControl("Motion Y", _pmacCommand);
-            this.ucMotionZ.initControl("Motion Z", _pmacCommand);
-
             LoadConfig();
         }
 
@@ -108,16 +108,22 @@ namespace PMACTest
             txtDeviceIndex.Text = _config.DeviceIndex;
 
             ucMotionX.txtMosionIndex.Text = _config.MotionIndexX;
-            ucMotionX.txtComPos.Text = _config.MotionCmdPosX;
-            ucMotionX.txtRelPos.Text = _config.MotionRelPosX;
+            ucMotionX.txtCnt.Text = _config.MotionCmdPosCntX;
+            ucMotionX.txtCont.Text = _config.MotionCmdPosContX;
+            ucMotionX.txtAbsPos.Text = _config.MotionAbsPosX;
+            ucMotionX.txtSpeed.Text = _config.MotionSpeedX;
 
             ucMotionY.txtMosionIndex.Text = _config.MotionIndexY;
-            ucMotionY.txtComPos.Text = _config.MotionCmdPosY;
-            ucMotionY.txtRelPos.Text = _config.MotionRelPosY;
+            ucMotionY.txtCnt.Text = _config.MotionCmdPosCntY;
+            ucMotionY.txtCont.Text = _config.MotionCmdPosContY;
+            ucMotionY.txtAbsPos.Text = _config.MotionAbsPosY;
+            ucMotionY.txtSpeed.Text = _config.MotionSpeedY;
 
             ucMotionZ.txtMosionIndex.Text = _config.MotionIndexZ;
-            ucMotionZ.txtComPos.Text = _config.MotionCmdPosZ;
-            ucMotionZ.txtRelPos.Text = _config.MotionRelPosZ;
+            ucMotionZ.txtCnt.Text = _config.MotionCmdPosCntZ;
+            ucMotionZ.txtCont.Text = _config.MotionCmdPosContZ;
+            ucMotionZ.txtAbsPos.Text = _config.MotionAbsPosZ;
+            ucMotionZ.txtSpeed.Text = _config.MotionSpeedZ;
         }
 
         private void runCheckCount()
@@ -157,20 +163,27 @@ namespace PMACTest
             _config.DeviceIndex = txtDeviceIndex.Text;
 
             _config.MotionIndexX = ucMotionX.txtMosionIndex.Text;
-            _config.MotionCmdPosX = ucMotionX.txtComPos.Text;
-            _config.MotionRelPosX = ucMotionX.txtRelPos.Text;
+            _config.MotionCmdPosCntX = ucMotionX.txtCnt.Text;
+            _config.MotionCmdPosContX = ucMotionX.txtCont.Text;
+            _config.MotionAbsPosX = ucMotionX.txtAbsPos.Text;
+            _config.MotionSpeedX = ucMotionX.txtSpeed.Text;
 
             _config.MotionIndexY = ucMotionY.txtMosionIndex.Text;
-            _config.MotionCmdPosY = ucMotionY.txtComPos.Text;
-            _config.MotionRelPosY = ucMotionY.txtRelPos.Text;
+            _config.MotionCmdPosCntY = ucMotionY.txtCnt.Text;
+            _config.MotionCmdPosContY = ucMotionY.txtCont.Text;
+            _config.MotionAbsPosY = ucMotionY.txtAbsPos.Text;
+            _config.MotionSpeedY = ucMotionY.txtSpeed.Text;
 
             _config.MotionIndexZ = ucMotionZ.txtMosionIndex.Text;
-            _config.MotionCmdPosZ = ucMotionZ.txtComPos.Text;
-            _config.MotionRelPosZ = ucMotionZ.txtRelPos.Text;
+            _config.MotionCmdPosCntZ = ucMotionZ.txtCnt.Text;
+            _config.MotionCmdPosContZ = ucMotionZ.txtCont.Text;
+            _config.MotionAbsPosZ = ucMotionZ.txtAbsPos.Text;
+            _config.MotionSpeedZ = ucMotionZ.txtSpeed.Text;
 
             JSON.Save(_path, _config);
         }
 
         #endregion Methods
+
     }
 }

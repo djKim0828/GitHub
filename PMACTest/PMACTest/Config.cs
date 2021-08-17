@@ -10,17 +10,23 @@ namespace PMACTest
     {
         public string DeviceIndex = "0";
 
-        public string MotionIndexX = "0";
-        public string MotionCmdPosX = "0";
-        public string MotionRelPosX = "0";
+        public string MotionIndexX = "1";
+        public string MotionCmdPosCntX = "0";
+        public string MotionCmdPosContX = "0";
+        public string MotionAbsPosX = "0";
+        public string MotionSpeedX = "0";
 
         public string MotionIndexY = "2";
-        public string MotionCmdPosY = "0";
-        public string MotionRelPosY = "0";
+        public string MotionCmdPosCntY = "0";
+        public string MotionCmdPosContY = "0";
+        public string MotionAbsPosY = "0";
+        public string MotionSpeedY = "0";
 
-        public string MotionIndexZ = "4";
-        public string MotionCmdPosZ = "0";
-        public string MotionRelPosZ = "0";
+        public string MotionIndexZ = "5";
+        public string MotionCmdPosCntZ = "0";
+        public string MotionCmdPosContZ = "0";
+        public string MotionAbsPosZ = "0";
+        public string MotionSpeedZ = "0";
 
         public Config()
         {

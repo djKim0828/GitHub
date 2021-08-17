@@ -51,19 +51,19 @@ namespace PMACTest
 
         private void btnAbort_Click(object sender, EventArgs e)
         {
-            _pmacCommand.SetAbort(Convert.ToInt32(cmbAxicId.SelectedItem));
+            _pmacCommand.SetKill();
         }
 
         private void btnHomePick_Click(object sender, EventArgs e)
         {
-            _pmacCommand.HomePick(Convert.ToInt32(cmbAxicId.SelectedItem));
+            _pmacCommand.HomePick(cmbAxicId.SelectedItem.ToString());
         }
 
         private void btnJogMinus_MouseDown(object sender, MouseEventArgs e)
         {
             if (_pmacCommand != null)
             {
-                _pmacCommand.JogMinus(Convert.ToInt32(cmbAxicId.SelectedItem));
+                _pmacCommand.JogMinus(cmbAxicId.SelectedItem.ToString());
             }
         }
 
@@ -71,7 +71,7 @@ namespace PMACTest
         {
             if (_pmacCommand != null)
             {
-                _pmacCommand.JogStop(Convert.ToInt32(cmbAxicId.SelectedItem));
+                _pmacCommand.JogStop(cmbAxicId.SelectedItem.ToString());
             }
         }
 
@@ -79,7 +79,7 @@ namespace PMACTest
         {
             if (_pmacCommand != null)
             {
-                _pmacCommand.JogPlus(Convert.ToInt32(cmbAxicId.SelectedItem));
+                _pmacCommand.JogPlus(cmbAxicId.SelectedItem.ToString());
             }
         }
 
@@ -87,14 +87,10 @@ namespace PMACTest
         {
             if (_pmacCommand != null)
             {
-                _pmacCommand.JogStop(Convert.ToInt32(cmbAxicId.SelectedItem));
+                _pmacCommand.JogStop(cmbAxicId.SelectedItem.ToString());
             }
         }
-
-        private void btnMove1_Click(object sender, EventArgs e)
-        {
-            _pmacCommand.Move(Convert.ToInt32(cmbAxicId.SelectedItem));
-        }
+        
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
@@ -132,14 +128,14 @@ namespace PMACTest
 
         private void btnSearchHome_Click(object sender, EventArgs e)
         {
-            _pmacCommand.SetHomingProp(Convert.ToInt32(cmbAxicId.SelectedItem),
+            _pmacCommand.SetHomingProp(cmbAxicId.SelectedItem.ToString(),
                                        txtJogAccl.Text,
                                        txtAcclTime.Text,
                                        txtSCurvetime.Text,
                                        txtHoimngOffset.Text,
                                        txtHomingSpeed.Text
                                        );
-            _pmacCommand.HomeSearch(Convert.ToInt32(cmbAxicId.SelectedItem));
+            _pmacCommand.HomeSearch(cmbAxicId.SelectedItem.ToString());
         }
 
         private void FrmTest_FormClosed(object sender, FormClosedEventArgs e)
@@ -209,5 +205,15 @@ namespace PMACTest
         }
 
         #endregion Methods
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _pmacCommand.command("#1o0");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _pmacCommand.command("^k");
+        }
     }
 }

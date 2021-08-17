@@ -1,28 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PMACTest
 {
     public class PmacCommnad
     {
+        #region Fields
+
         public bool _isOpen = false;
 
         private UInt32 _DeviceId;
 
-        public delegate void EventLoggerMessage(object sendor, EventLoggerMessageArgs e);
+        #endregion Fields
 
-        public event EventLoggerMessage LoggerMessage;
+        #region Constructors
 
         public PmacCommnad(UInt32 deviceId)
         {
             _DeviceId = deviceId;
         }
 
-        public bool command(string cmd,uint maxChar= 255)
+        #endregion Constructors
+
+        #region Delegates
+
+        public delegate void EventLoggerMessage(object sendor, EventLoggerMessageArgs e);
+
+        #endregion Delegates
+
+        #region Events
+
+        public event EventLoggerMessage LoggerMessage;
+
+        #endregion Events
+
+        #region Methods
+
+        public bool command(string cmd, uint maxChar = 255)
         {
             WriteLog("start command : " + cmd);
 
@@ -39,31 +54,92 @@ namespace PMACTest
             WriteLog("Complete command : " + cmd);
 
             return true;
-
-            //if (result != 0)
-            //{
-            //    return false;
-            //}
-            
         }
 
-
-        public void JogMinus(int axicNo)
+        public bool command(byte[] cmd, uint maxChar = 255)
         {
-            string cmd = "#" + axicNo.ToString() + "J-";
+            WriteLog("start command : " + cmd);
+
+            byte[] output = new byte[0];
+            int result = PMAC.PmacGetResponseA(_DeviceId, output, maxChar, cmd);
+
+            if (output != null)
+            {
+                WriteLog("Failed command : " + cmd.ToString());
+                return false;
+            }
+
+            WriteLog("Complete command");
+
+            return true;
+        }
+
+        public string GetActPos(string axicNo, uint maxChar = 255)
+        {
+            string cmd = "M" + axicNo + "62";
+            WriteLog("start command1 : " + cmd);
+
+            StringBuilder strResponse = new StringBuilder();
+            int result = PMAC.PmacGetResponseA(_DeviceId, strResponse, maxChar,
+                new StringBuilder(Convert.ToString(cmd)));
+
+            if (result == 0)
+            {
+                WriteLog("Failed command");
+                return string.Empty;
+            } // else
+
+            double mxx62 = Convert.ToDouble(strResponse.ToString());
+
+            cmd = "I" + axicNo + "08";
+            WriteLog("start command 2: " + cmd);
+
+            result = PMAC.PmacGetResponseA(_DeviceId, strResponse, maxChar,
+                new StringBuilder(Convert.ToString(cmd)));
+
+            if (result == 0)
+            {
+                WriteLog("Failed command");
+                return string.Empty;
+            } // else
+
+            double ixx08 = Convert.ToDouble(strResponse.ToString());
+            double actPos = mxx62 / (ixx08 * 32);
+
+            WriteLog("Complete command");
+
+            return actPos.ToString();
+        }
+
+        public void JogMinus(string axicNo)
+        {
+            string cmd = "#" + axicNo + "J-";
             command(cmd);
         }
 
         //string BEL = "0x07";
-        public void JogPlus(int axicNo)
+        public void JogPlus(string axicNo)
         {
-            string cmd = "#" + axicNo.ToString() + "J+";
+            string cmd = "#" + axicNo + "J+";
             command(cmd);
         }
 
-        public void JogStop(int axicNo)
+        public void JogStop(string axicNo)
         {
-            string cmd = "#" + axicNo.ToString() + "J/";
+            string cmd = "#" + axicNo + "J/";
+            command(cmd);
+        }
+
+        public void WriteLog(string msg)
+        {
+            LoggerMessage?.Invoke(this, new EventLoggerMessageArgs(msg));
+            System.Windows.Forms.Application.DoEvents();
+        }
+
+        internal void AbsoluteMove(string axicNo, string pos)
+        {
+            string cmd = "#" + axicNo + "J=" + pos;
+
             command(cmd);
         }
 
@@ -73,55 +149,10 @@ namespace PMACTest
             PMAC.PmacGetResponseA(_DeviceId, strResponse, 255, new StringBuilder(Convert.ToString("M8100")));
 
             return strResponse.ToString();
-
-        }
-
-        public void WriteLog(string msg)
-        {
-            LoggerMessage?.Invoke(this, new EventLoggerMessageArgs(msg));
-            System.Windows.Forms.Application.DoEvents();
-        }
-
-        public class EventLoggerMessageArgs : EventArgs
-        {
-
-            public EventLoggerMessageArgs(string message)
-            {
-                Initialize();
-
-                Message = message;
-            }
-
-            public string Message { get; protected set; }
-            public DateTime OccurredTime { get; protected set; }
-
-            public string Time
-            {
-                get
-                {
-                    return OccurredTime.ToString("MMdd_hhmm_ss.fff");
-                }
-            }
-
-            protected virtual void Initialize()
-            {
-                OccurredTime = DateTime.Now;
-            }
-
-            protected virtual void RecordLog()
-            {
-            }
-
-        }
-
-        internal void SetAbort(int v)
-        {
-            //DeviceGetResponse(m_dwDeviceNo, response, 255, "&1A");
-            command("&1A");
         }
 
         internal void GetMem(UInt32 offset, UInt32 length)
-        {            
+        {
             if (length <= 0)
             {
                 return;
@@ -143,30 +174,48 @@ namespace PMACTest
             WriteLog(str2);
         }
 
-        internal void Move(int v)
+        internal void HomePick(string axicNo)
         {
-            //DeviceGetResponse(m_dwDeviceNo, response, 255, "P8000=0");
-        }
-
-        internal void HomeSearch(int axicNo)
-        {
-            string cmd = "#" + axicNo.ToString() + "HM";
+            string cmd = "#" + axicNo + "HMZ";
 
             command(cmd);
         }
 
-        internal void SetHomingProp(int axicNo,
+        internal void HomeSearch(string axicNo)
+        {
+            string cmd = "#" + axicNo + "HM";
+
+            command(cmd);
+        }
+
+        internal void RelativeMove(string axicNo, int count, bool isPlus)
+        {
+            string cmd = "#" + axicNo + "J:";
+
+            if (isPlus == true)
+            {
+                cmd += "+" + count.ToString();
+            }
+            else
+            {
+                cmd += "-" + count.ToString();
+            }
+
+            command(cmd);
+        }
+
+        internal void SetHomingProp(string axicNo,
                                     string jogTime,
                                     string acclTime,
                                     string sCurveTime,
                                     string homeSpeed,
                                     string offset)
         {
-            command("I" + axicNo.ToString() + CommandNumber.HomingJogTime + jogTime);
-            command("I" + axicNo.ToString() + CommandNumber.HomingAccelTime + acclTime);
-            command("I" + axicNo.ToString() + CommandNumber.HomingSCurveTime + sCurveTime);
-            command("I" + axicNo.ToString() + CommandNumber.HomingSpeed + homeSpeed);
-            command("I" + axicNo.ToString() + CommandNumber.HomingOffset + offset);
+            command("I" + axicNo + CommandNumber.HomingJogTime + jogTime);
+            command("I" + axicNo + CommandNumber.HomingAccelTime + acclTime);
+            command("I" + axicNo + CommandNumber.HomingSCurveTime + sCurveTime);
+            command("I" + axicNo + CommandNumber.HomingSpeed + homeSpeed);
+            command("I" + axicNo + CommandNumber.HomingOffset + offset);
 
             //command("I" + axicNo.ToString() + "19" + jogTime);
             //command("I" + axicNo.ToString() + "20" + acclTime);
@@ -175,22 +224,88 @@ namespace PMACTest
             //command("I" + axicNo.ToString() + "26" + offset);
         }
 
+        internal void SetKill()
+        {
+            //DeviceGetResponse(m_dwDeviceNo, response, 255, "&1A");
+            //command("&1A");
+
+            // Kill 명령어 "^k"
+            byte[] cmd = new byte[1];
+            cmd[0] = 0x0B; // ctrl + k = 0x0B
+            command(cmd);
+        }
+
+        internal void SetServoOff(string axicNo)
+        {
+            string cmd = "#" + axicNo + "o0";
+            command(cmd);
+        }
+
+        internal void SetSpeed(string axicNo, string speed)
+        {
+            string cmd = "I" + axicNo + "22=" + speed;
+            command(cmd);
+        }
+
+        #endregion Methods
+
+        #region Classes
 
         public class CommandNumber
         {
-            public const string HomingJogTime = "19";
+            #region Fields
+
             public const string HomingAccelTime = "20";
+            public const string HomingJogTime = "19";
+            public const string HomingOffset = "26";
             public const string HomingSCurveTime = "21";
             public const string HomingSpeed = "23";
-            public const string HomingOffset = "26";
 
+            #endregion Fields
         }
 
-        internal void HomePick(int axicNo)
+        public class EventLoggerMessageArgs : EventArgs
         {
-            string cmd = "#" + axicNo.ToString() + "HMZ";
+            #region Constructors
 
-            command(cmd);
+            public EventLoggerMessageArgs(string message)
+            {
+                Initialize();
+
+                Message = message;
+            }
+
+            #endregion Constructors
+
+            #region Properties
+
+            public string Message { get; protected set; }
+            public DateTime OccurredTime { get; protected set; }
+
+            public string Time
+            {
+                get
+                {
+                    return OccurredTime.ToString("MMdd_hhmm_ss.fff");
+                }
+            }
+
+            #endregion Properties
+
+            #region Methods
+
+            protected virtual void Initialize()
+            {
+                OccurredTime = DateTime.Now;
+            }
+
+            protected virtual void RecordLog()
+            {
+            }
+
+            #endregion Methods
         }
+
+        #endregion Classes
     }
 }
