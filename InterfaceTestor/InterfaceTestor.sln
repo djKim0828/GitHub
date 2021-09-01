@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceTestor", "Interfac
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CubiControl", "CubiControl\CubiControl.vcxproj", "{65778934-784C-4139-8FFB-5B50C3A2DD17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWpf", "AppWpf\AppWpf.csproj", "{CC0B2D5E-6ABC-4032-860B-89649B93AB10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,7 @@ Global
 		{5C8C00B6-57EF-4514-B430-5A58790F382D}.Release|x86.ActiveCfg = Release|Any CPU
 		{5C8C00B6-57EF-4514-B430-5A58790F382D}.Release|x86.Build.0 = Release|Any CPU
 		{65778934-784C-4139-8FFB-5B50C3A2DD17}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{65778934-784C-4139-8FFB-5B50C3A2DD17}.Debug|Any CPU.Build.0 = Debug|Win32
 		{65778934-784C-4139-8FFB-5B50C3A2DD17}.Debug|x64.ActiveCfg = Debug|x64
 		{65778934-784C-4139-8FFB-5B50C3A2DD17}.Debug|x64.Build.0 = Debug|x64
 		{65778934-784C-4139-8FFB-5B50C3A2DD17}.Debug|x86.ActiveCfg = Debug|Win32
@@ -39,6 +42,18 @@ Global
 		{65778934-784C-4139-8FFB-5B50C3A2DD17}.Release|x64.Build.0 = Release|x64
 		{65778934-784C-4139-8FFB-5B50C3A2DD17}.Release|x86.ActiveCfg = Release|Win32
 		{65778934-784C-4139-8FFB-5B50C3A2DD17}.Release|x86.Build.0 = Release|Win32
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Debug|x64.Build.0 = Debug|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Debug|x86.Build.0 = Debug|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Release|x64.ActiveCfg = Release|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Release|x64.Build.0 = Release|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Release|x86.ActiveCfg = Release|Any CPU
+		{CC0B2D5E-6ABC-4032-860B-89649B93AB10}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -170,13 +170,63 @@ LRESULT CCubiControlDlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 				//AfxMessageBox(_T("WM_START"));
 
 				CString strData = (LPCTSTR)p->lpData;				
-				AfxExtractSubString(arStrArgs[0], strData, 0, '#');				
+				AfxExtractSubString(arStrArgs[0], strData, 0, '#');								
+				int handle = _ttoi(arStrArgs[0]);
+
+				AfxExtractSubString(arStrArgs[1], strData, 1, '#');
+
+				
+				
+				HANDLE hMemoryMap;
+				LPBYTE pMemoryMap;
+
+				hMemoryMap = OpenFileMapping(FILE_MAP_ALL_ACCESS, NULL, _T(arStrArgs[1]));
+
+				/*if (!hMemoryMap)
+				{
+					return ERROR_ORI_OPENFILEMAPPING_FAIL;
+				}*/
+
+				pMemoryMap = (LPBYTE)MapViewOfFile(hMemoryMap, FILE_MAP_ALL_ACCESS, 0, 0, 0);
+
+				if (!pMemoryMap)
+				{
+					CloseHandle(hMemoryMap);
+					//return ERROR_ORI_MAPVIEWOFFILE_FAIL;
+				}
+
+				int w = 2000;
+				int h = 2000;
+				int size = w * h;
+
+				byte *msh_ImgBuffer;
+				msh_ImgBuffer = new byte[size];
+				
+				AfxExtractSubString(arStrArgs[2], strData, 2, '#');
+				int value = _ttoi(arStrArgs[2]);
+
+				for (int i = 0; i < size; i++)
+				{
+					msh_ImgBuffer[i] = value;
+				}
+
+				memset(pMemoryMap, 0, size);	
+				memcpy(pMemoryMap, msh_ImgBuffer, size);
 
 				// 바로 메세지를 전달는 샘플 Code입니다.
-				// SendMessage를 위하여 Handle 은 별도 멤버로 선언하여 사용 바랍니다.
-				int handle = _ttoi(arStrArgs[0]);
-				HWND h = (HWND)handle;
-				::SendMessage(h, WM_CUBIEVENT, 1, 2);					
+				// SendMessage를 위하여 Handle 은 별도 멤버로 선언하여 사용 바랍니다.				
+				HWND mainAppHandel = (HWND)handle;
+				::SendMessage(mainAppHandel, WM_CUBIEVENT, handle, value);
+
+				if (pMemoryMap)
+				{
+					UnmapViewOfFile(pMemoryMap);
+				}
+
+				if (hMemoryMap)
+				{
+					CloseHandle(hMemoryMap);
+				}
 			}
 
 			break;
