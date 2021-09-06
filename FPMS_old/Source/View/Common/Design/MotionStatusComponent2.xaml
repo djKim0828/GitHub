@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="EmWorks.View.MotionStatusComponent2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d"
+             Tag="Visible"
+             Height="32" d:DesignWidth="240">
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+            <Grid Background="Black">
+                <Label x:Name="lblTitle" Content="X" Style="{DynamicResource lblInformationTitle}" />
+            </Grid>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Width="38" Height="32">
+                <Label Content="Servo On"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                <Ellipse x:Name="stsServoOn" Style="{DynamicResource EllipseStatus3}" Width="16" Height="16" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Width="38" Height="32">
+                <Label Content="Alarm"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                <Ellipse x:Name="stsAlarmStatus" Style="{DynamicResource EllipseStatus3}" Width="16" Height="16" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Width="38" Height="32">
+                <Label Content="Homing"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                <Ellipse x:Name="stsHomingStatus" Style="{DynamicResource EllipseStatus3}" Width="16" Height="16" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Width="38" Height="32">
+                <Label Content="Limit(-)"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                <Ellipse x:Name="stsSignalNegativeLimit" Style="{DynamicResource EllipseStatus3}" Width="16" Height="16" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Width="38" Height="32">
+                <Label Content="Home"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                <Ellipse x:Name="stsSignalHome" Style="{DynamicResource EllipseStatus3}" Width="16" Height="16" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Width="38" Height="32">
+                <Label Content="Limit(+)"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                <Ellipse x:Name="stsSignalPositiveLimit" Style="{DynamicResource EllipseStatus3}" Width="16" Height="16" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

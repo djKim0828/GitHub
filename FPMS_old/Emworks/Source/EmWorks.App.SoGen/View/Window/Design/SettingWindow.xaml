@@ -1,0 +1,96 @@
+﻿<Window x:Class="EmWorks.App.SoGen.SettingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmWorks.App.SoGen"
+        mc:Ignorable="d"
+        xmlns:Microsoft_Windows_Themes1="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+        xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna"
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None"
+        AllowsTransparency="False"
+        Style="{DynamicResource dlgBgWindow}"
+        Title="ConfigWindow" Height="600" Width="800">
+    <Grid Name="Root">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="64"/>
+        </Grid.RowDefinitions>
+        <GridSplitter x:Name="gridSplitter"  Grid.Row="0" Grid.RowSpan="3" Style ="{DynamicResource gstEnc}"/>
+        <Grid x:Name="grdDlgTitle" Margin="1" Background ="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <Image x:Name="imagENC" Grid.Column="0" Source="/EmWorks.App.SoGen;component/Resources/Images/Common/Logo/logoEnc64.png" HorizontalAlignment="Left" Margin="5,2,2,2" Width="32" />
+                <Label x:Name="lblDlgTitle" Content="SoGen" Grid.Column="1" Style="{DynamicResource lblDialogTitle}" Width="782" HorizontalAlignment="Left" />
+                <Button x:Name="btnDlgClose" Grid.Column="4" Style="{DynamicResource btnClose}" />
+            </Grid>
+        </Grid>
+        <Rectangle Grid.Row="1" Style="{DynamicResource recBgDailogMain}" Margin="8,8,10,8"/>
+        <Grid x:Name="grdCenter" Grid.Row="1" Margin="5">
+            <Grid x:Name="grdCenterMain" Grid.Column="1" >
+                <StackPanel x:Name="pnlInputTextMain" >
+                    <Label x:Name="lblEmpty" Content="" Height="12"/>
+                    <Label x:Name="lblRootPath" Content="Root Path" Margin="5,0,0,0" Style="{DynamicResource lblNormal}"/>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="48" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="txbPath" Text="Path" HorizontalContentAlignment="Left" Grid.Column ="0" Style="{DynamicResource txtInputData}"/>
+                        <Button x:Name="btnOpenFolderDlg" Grid.Column="2" Margin="2,0,0,0" Content="..." Style="{DynamicResource btnDialogNormal}" />
+                    </Grid>
+                    <Label x:Name="lblConfigPath" Content="Config File Output Path" Margin="5,0,0,0" Style="{DynamicResource lblNormal}"/>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Root Path\" Margin="5,0,0,0" Style="{DynamicResource lblNormal}"/>
+                        <TextBox x:Name="txbConfigPath" Text="Path" HorizontalContentAlignment="Left" Grid.Column ="1" IsEnabled ="False" Style="{DynamicResource txtInputData}"/>
+                    </Grid>
+                    <Label x:Name="lblAlarmPath" Content="Alarm File Output Path" Margin="5,0,0,0" Style="{DynamicResource lblNormal}"/>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Root Path\" Margin="5,0,0,0" Style="{DynamicResource lblNormal}"/>
+                        <TextBox x:Name="txbAlarmPath" Text="Path" HorizontalContentAlignment="Left" Grid.Column ="1" IsEnabled ="False" Style="{DynamicResource txtInputData}"/>
+                    </Grid>
+                    <Label x:Name="lblTagPath" Content="Tag File Output Path" Margin="5,0,0,0" Style="{DynamicResource lblNormal}"/>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Root Path\" Margin="5,0,0,0" Style="{DynamicResource lblNormal}"/>
+                        <TextBox x:Name="txbTagPath" Text="Path" HorizontalContentAlignment="Left" Grid.Column ="1" IsEnabled ="False" Style="{DynamicResource txtInputData}"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid x:Name="grdBottom" Grid.Row="2" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="9*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnInit" Width="160" Height="48" Content="Initialize" Grid.Column="0" Style="{DynamicResource btnDialogNormal}"/>
+            <StackPanel x:Name="pnlMessageBoxDlgBottom" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button x:Name="btnSave" Width="160" Height="48" Content="Save" Style="{DynamicResource btnDialogNormal}"/>
+                <Button x:Name="btnClose" Width="160" Height="48" Content="Close" Margin="12,0"  Style="{DynamicResource btnDialogNormal}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

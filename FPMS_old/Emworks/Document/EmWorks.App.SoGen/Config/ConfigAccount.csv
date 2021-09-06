@@ -1,0 +1,13 @@
+Id,Category,Name,Value
+0,Master,Id,Master
+1,Master,Password,master
+2,Master,Level,0
+3,Master,Status,1
+4,Engineer,Id,Engineer
+5,Engineer,Password,engineer
+6,Engineer,Level,1
+7,Engineer,Status,0
+8,Operator,Id,Operator
+9,Operator,Password,operator
+10,Operator,Level,2
+11,Operator,Status,0

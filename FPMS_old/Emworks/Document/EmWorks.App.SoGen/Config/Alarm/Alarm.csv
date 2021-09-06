@@ -1,0 +1,11 @@
+Id,Category,Name,Value
+1,A0001,Name,Door Open
+2,A0001,Description,Please Check a door.
+3,A0001,OccurrenceTime,
+4,A0001,Type,0
+5,A0001,ImagePath,
+6,A0002,Name,Emergency
+7,A0002,Description,Please Check All Stage.
+8,A0002,OccurrenceTime,
+9,A0002,ImagePath,
+10,A0002,Type,1

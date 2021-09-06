@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="EmWorks.View.DtAlarmWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d"
+             Tag="1"
+             d:DesignHeight="884" d:DesignWidth="1152">
+    <Grid x:Name="grdRoot" Background="{DynamicResource colorBgDialog}">
+        <Grid x:Name="grdBgTitleView">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"></RowDefinition>
+                <RowDefinition Height="1"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="1"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid  x:Name="grdBgTitle" Background ="{DynamicResource colorBgSubMenu}">
+                <Grid x:Name="grdBgTitleSplit">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="288"></ColumnDefinition>
+                        <ColumnDefinition Width="288"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid  x:Name="grdViewTitleSplit0" Grid.Column="0">
+                        <StackPanel Orientation="Horizontal" Margin="13,0,0,0">
+                            <Label x:Name="lblMainTitle" Content="Main Title" FontSize="14" Margin="0,0,0,0" Foreground="{DynamicResource colorFgText}"></Label>
+                            <Label x:Name="lblHyphen" Content="-" FontSize="14" Margin="0,0,0,0" Foreground="{DynamicResource colorFgText}"></Label>
+                            <Label x:Name="lblSubTitle" Content="Sub Title" FontSize="14" Margin="0,0,0,0" Foreground="{DynamicResource colorFgText}"></Label>
+                        </StackPanel>
+                    </Grid>
+                    <Grid  x:Name="grdViewTitleSplit1" Grid.Column="1"></Grid>
+                    <Grid  x:Name="grdViewTitleSplit2" Grid.Column="2"></Grid>
+                    <Grid  x:Name="grdViewTitleSplit3" Grid.Column="3">
+                        <Button x:Name="btnConfigDtData" Style="{DynamicResource btnConfig}"></Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid x:Name="grdDlgMain" Grid.Row="2" Background="#FF333333" Margin="5,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="33.926" />
+                    <ColumnDefinition Width="116.474" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="grdLeft" Background="#FF212125" Grid.ColumnSpan="2" Margin="0,0,0.4,-0.2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="42" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="42" />
+                    </Grid.RowDefinitions>
+                    <Label x:Name="lblDate" Content="Date" Grid.Row="0" Style="{DynamicResource lblNormal}" />
+                    <DatePicker x:Name="dtpStartDate" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="1" Text="2020-08-21" Margin="5,0,5,0" />
+                    <DatePicker x:Name="dtpEndDate" VerticalAlignment="Top" d:LayoutOverrides="Width" Grid.Row="2" Text="2020-08-21" Margin="5,0,5,0" />
+                    <Button x:Name="btnSearch" Content="Search" Grid.Row="3" Style="{DynamicResource btnNormalENC}" Margin="5,5" />
+                    <ListBox x:Name="lstAlarmDir" Margin="5,0,5,5" Grid.Row="4" />
+                    <Button x:Name="btnOpen" Content="Open Folder" Grid.Row="7" Style="{DynamicResource btnNormalENC}" Margin="5,5" />
+                </Grid>
+                <Grid x:Name="grdCenter" Grid.Column="1" Grid.ColumnSpan="2" Margin="116.074,0,0.4,-0.2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="150" />
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="grdCenterList" Grid.Row="0" Margin="4">
+                        <ListView x:Name="lvAlarm" Style="{DynamicResource lsvMainList}" ItemContainerStyle="{DynamicResource lsvMainListItem}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn HeaderContainerStyle="{DynamicResource lsvMainList_ColumnHeader}" Width="180" Header="DateTime">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock TextAlignment="Center" Text="{Binding _DateString}"></TextBlock>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn HeaderContainerStyle="{DynamicResource lsvMainList_ColumnHeader}" Width="180" Header="Id">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock TextAlignment="Left" Text="{Binding _Id}"></TextBlock>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn HeaderContainerStyle="{DynamicResource lsvMainList_ColumnHeader}" Width="180" Header="Name">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock TextAlignment="Left" Text="{Binding _Name}"></TextBlock>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn HeaderContainerStyle="{DynamicResource lsvMainList_ColumnHeader}" Width="180" Header="State">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock TextAlignment="Left" Text="{Binding _StateString}"></TextBlock>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn HeaderContainerStyle="{DynamicResource lsvMainList_ColumnHeader}" Width="450" Header="Description">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock TextAlignment="Left" Text="{Binding _Description}"></TextBlock>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                    <Grid x:Name="grdCenterDetailText" Grid.Row="1">
+                        <TextBox x:Name="txtLogDetail" Margin="5,0,5,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBox>
+                    </Grid>
+                    <Grid x:Name="grdCenterOtherInformation" Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width ="150" />
+                            <ColumnDefinition Width ="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="lblAllCount" Grid.Column ="0" Margin="5,0,5,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource lblNormal}" />
+                        <Label x:Name="lblOtherInformation" Grid.Column ="1" Margin="5,0,5,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{DynamicResource lblNormal}" />
+                    </Grid>
+                    <Popup x:Name="puContentMenu" AllowsTransparency="True" Placement="MousePoint" VerticalOffset="-2" HorizontalOffset="-2" Visibility="Hidden" StaysOpen="False">
+                        <Grid x:Name="grdContentManu">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="42" />
+                                <RowDefinition Height="42" />
+                                <RowDefinition Height="42" />
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnStartTime" Content="Start Time marking" Width="200" Grid.Row="0" Style="{DynamicResource btnNormalENC}" />
+                            <Button x:Name="btnEndtime" Content="End Time marking" Width="200" Grid.Row="1" Style="{DynamicResource btnNormalENC}" />
+                            <Button x:Name="btnSearchDlg" Content="Search Selected Log" Width="200" Grid.Row="2" Style="{DynamicResource btnNormalENC}" />
+                        </Grid>
+                    </Popup>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

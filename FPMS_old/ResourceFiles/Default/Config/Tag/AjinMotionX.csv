@@ -1,0 +1,74 @@
+Name,Index,Offset,IoType,Unit,Item,Action,DataType,IsAorB,IsSubscription,Default,Min,Max,Timeout,AlarmCode,ExeCmd,ActuatorId,SimCmd,Options,Desc
+sxDeviceMotion,0,0,2,Device,Motion,,1,0,1,0,0,0,0,0,,0,,,Device Open / Close Status
+syDeviceMotion,0,0,3,Device,Motion,,1,0,0,0,0,0,0,0,,1,sxDeviceMotion/0/0/0/0,,Device Open / Close Command
+xDeviceDriverVersion,0,0,0,Device,Driver,Version,2,0,0,0,0,0,0,0,Version,0,,,Driver Version
+xDeviceExternalLibVersion,0,0,0,Device,ExternalLib,Version,2,0,0,0,0,0,0,0,ExtenalLibVersion,0,,,Device Library Version
+xMotionSignalPositiveLimit,0,0,0,Motion,,SignalPositiveLimit,0,0,1,0,0,0,0,0,SignalPositiveLimit,0,,,Plus Limit Sensor Status
+xMotionSignalHome,0,0,0,Motion,,SignalHome,0,0,1,0,0,0,0,0,SignalHome,0,,,Home Sensor Status
+xMotionSignalNegativeLimit,0,0,0,Motion,,SignalNegativeLimit,0,0,1,0,0,0,0,0,SignalNegativeLimit,0,,,Minus Limit Sensor Status
+xMotionSignalInpos,0,0,0,Motion,,SignalInpos,0,0,1,0,0,0,0,0,SignalInpos,0,,,Inposition Status
+xMotionSignalBusy,0,0,0,Motion,,SignalBusy,0,0,1,0,0,0,0,0,SignalBusy,0,,,Motion Busy Status
+yMotionServoOn,0,0,1,Motion,,ServoOn,0,0,0,1,0,1,0,0,ServoOn,0,,,Servo On Command
+xMotionServoOn,0,0,0,Motion,,ServoOn,0,0,1,0,0,1,0,0,ServoOn,0,,,Servo On Status
+yMotionAlarmReset,0,0,1,Motion,,AlarmReset,0,0,0,0,0,0,0,0,AlarmReset,0,,,Alarm Reset Command
+xMotionAlarmStatus,0,0,0,Motion,,AlarmStatus,0,0,1,0,0,0,0,0,Alarm,0,,,Alarm Status
+xMotionAlarmCode,0,0,0,Motion,,AlarmCode,1,0,1,0,0,0,0,0,AlarmCode,0,,,Alarm Code
+yMotionHoming,0,0,1,Motion,,Homing,0,0,0,0,0,0,0,0,Homing,0,,,Homing Command
+xMotionHomingStatus,0,0,0,Motion,,HomingStatus,0,0,1,0,0,0,0,0,Homing,0,,,Homing Status
+yMotionPosMatch,0,0,1,Motion,,PosMatch,0,0,0,0,0,0,0,0,PositionMatch,0,,,Position Matching (Zero Reset)
+yMotionStop,0,0,1,Motion,,Stop,0,0,0,0,0,0,0,0,Stop,0,,,Move Stop Command
+xMotionStopStatus,0,0,0,Motion,,StopStatus,0,0,1,0,0,0,0,0,Stop,0,,,Move Stop Status
+yMotionEStop,0,0,1,Motion,,EStop,0,0,0,0,0,0,0,0,EStop,0,,,Move Sstop Command
+yMotionSStop,0,0,1,Motion,,SStop,0,0,0,0,0,0,0,0,SStop,0,,,Move Estop Command
+yMotionInposEnable,0,0,1,Motion,,InposEnable,0,0,0,0,0,0,0,0,InpositionEnable,0,,,Inposition Enable Set Command
+xMotionInposEnable,0,0,0,Motion,,InposEnable,0,0,1,0,0,0,0,0,InpositionEnable,0,,,Low=0; High=1; Unused=2; Used=3
+yMotionInposRange,0,0,1,Motion,,InposRange,1,0,0,0,0,0,0,0,InposRange,0,,,Inposition Range Set
+xMotionInposRange,0,0,0,Motion,,InposRange,1,0,1,0,0,0,0,0,InposRange,0,,,Inposition Range Value
+yMotionMoveMode,0,0,1,Motion,,MoveMode,0,0,0,0,0,0,0,0,MoveModeSelect,0,,,Move Mode Set Command
+xMotionMoveMode,0,0,0,Motion,,MoveMode,0,0,1,0,0,0,0,0,MoveMode,0,,,Move Mode Status ABS=0; REL=1;
+yMotionMove,0,0,1,Motion,,Move,1,0,0,0,0,0,0,0,MoveStart,0,,,Move Command
+xMotionCommand,0,0,0,Motion,,Command,1,0,1,0,0,0,0,0,CommandPosisiton,0,,,Target Position
+xMotionActual,0,0,0,Motion,,Actual,1,0,1,0,0,0,0,0,ActualPosition,0,,,Current Position
+yMotionVelocityMin,0,0,1,Motion,,VelocityMin,1,0,0,0,0,0,0,0,MinVel,0,,,Minimum Velocity Set Command
+yMotionVelocityMax,0,0,1,Motion,,VelocityMax,1,0,0,0,0,0,0,0,MaxVel,0,,,Maximum Velocity Set Command
+xMotionVelocityMin,0,0,0,Motion,,VelocityMin,1,0,1,0,0,0,0,0,MinVel,0,,,Current Minimum Velocity .
+xMotionVelocityMax,0,0,0,Motion,,VelocityMax,1,0,1,0,0,0,0,0,MaxVel,0,,,Current Maximum Velocity .
+yMotionVelocity,0,0,1,Motion,,Velocity,1,0,0,0,0,0,0,0,Velocity,0,,,Move Velocity Set Command.
+xMotionVelocity,0,0,0,Motion,,Velocity,1,0,1,0,0,0,0,0,Velocity,0,,,Current Move Velocity Value.
+yMotionAccel,0,0,1,Motion,,Accel,1,0,0,10,0,0,0,0,Accel,0,,,Move Acceleration Set Command.
+xMotionAccel,0,0,0,Motion,,Accel,1,0,1,10,0,0,0,0,Accel,0,,,Current Move Acceleration Value.
+yMotionDecel,0,0,1,Motion,,Decel,1,0,0,10,0,0,0,0,Decel,0,,,Move Deceleration Set Command.
+xMotionDecel,0,0,0,Motion,,Decel,1,0,1,10,0,0,0,0,Decel,0,,,Current Move Deceleration Value.
+yMotionHomeVelocity,0,0,1,Motion,,HomeVelocity,1,0,0,0,0,0,0,0,HomingVel,0,,,Home Velocity & Accel Set Command.
+yMotionHomeVel1st,0,0,1,Motion,,HomeVel1st,1,0,0,0,0,0,0,0,HomingVel1st,0,,,Home 1st Velocity Buffer Write Only
+yMotionHomeVel2nd,0,0,1,Motion,,HomeVel2nd,1,0,0,0,0,0,0,0,HomingVel2nd,0,,,Home 2nf Velocity Buffer  Write Only
+yMotionHomeVel3rd,0,0,1,Motion,,HomeVel3rd,1,0,0,0,0,0,0,0,HomingVel3rd,0,,,Home 3rd Velocity Buffer  Write Only
+yMotionHomeVel4th,0,0,1,Motion,,HomeVel4th,1,0,0,0,0,0,0,0,HomingVel4th,0,,,Home 4th Velocity Buffer  Write Only
+yMotionHomeAcc1st,0,0,1,Motion,,HomeAcc1st,1,0,0,0,0,0,0,0,HomingAcc1st,0,,,Home 1st Acceleration Buffer  Write Only
+yMotionHomeAcc2nd,0,0,1,Motion,,HomeAcc2nd,1,0,0,0,0,0,0,0,HomingAcc2nd,0,,,Home 2nd Acceleration Buffer  Write Only
+xMotionHomeVelocity,0,0,0,Motion,,HomeVelocity,1,0,1,0,0,0,0,0,HomingVel,0,,,Current Home Velocity & Accel Values
+xMotionHomeVel1st,0,0,0,Motion,,HomeVel1st,1,0,1,0,0,0,0,0,HomingVel1st,0,,,Current Home 1st Velocity Value
+xMotionHomeVel2nd,0,0,0,Motion,,HomeVel2nd,1,0,1,0,0,0,0,0,HomingVel2nd,0,,,Current Home 2nf Velocity Value
+xMotionHomeVel3rd,0,0,0,Motion,,HomeVel3rd,1,0,1,0,0,0,0,0,HomingVel3rd,0,,,Current Home 3rd Velocity Value
+xMotionHomeVel4th,0,0,0,Motion,,HomeVel4th,1,0,1,0,0,0,0,0,HomingVel4th,0,,,Current Home 4th Velocity Value
+xMotionHomeAcc1st,0,0,0,Motion,,HomeAcc1st,1,0,1,0,0,0,0,0,HomingAcc1st,0,,,Current Home 1st Acceleration Value
+xMotionHomeAcc2nd,0,0,0,Motion,,HomeAcc2nd,1,0,1,0,0,0,0,0,HomingAcc2nd,0,,,Current Home 2nd Acceleration Value
+yMotionJogVelocity,0,0,1,Motion,,JogVelocity,1,0,0,0,0,0,0,0,JogVel,0,,,Jog Velocity Set Command (Move)
+yMotionJogAccel,0,0,1,Motion,,JogAccel,1,0,0,0,0,0,0,0,JogAccel,0,,,Jog Acceleration Buffer
+yMotionJogDecel,0,0,1,Motion,,JogDecel,1,0,0,0,0,0,0,0,JogDecel,0,,,Jog Deceleration Buffer
+xMotionJogVelocity,0,0,0,Motion,,JogVelocity,1,0,1,0,0,0,0,0,JogVelocity,0,,,Current Jog Velocity Value
+xMotionJogAccel,0,0,0,Motion,,JogAccel,1,0,1,0,0,0,0,0,JogAccel,0,,,Current Jog Acceleration Value
+xMotionJogDecel,0,0,0,Motion,,JogDecel,1,0,1,0,0,0,0,0,JogDecel,0,,,Current Jog Deceleration Value
+xMotionTriggerTime,0,0,0,Motion,,TriggerTime,1,0,0,0,0,0,0,0,TriggerTime,0,,,Trigger 
+xMotionTriggerStartPos,0,0,0,Motion,,TriggerStartPos,1,0,0,0,0,0,0,0,TriggerStartPos,0,,,Trigger 
+xMotionTriggerEndPos,0,0,0,Motion,,TriggerEndPos,1,0,0,0,0,0,0,0,TriggerEndPos,0,,,Trigger 
+xMotionTriggerPeriodPos,0,0,0,Motion,,TriggerPeriodPos,1,0,0,0,0,0,0,0,TriggerPeriodPos,0,,,Trigger 
+yMotionTriggerTime,0,0,1,Motion,,TriggerTime,1,0,0,0,0,0,0,0,TriggerTime,0,,,Trigger 
+yMotionTriggerStartPos,0,0,1,Motion,,TriggerStartPos,1,0,0,0,0,0,0,0,TriggerStartPos,0,,,Trigger 
+yMotionTriggerEndPos,0,0,1,Motion,,TriggerEndPos,1,0,0,0,0,0,0,0,TriggerEndPos,0,,,Trigger 
+yMotionTriggerPeriodPos,0,0,1,Motion,,TriggerPeriodPos,1,0,0,0,0,0,0,0,TriggerPeriodPos,0,,,Trigger 
+yMotionTriggerSetTimeLevel,0,0,1,Motion,,TriggerSetTimeLevel,1,0,0,0,0,0,0,0,TriggerSetTimeLevel,0,,,Trigger 
+yMotionTriggerSetBlock,0,0,1,Motion,,TriggerSetBlock,1,0,0,0,0,0,0,0,TriggerSetBlock,0,,,Trigger 
+yMotionTriggerSetReset,0,0,1,Motion,,TriggerSetReset,1,0,0,0,0,0,0,0,TriggerSetReset,0,,,Trigger 
+yMotionHomeOffset,0,0,1,Motion,,HomeOffset,1,0,0,0,0,0,0,0,HomeOffset,0,,,Home Offset
+xMotionHomeOffset,0,0,0,Motion,,HomeOffset,1,0,1,0,0,0,0,0,HomeOffset,0,,,Home Offset

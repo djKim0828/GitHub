@@ -1,0 +1,163 @@
+﻿<UserControl x:Class="EmWorks.View.AlignLMKComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d"
+             Tag="1"
+             d:DesignHeight="319" d:DesignWidth="461">
+    <Grid x:Name="grdAlignLMK">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="grdTitleAlign" Grid.Row="0" Background="Black">
+            <Label x:Name="lblTitle"
+                   Content="Align"
+                   Margin="5,0"
+                   Style="{DynamicResource lblInformationTitle}" />
+        </Grid>
+        <Grid x:Name="grdAlign" Grid.Row="1" Background="{DynamicResource colorBgDialog}">
+            <StackPanel Margin="5,5">
+                <Grid x:Name="grdAlignData">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="grdTopData" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="grdTopLeft" Grid.Column="0">
+                            <StackPanel>
+                                <Label x:Name="lblAlignX"
+                                       Content="X"
+                                       Margin="10,3,0,0"
+                                       Style="{DynamicResource lblContentName}" />
+                                <TextBox x:Name="txtAlignX"
+                                         Margin="10,0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Left"
+                                         Style="{DynamicResource txtNormal}" />
+                                <Label x:Name="lblAlignV"
+                                       Content="V"
+                                       Margin="10,3,0,0"
+                                       Style="{DynamicResource lblContentName}" />
+                                <TextBox x:Name="txtAlignV"
+                                         Margin="10,0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Left"
+                                         Style="{DynamicResource txtNormal}" />
+                                <Label x:Name="lblAlignR"
+                                       Content="R"
+                                       Margin="10,3,0,0"
+                                       Style="{DynamicResource lblContentName}" />
+                                <TextBox x:Name="txtAlignR"
+                                         Margin="10,0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Left"
+                                         Style="{DynamicResource txtNormal}" />
+                            </StackPanel>
+                        </Grid>
+                        <Grid x:Name="grdTopRight" Grid.Column="1">
+                            <StackPanel>
+                                <Label x:Name="lblAlignY"
+                                       Content="Y"
+                                       Margin="10,3,0,0"
+                                       Style="{DynamicResource lblContentName}" />
+                                <TextBox x:Name="txtAlignY"
+                                         Margin="10,0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Left"
+                                         Style="{DynamicResource txtNormal}" />
+                                <Label x:Name="lblAlignH"
+                                       Content="H"
+                                       Margin="10,3,0,0"
+                                       Style="{DynamicResource lblContentName}" />
+                                <TextBox x:Name="txtAlignH"
+                                         Margin="10,0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Left"
+                                         Style="{DynamicResource txtNormal}" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="grdBottomData" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="grdBottomLeft" Grid.Column="0">
+                            <StackPanel>
+                                <Label x:Name="lblAlignV4"
+                                       Content="V4"
+                                       Margin="10,3,0,0"
+                                       Style="{DynamicResource lblContentName}" />
+                                <TextBox x:Name="txtAlignV4"
+                                         Margin="10,0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Left"
+                                         Style="{DynamicResource txtNormal}" />
+                                <Label x:Name="lblAlignH4"
+                                       Content="H4"
+                                       Margin="10,3,0,0"
+                                       Style="{DynamicResource lblContentName}" />
+                                <TextBox x:Name="txtAlignH4"
+                                         Margin="10,0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Left"
+                                         Style="{DynamicResource txtNormal}" />
+                            </StackPanel>
+                        </Grid>
+                        <Grid x:Name="grdBottomRight" Grid.Column="1">
+                            <StackPanel>
+                                <Label x:Name="lblAlignScaleX"
+                                       Content="Scale X"
+                                       Margin="10,3,0,0"
+                                       Style="{DynamicResource lblContentName}" />
+                                <TextBox x:Name="txtAlignScaleX"
+                                         Margin="10,0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Left"
+                                         Style="{DynamicResource txtNormal}" />
+                                <Label x:Name="lblAlignScaleY"
+                                       Content="Scale Y"
+                                       Margin="10,3,0,0"
+                                       Style="{DynamicResource lblContentName}" />
+                                <TextBox x:Name="txtAlignScaleY"
+                                         Margin="10,0"
+                                         IsReadOnly="True"
+                                         TextAlignment="Left"
+                                         Style="{DynamicResource txtNormal}" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Margin="5,5">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+                        <Button x:Name="btnLoadSetPosition"
+                                Content="Load Set Position"
+                                Width="130"
+                                Height="32"
+                                Margin="5,5"
+                                Style="{DynamicResource btnNormal}" />
+                        <Button x:Name="btnSetAlignLMK"
+                                Content="Set Camera Align"
+                                Width="130"
+                                Height="32"
+                                Margin="5,5"
+                                Style="{DynamicResource btnNormal}" />
+                        <Button x:Name="btnGetAlignLMK"
+                                Content="Get Camera Align"
+                                Width="130"
+                                Height="32"
+                                Margin="5,5"
+                                Style="{DynamicResource btnNormal}" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

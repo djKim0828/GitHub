@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="EmWorks.View.SetupLMKComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d"
+             Tag="1"
+             xmlns:SetCameraUc="EmWorks.View"
+             d:DesignHeight="254" d:DesignWidth="451">
+    <Grid x:Name="grdLMKCameraSetting">
+        <Grid x:Name="grdInformation" Background="{DynamicResource colorBgDialog}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel>
+                    <Label x:Name="lblModel"
+                           Content="Modle Name"
+                           Margin="10,10,0,0"
+                           Style="{DynamicResource lblContentName}" />
+                    <ComboBox x:Name="cmbModelName"
+                              Margin="10,0"
+                              Style="{DynamicResource cmbGeneral}" />
+                    <Label x:Name="lblTestName"
+                           Content="Test Name"
+                           Margin="10,0,0,0"
+                           Style="{DynamicResource lblContentName}" />
+                    <TextBox x:Name="txbTestName"
+                             Margin="10,0,10,0"
+                             Style="{DynamicResource txtInputData}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1">
+                            <Button x:Name="btnSetModel"
+                                Content="Set Model"
+                                Width="Auto"
+                                Height="32"
+                                Margin="10,5"
+                                Style="{DynamicResource btnNormal}" />
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <StackPanel>
+                    <Label x:Name="lblCameraName"
+                       Content="Camera Name"
+                       Margin="10,10,0,0"
+                       Style="{DynamicResource lblContentName}" />
+                    <ComboBox x:Name="cmbCameraName"
+                          Margin="10,0"
+                          Style="{DynamicResource cmbGeneral}" />
+                    <Label x:Name="lblLensName"
+                       Content="Lens Name"
+                       Margin="10,0,0,0"
+                       Style="{DynamicResource lblContentName}" />
+                    <ComboBox x:Name="cmbLensName"
+                          Margin="10,0"
+                          Style="{DynamicResource cmbGeneral}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1">
+                            <Button x:Name="btnSetCamera"
+                                Content="Set Camera"
+                                Width="Auto"
+                                Height="32"
+                                Margin="10,5"
+                                Style="{DynamicResource btnNormal}" />
+                        </Grid>
+                    </Grid>
+                    <Label x:Name="lblLensFactor"
+                       Content="Lens Name"
+                       Margin="10,0,0,0"
+                       Style="{DynamicResource lblContentName}" />
+                    <ComboBox x:Name="cmbLensFactor"
+                          Margin="10,0"
+                          Style="{DynamicResource cmbGeneral}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1">
+                            <Button x:Name="btnSetFactor"
+                                Content="Set Factor"
+                                Width="Auto"
+                                Height="32"
+                                Margin="10,5"
+                                Style="{DynamicResource btnNormal}" />
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

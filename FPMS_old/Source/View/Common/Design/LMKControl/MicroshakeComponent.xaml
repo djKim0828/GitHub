@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="EmWorks.View.MicroshakeComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d"
+             Tag="1"
+             d:DesignHeight="159" d:DesignWidth="461">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="grdMicroShake" Grid.Row="0" Background="Black">
+            <Label x:Name="lblTitle"
+                   Content="Micro Shake"
+                   Margin="5,0"
+                   Style="{DynamicResource lblInformationTitle}" />
+        </Grid>
+        <Grid Grid.Row="1" Background="{DynamicResource colorBgDialog}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.7*" />
+                    <ColumnDefinition Width="1.3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Label x:Name="lblDriveState"
+                           Content="Drive State"
+                           Margin="10,0"
+                           Style="{DynamicResource lblContentName}" />
+                </Grid>
+                <Grid Grid.Column="1">
+                    <TextBox x:Name="txtDriveState"
+                             Width="Auto"
+                             Margin="5,0"
+                             TextAlignment="Left"
+                             IsReadOnly="True"
+                             Style="{DynamicResource txtNormal}" />
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button x:Name="btnLoadDriveConfig"
+                            Content="Load Drive Config"
+                            Width="Auto"
+                            Height="32"
+                            Margin="5,0"
+                            Style="{DynamicResource btnNormal}" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.7*" />
+                    <ColumnDefinition Width="1.3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Label x:Name="lblcapValues"
+                           Content="cap values"
+                           Margin="10,0"
+                           Style="{DynamicResource lblContentName}" />
+                </Grid>
+                <Grid Grid.Column="1">
+                    <TextBox x:Name="txt"
+                             Width="Auto"
+                             Margin="5,0"
+                             TextAlignment="Left"
+                             IsReadOnly="True"
+                             Style="{DynamicResource txtNormal}" />
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button x:Name="btnLoadcapFile"
+                            Content="Load cap File"
+                            Width="Auto"
+                            Height="32"
+                            Margin="5,0"
+                            Style="{DynamicResource btnNormal}" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button x:Name="btnDriveRefPosition"
+                            Content="Drive Ref. Position"
+                            Width="Auto"
+                            Height="32"
+                            Margin="5,0"
+                            Style="{DynamicResource btnNormal}" />
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="btnStart"
+                            Content="Start"
+                            Width="Auto"
+                            Height="32"
+                            Margin="5,0"
+                            Style="{DynamicResource btnNormal}" />
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button x:Name="btnStop"
+                            Content="Stop"
+                            Width="Auto"
+                            Height="32"
+                            Margin="5,0"
+                            Style="{DynamicResource btnNormal}" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
