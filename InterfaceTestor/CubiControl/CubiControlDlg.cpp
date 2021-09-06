@@ -165,76 +165,200 @@ LRESULT CCubiControlDlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 			CString strData, temp;
 			strData.Format(_T("%s"), (char *)lParam);			
 
-			if (wParam == WM_START)
+			strData = (LPCTSTR)p->lpData;
+
+			switch (wParam)
 			{
-				//AfxMessageBox(_T("WM_START"));
-
-				CString strData = (LPCTSTR)p->lpData;				
-				AfxExtractSubString(arStrArgs[0], strData, 0, '#');								
-				int handle = _ttoi(arStrArgs[0]);
-
-				AfxExtractSubString(arStrArgs[1], strData, 1, '#');
-
-				
-				
-				HANDLE hMemoryMap;
-				LPBYTE pMemoryMap;
-
-				hMemoryMap = OpenFileMapping(FILE_MAP_ALL_ACCESS, NULL, _T(arStrArgs[1]));
-
-				/*if (!hMemoryMap)
-				{
-					return ERROR_ORI_OPENFILEMAPPING_FAIL;
-				}*/
-
-				pMemoryMap = (LPBYTE)MapViewOfFile(hMemoryMap, FILE_MAP_ALL_ACCESS, 0, 0, 0);
-
-				if (!pMemoryMap)
-				{
-					CloseHandle(hMemoryMap);
-					//return ERROR_ORI_MAPVIEWOFFILE_FAIL;
-				}
-
-				int w = 2000;
-				int h = 2000;
-				int size = w * h;
-
-				byte *msh_ImgBuffer;
-				msh_ImgBuffer = new byte[size];
-				
-				AfxExtractSubString(arStrArgs[2], strData, 2, '#');
-				int value = _ttoi(arStrArgs[2]);
-
-				for (int i = 0; i < size; i++)
-				{
-					msh_ImgBuffer[i] = value;
-				}
-
-				memset(pMemoryMap, 0, size);	
-				memcpy(pMemoryMap, msh_ImgBuffer, size);
-
-				// 바로 메세지를 전달는 샘플 Code입니다.
-				// SendMessage를 위하여 Handle 은 별도 멤버로 선언하여 사용 바랍니다.				
-				HWND mainAppHandel = (HWND)handle;
-				::SendMessage(mainAppHandel, WM_CUBIEVENT, handle, value);
-
-				if (pMemoryMap)
-				{
-					UnmapViewOfFile(pMemoryMap);
-				}
-
-				if (hMemoryMap)
-				{
-					CloseHandle(hMemoryMap);
-				}
-			}
+				case START:
+					CommandStart(strData);				
+					break;
+				case CONNECT:
+					CommandConnect(strData);
+					break;
+				case DISCONNECT:
+					CommandDisconnect(strData);
+					break;
+				case GET_STATUS:
+					CommandGetStatus(strData);
+					break;
+				case GRAP_START:
+					CommandGrapStart(strData);
+					break;
+				default:
+					CommandResult(strData);
+					break;;
+			}			
 
 			break;
 		}
 		default:
 			break;
 	}
-
 	return CDialog::WindowProc(message, wParam, lParam);
 }
+
+void CCubiControlDlg::CommandStart(CString parameter)
+{
+	CString arStrArgs[7];
+	AfxExtractSubString(arStrArgs[0], parameter, 0, '#');
+	int handle = _ttoi(arStrArgs[0]);
+	mainAppHandel = (HWND)handle;
+
+	AfxExtractSubString(arStrArgs[1], parameter, 1, '#');
+	memoryKeyName = arStrArgs[1];
+
+	isConnect = 0;
+
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandGrapStart(CString parameter)
+{
+	CString arStrArgs[7];
+	AfxExtractSubString(arStrArgs[0], parameter, 0, '#');
+
+	HANDLE hMemoryMap;
+	LPBYTE pMemoryMap;
+
+	hMemoryMap = OpenFileMapping(FILE_MAP_ALL_ACCESS, NULL, _T(memoryKeyName));
+
+	/*if (!hMemoryMap)
+	{
+	return ERROR_ORI_OPENFILEMAPPING_FAIL;
+	}*/
+
+	pMemoryMap = (LPBYTE)MapViewOfFile(hMemoryMap, FILE_MAP_ALL_ACCESS, 0, 0, 0);
+
+	if (!pMemoryMap)
+	{
+		CloseHandle(hMemoryMap);
+		//return ERROR_ORI_MAPVIEWOFFILE_FAIL;
+	}
+
+	int w = 2000;
+	int h = 2000;
+	int size = w * h;
+
+	byte *msh_ImgBuffer;
+	msh_ImgBuffer = new byte[size];
+
+	AfxExtractSubString(arStrArgs[0], parameter, 0, '#');
+	int value = _ttoi(arStrArgs[0]);
+
+	for (int i = 0; i < size; i++)
+	{
+		msh_ImgBuffer[i] = value;
+	}
+
+	memset(pMemoryMap, 0, size);
+	memcpy(pMemoryMap, msh_ImgBuffer, size);
+
+	::SendMessage(mainAppHandel, RETURN, CAPTURE_COMPLETE, value);
+
+	if (pMemoryMap)
+	{
+		UnmapViewOfFile(pMemoryMap);
+	}
+
+	if (hMemoryMap)
+	{
+		CloseHandle(hMemoryMap);
+	}
+}
+
+void CCubiControlDlg::CommandConnect(CString parameter)
+{	
+	isConnect = 1;
+
+	Sleep(1000);	
+	
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandDisconnect(CString parameter)
+{
+	isConnect = 0;
+
+	Sleep(100);
+
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandGetStatus(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_STATUS, isConnect);
+}
+
+void CCubiControlDlg::CommandPrepareScan(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandGrapStop(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandLaserOnOff(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandLedOnOff(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandScanStart(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandScanStop(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandSave(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandSaveParameter(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandLoadParameter(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandZCali(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+void CCubiControlDlg::CommandResult(CString parameter)
+{
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

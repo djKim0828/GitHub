@@ -83,6 +83,9 @@ namespace AppWpf
             }
         }
 
+        IntPtr _mainWindowHandle;
+        IntPtr _processWindowHandle;
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             _memory = new IntPtr();
@@ -95,9 +98,9 @@ namespace AppWpf
 
             string args = "";
 
-            IntPtr mainWindowHandle = new WindowInteropHelper(this).Handle;
-
-            if (Func.RunCubiControl(args, mainWindowHandle, _memoryKeyName, txtPixelValue.Text) == true)
+            _mainWindowHandle = new WindowInteropHelper(this).Handle;
+            
+            if (Func.RunCubiControl(args, _mainWindowHandle, _memoryKeyName, ref _processWindowHandle) == true)
             {
                 WriteLog("Complete Run Command");
             }
@@ -109,34 +112,54 @@ namespace AppWpf
 
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            // Handle messages...
-            switch (msg)
+            if (msg == MessageMngr.RETURN)
             {
-                case MessageMngr.WM_CUBIEVENT1:
-                    WriteLog("Receive " + msg.ToString());
-                    WriteLog("Receive w=" + wParam.ToString());
+                int i = 0;
 
-                    WriteLog("Receive l=" + lParam.ToString());
+                // Handle messages...
+                switch (wParam.ToInt32())
+                {
+                    case MessageMngr.RETURN_STATUS:
 
-                    IntPtr hMemorySrc;
-                    IntPtr pMemorySrc;
-                    UIntPtr uBytes = new UIntPtr(_memorySize);
+                        WriteLog("Receive " + msg.ToString());
+                        WriteLog("Receive w=" + wParam.ToString());
+                        WriteLog("Receive l=" + lParam.ToString());                        
 
-                    hMemorySrc = Func.OpenFileMapping((uint)Func.FileMapAccess.FileMapAllAccess, true, _memoryKeyName);
-                    pMemorySrc = Func.MapViewOfFile(hMemorySrc, Func.FileMapAccess.FileMapAllAccess, 0, 0, uBytes);
+                        break;
 
-                    byte[] managedArray = new byte[_memorySize];
+                    case MessageMngr.CAPTURE_COMPLETE:
 
-                    Marshal.Copy(pMemorySrc, managedArray, 0, (int)_memorySize);
+                        WriteLog("Receive " + msg.ToString());
+                        WriteLog("Receive w=" + wParam.ToString());
+                        WriteLog("Receive l=" + lParam.ToString());
 
-                    WriteLog(managedArray[0].ToString());
+                        IntPtr hMemorySrc;
+                        IntPtr pMemorySrc;
+                        UIntPtr uBytes = new UIntPtr(_memorySize);
 
-                    LoadImage(managedArray);
+                        hMemorySrc = Func.OpenFileMapping((uint)Func.FileMapAccess.FileMapAllAccess, true, _memoryKeyName);
+                        pMemorySrc = Func.MapViewOfFile(hMemorySrc, Func.FileMapAccess.FileMapAllAccess, 0, 0, uBytes);
 
-                    Func.UnmapViewOfFile(pMemorySrc);
-                    Func.CloseHandle(hMemorySrc);
+                        byte[] managedArray = new byte[_memorySize];
 
-                    break;
+                        Marshal.Copy(pMemorySrc, managedArray, 0, (int)_memorySize);
+
+                        WriteLog(managedArray[0].ToString());
+
+                        LoadImage(managedArray);
+
+                        Func.UnmapViewOfFile(pMemorySrc);
+                        Func.CloseHandle(hMemorySrc);
+
+                        break;
+                    default:
+                        WriteLog("Default");
+                        WriteLog("Receive " + msg.ToString());
+                        WriteLog("Receive w=" + wParam.ToString());
+                        WriteLog("Receive l=" + lParam.ToString());
+
+                        break;
+                }
             }
 
             return IntPtr.Zero;
@@ -151,5 +174,46 @@ namespace AppWpf
         }
 
         #endregion Methods
+
+        private void btnCmd1_Click(object sender, RoutedEventArgs e)
+        {
+            string wndHandle = string.Format("{0}#", txtPixelValue.Text);
+
+            SendMessage(MessageMngr.GRAP_START, wndHandle);
+
+        }
+
+        private int SendMessage(int commandId, string wndHandle)
+        {
+            MessageMngr.COPYDATASTRUCT cds;
+
+            cds = new MessageMngr.COPYDATASTRUCT();
+            cds.dwData = IntPtr.Zero; //임의값
+            cds.cbData = System.Text.Encoding.Default.GetBytes(wndHandle).Length + 1;
+            cds.lpData = wndHandle;
+            int result = MessageMngr.SendMessage(_processWindowHandle,
+                                          MessageMngr.WM_COPYDATA,
+                                          new IntPtr(commandId),
+                                          ref cds);
+
+            return result;
+        }
+
+        private void btnConnect_Click(object sender, RoutedEventArgs e)
+        {
+            string wndHandle = string.Empty;
+
+            SendMessage(MessageMngr.CONNECT, wndHandle);
+        }
+
+        private void btnDisconnect_Click(object sender, RoutedEventArgs e)
+        {            
+            SendMessage(MessageMngr.DISCONNECT, string.Empty);
+        }
+
+        private void btnGetStatus_Click(object sender, RoutedEventArgs e)
+        {
+            SendMessage(MessageMngr.GET_STATUS, string.Empty);
+        }
     }
 }

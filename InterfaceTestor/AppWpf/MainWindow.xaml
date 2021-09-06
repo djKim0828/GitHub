@@ -19,7 +19,12 @@
             <Grid Grid.Column="0">
                 <Button x:Name="btnRun" Content="Run" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="72" Click="button_Click" />
                 <Button x:Name="btnKill" Content="Kill" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="72" Margin="0,80,0,0" Click="btnKill_Click" />
-                <TextBox x:Name="txtPixelValue" HorizontalAlignment="Left" Height="22" Margin="38,203,0,0" TextWrapping="Wrap" Text="255" VerticalAlignment="Top" Width="120" />
+                <Button x:Name="btnConnect" Content="Connect" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="72" Margin="0,200,0,0" Click="btnConnect_Click" />
+                <Button x:Name="btnDisconnect" Content="Disconnect" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="72" Margin="80,200,0,0" Click="btnDisconnect_Click" />
+                <Button x:Name="btnGetStatus" Content="GetStatus" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="72" Margin="160,200,0,0" Click="btnGetStatus_Click" />
+                
+                <Button x:Name="btnCmd1" Content="Grap Start" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="72" Margin="0,362,0,0" Click="btnCmd1_Click" />
+                <TextBox x:Name="txtPixelValue" HorizontalAlignment="Left" Height="22" Margin="98,407,0,0" TextWrapping="Wrap" Text="255" VerticalAlignment="Top" Width="120" />
             </Grid>
             <Grid Grid.Column="1">
                 <Grid x:Name="grdImage" Width ="200" Height="200" Background="Gray">

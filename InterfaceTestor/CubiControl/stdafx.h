@@ -44,10 +44,28 @@
 #endif
 
 // ENC -> Cubixel
-#define WM_START		WM_USER + 1000
+#define START			WM_USER + 1
+#define CONNECT			WM_USER + 2
+#define DISCONNECT		WM_USER + 3
+#define GET_STATUS		WM_USER + 4
+#define PREPARE_SCAN	WM_USER + 5
+#define LASER_ON_OFF	WM_USER + 6
+#define LED_ON_OFF		WM_USER + 7
+#define GRAP_START		WM_USER + 8
+#define GRAP_STOP		WM_USER + 9
+#define SCAN_START		WM_USER + 10
+#define SCAN_STOP		WM_USER + 11
+#define SAVE			WM_USER + 12
+#define SAVE_PARAMETERS WM_USER + 13
+#define LOAD_PARAMETERS	WM_USER + 14
+#define SAVE_ZCALPARAM	WM_USER + 15
 
 // Cubixel -> ENC
-#define WM_CUBIEVENT	WM_USER + 5000
+#define RETURN	WM_USER + 240
+#define RETURN_STATUS	WM_USER + 241
+#define RETURN_VALUE	WM_USER + 242
+#define CAPTURE_COMPLETE	WM_USER + 243
+#define ERROR_EVENT	WM_USER + 244
 
 
 

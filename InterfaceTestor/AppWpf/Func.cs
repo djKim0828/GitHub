@@ -173,14 +173,14 @@ namespace AppWpf
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern IntPtr OpenFileMapping(uint dwDesiredAccess, bool bInheritHandle, string lpName);
 
-        public static bool RunCubiControl(string strArgs, IntPtr mainWndHandle, string memoryKeyName, string pixelValue)
+        public static bool RunCubiControl(string strArgs, IntPtr mainWndHandle, string memoryKeyName, ref IntPtr _processWndHandle)
         {
             try
             {
                 string path = System.AppDomain.CurrentDomain.BaseDirectory + @"CubiControl.exe";
-                _CubiWndHandle = GetWndHandle("CubiControl", path, strArgs, true);
+                _processWndHandle = GetWndHandle("CubiControl", path, strArgs, true);
 
-                string wndHandle = string.Format("{0}#{1}#{2}", mainWndHandle, memoryKeyName, pixelValue);
+                string wndHandle = string.Format("{0}#{1}", mainWndHandle, memoryKeyName);
 
                 MessageMngr.COPYDATASTRUCT cds;
 
@@ -188,7 +188,7 @@ namespace AppWpf
                 cds.dwData = IntPtr.Zero; //임의값
                 cds.cbData = Encoding.Default.GetBytes(wndHandle).Length + 1;
                 cds.lpData = wndHandle;
-                MessageMngr.SendMessage(_CubiWndHandle, MessageMngr.WM_COPYDATA, new IntPtr(MessageMngr.START), ref cds);
+                MessageMngr.SendMessage(_processWndHandle, MessageMngr.WM_COPYDATA, new IntPtr(MessageMngr.START), ref cds);
 
                 return true;
             }
