@@ -184,6 +184,9 @@ LRESULT CCubiControlDlg::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 				case GRAP_START:
 					CommandGrapStart(strData);
 					break;
+				case LASER_ON_OFF:
+					CommandLaserOnOff(strData);
+					break;
 				default:
 					CommandResult(strData);
 					break;;
@@ -252,8 +255,14 @@ void CCubiControlDlg::CommandGrapStart(CString parameter)
 
 	memset(pMemoryMap, 0, size);
 	memcpy(pMemoryMap, msh_ImgBuffer, size);
+	
+	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
 
+	Sleep(10);
+	
 	::SendMessage(mainAppHandel, RETURN, CAPTURE_COMPLETE, value);
+
+	
 
 	if (pMemoryMap)
 	{
@@ -270,7 +279,7 @@ void CCubiControlDlg::CommandConnect(CString parameter)
 {	
 	isConnect = 1;
 
-	Sleep(1000);	
+	Sleep(200);	
 	
 	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
 }
@@ -301,6 +310,15 @@ void CCubiControlDlg::CommandGrapStop(CString parameter)
 
 void CCubiControlDlg::CommandLaserOnOff(CString parameter)
 {
+	CString arStrArgs[7];
+	AfxExtractSubString(arStrArgs[0], parameter, 0, '#');
+	int OnOff = _ttoi(arStrArgs[0]);
+
+	if (OnOff == 1)
+	{
+		Sleep(1000);
+	} // else	
+
 	::SendMessage(mainAppHandel, RETURN, RETURN_VALUE, 1);
 }
 
