@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="EmWorks.View.MotionStatusComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d"
+             Tag="Visible"
+             Height="80" d:DesignWidth="500">
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+            <Grid Background="Black">
+                <Label x:Name="lblTitle" Content="Axis Name" Style="{DynamicResource lblInformationTitle}" Margin="10,0,0,0" />
+            </Grid>
+            <Grid Margin="10,0,0,0">
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Grid Width="54" Height="54">
+                        <Ellipse x:Name="stssxDeviceMotion" Style="{DynamicResource EllipseStatus}" />
+                        <Ellipse Stroke="{Binding Path=Stroke,ElementName=stssxDeviceMotion}"
+                                     Style="{DynamicResource EllipseStatus2}" />
+                        <Label Content="Ready"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                    </Grid>
+                    <Grid Width="54" Height="54">
+                        <Ellipse x:Name="stsServoOn" Style="{DynamicResource EllipseStatus}" />
+                        <Ellipse Stroke="{Binding Path=Stroke,ElementName=stsServoOn}"
+                                     Style="{DynamicResource EllipseStatus2}" />
+                        <Label Content="Servo On"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                    </Grid>
+                    <Grid Width="54" Height="54">
+                        <Ellipse x:Name="stsAlarmStatus" Style="{DynamicResource EllipseStatus}" />
+                        <Ellipse Stroke="{Binding Path=Stroke,ElementName=stsAlarmStatus}"
+                                     Style="{DynamicResource EllipseStatus2}" />
+                        <Label Content="Alarm"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                    </Grid>
+                    <Grid Width="54" Height="54">
+                        <Ellipse x:Name="stsSignalBusy" Style="{DynamicResource EllipseStatus}" />
+                        <Ellipse Stroke="{Binding Path=Stroke,ElementName=stsSignalBusy}"
+                                     Style="{DynamicResource EllipseStatus2}" />
+                        <Label Content="Busy"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                    </Grid>
+                    <Grid Width="54" Height="54">
+                        <Ellipse x:Name="stsHomingStatus" Style="{DynamicResource EllipseStatus}" />
+                        <Ellipse Stroke="{Binding Path=Stroke,ElementName=stsHomingStatus}" Style="{DynamicResource EllipseStatus2}" />
+                        <Label Content="Homing"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                    </Grid>
+                    <Grid Width="54" Height="54">
+                        <Ellipse x:Name="stsSignalInpos" Style="{DynamicResource EllipseStatus}" />
+                        <Ellipse Stroke="{Binding Path=Stroke,ElementName=stsSignalInpos}" Style="{DynamicResource EllipseStatus2}" />
+                        <Label Content="In Pos"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                    </Grid>
+                    <Grid Width="54" Height="54">
+                        <Ellipse x:Name="stsSignalNegativeLimit" Style="{DynamicResource EllipseStatus}" />
+                        <Ellipse Stroke="{Binding Path=Stroke,ElementName=stsSignalNegativeLimit}" Style="{DynamicResource EllipseStatus2}" />
+                        <Label Content="Limit(-)"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                    </Grid>
+                    <Grid Width="54" Height="54">
+                        <Ellipse x:Name="stsSignalHome"
+                                     Style="{DynamicResource EllipseStatus}" />
+                        <Ellipse Stroke="{Binding Path=Stroke,ElementName=stsSignalHome}"
+                                     Style="{DynamicResource EllipseStatus2}" />
+                        <Label Content="Home"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                    </Grid>
+                    <Grid Width="54" Height="54">
+                        <Ellipse x:Name="stsSignalPositiveLimit" Style="{DynamicResource EllipseStatus}" />
+                        <Ellipse Stroke="{Binding Path=Stroke,ElementName=stsSignalPositiveLimit}" Style="{DynamicResource EllipseStatus2}" />
+                        <Label Content="Limit(+)"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="8"
+                                   Style="{DynamicResource lblStatus}" />
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="EmWorks.View.labeledTextboxComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+             xmlns:Themes1="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+             mc:Ignorable="d"
+             Tag="1"
+             d:DesignHeight="40"
+             Width="Auto"
+             d:DesignWidth="400">
+    <Grid Background="{DynamicResource colorBgDialogContents}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"></Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="70"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Label x:Name="nameLabel" Style="{DynamicResource lblContentName}"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBox x:Name="comboBox" Style="{DynamicResource txtInputData_Gray}"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Label x:Name="defaultLabel" Style="{DynamicResource lblContentName}"/>
+</Grid>
+        </Grid>
+    </Grid>
+</UserControl>

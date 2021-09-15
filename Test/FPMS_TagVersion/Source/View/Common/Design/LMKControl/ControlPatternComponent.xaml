@@ -1,0 +1,243 @@
+﻿<UserControl x:Class="EmWorks.View.ControlPatternComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d"
+             Tag="1"
+             d:DesignHeight="473" d:DesignWidth="461">
+    <Grid x:Name="grdControlPattern">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="grdDisplay" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="grdTitleDisplay" Grid.Row="0" Background="Black">
+                <Label x:Name="lblTitleDisplay"
+                       Content="Display"
+                       Margin="5,0"
+                       Style="{DynamicResource lblInformationTitle}" />
+            </Grid>
+            <Grid x:Name="grdDisaply" Grid.Row="1" Background="{DynamicResource colorBgDialog}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1.5*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label x:Name="lblPowerOnOff"
+                           Content="Power OnOff"
+                           Margin="10,0,0,0"
+                           Style="{DynamicResource lblContentName}" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Button x:Name="btnDisplay1OnOff"
+                                Content="Display1 Power OnOff"
+                                Width="170"
+                                Height="32"
+                                Margin="5,0"
+                                Style="{DynamicResource btnNormal}" />
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Button x:Name="btnDisplay2OnOff"
+                                Content="Display2 Power OnOff"
+                                Width="170"
+                                Height="32"
+                                Margin="5,0"
+                                Style="{DynamicResource btnNormal}" />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Label x:Name="lblDisplayControl"
+                               Content="Display Control"
+                               Margin="10,0,0,0"
+                               Style="{DynamicResource lblContentName}" />
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" VerticalAlignment="Top">
+                        <ListBox Height="69"
+                                 Margin="10,3"
+                                 Style="{DynamicResource lsbNormal}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox></CheckBox>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Orientation="Vertical">
+                            <Button x:Name="btnSearchDisplay"
+                                    Content="Search Display"
+                                    Width="170"
+                                    Height="32"
+                                    Margin="5,0,5,5"
+                                    Style="{DynamicResource btnNormal}" />
+                            <Button x:Name="btnMergeDisplay"
+                                    Content="Merge Display"
+                                    Width="170"
+                                    Height="32"
+                                    Margin="5,5"
+                                    Style="{DynamicResource btnNormal}" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="grdPattern" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="grdTitlePattern" Grid.Row="0" Background="Black">
+                <Label x:Name="lblTitlePattern"
+                       Content="Pattern Control"
+                       Margin="5,0"
+                       Style="{DynamicResource lblInformationTitle}" />
+            </Grid>
+            <Grid  Grid.Row="1" Background="{DynamicResource colorBgDialog}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="0.8*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="4*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <ComboBox x:Name="cmbCameraName"
+                                      Width="100"
+                                      Margin="10,2"
+                                      Style="{DynamicResource cmbGeneral}">
+                                <ComboBoxItem Content="W" />
+                                <ComboBoxItem Content="R" />
+                                <ComboBoxItem Content="G" />
+                                <ComboBoxItem Content="B" />
+                            </ComboBox>
+                            <TextBox x:Name="txtColorLevel"
+                                     Width="100"
+                                     TextAlignment="Center"
+                                     Style="{DynamicResource txtNormal}" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1" Background="Red" Margin="5,2">
+                            <Label x:Name="lblR"
+                                   Content="R"
+                                   HorizontalAlignment="Center"
+                                   Style="{DynamicResource lblInformationTitle}" />
+                        </Grid>
+                        <Grid Grid.Column="3" Background="Green" Margin="5,2">
+                            <Label x:Name="lblG"
+                                   Content="G"
+                                   HorizontalAlignment="Center"
+                                   Style="{DynamicResource lblInformationTitle}" />
+                        </Grid>
+                        <Grid Grid.Column="5" Background="Blue" Margin="5,2">
+                            <Label x:Name="lblB"
+                                   Content="B"
+                                   HorizontalAlignment="Center"
+                                   Style="{DynamicResource lblInformationTitle}" />
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1">
+                            <TextBox x:Name="txtLevelR"
+                                     TextAlignment="Center"
+                                     Margin="5,0"
+                                     Style="{DynamicResource txtNormal}" />
+                        </Grid>
+                        <Grid Grid.Column="3">
+                            <TextBox x:Name="txtLevelG"
+                                     TextAlignment="Center"
+                                     Margin="5,0"
+                                     Style="{DynamicResource txtNormal}" />
+                        </Grid>
+                        <Grid Grid.Column="5">
+                            <TextBox x:Name="txtLevelB"
+                                     TextAlignment="Center"
+                                     Margin="5,0"
+                                     Style="{DynamicResource txtNormal}" />
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <ListBox x:Name="lsbPattern"
+                                 Margin="10,2"
+                                 Style="{DynamicResource lsbNormal}" />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="0.8*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="3*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Button x:Name="btnColorLevelDipslay"
+                                Content="Display"
+                                Width="110"
+                                Height="32"
+                                Margin="5,2"
+                                Style="{DynamicResource btnNormal}" />
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Button x:Name="btnRGBDipslay"
+                                Content="Display"
+                                Width="110"
+                                Height="32"
+                                Margin="5,2"
+                                Style="{DynamicResource btnNormal}" />
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Button x:Name="btnPatternDipslay"
+                                Content="Display"
+                                Width="110"
+                                Height="32"
+                                Margin="5,2"
+                                Style="{DynamicResource btnNormal}" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

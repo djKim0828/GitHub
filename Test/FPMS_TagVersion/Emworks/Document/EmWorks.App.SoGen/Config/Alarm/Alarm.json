@@ -1,0 +1,51 @@
+{
+  "A0001_Name":{
+  "Id":"1",
+  "Category":"A0001",
+  "Name":"Name",
+  "Value":"Door Open"},
+  "A0001_Description":{
+  "Id":"2",
+  "Category":"A0001",
+  "Name":"Description",
+  "Value":"Please Check a door."},
+  "A0001_OccurrenceTime":{
+  "Id":"3",
+  "Category":"A0001",
+  "Name":"OccurrenceTime",
+  "Value":""},
+  "A0001_Type":{
+  "Id":"4",
+  "Category":"A0001",
+  "Name":"Type",
+  "Value":"0"},
+  "A0001_ImagePath":{
+  "Id":"5",
+  "Category":"A0001",
+  "Name":"ImagePath",
+  "Value":""},
+  "A0002_Name":{
+  "Id":"6",
+  "Category":"A0002",
+  "Name":"Name",
+  "Value":"Emergency"},
+  "A0002_Description":{
+  "Id":"7",
+  "Category":"A0002",
+  "Name":"Description",
+  "Value":"Please Check All Stage."},
+  "A0002_OccurrenceTime":{
+  "Id":"8",
+  "Category":"A0002",
+  "Name":"OccurrenceTime",
+  "Value":""},
+  "A0002_ImagePath":{
+  "Id":"9",
+  "Category":"A0002",
+  "Name":"ImagePath",
+  "Value":""},
+  "A0002_Type":{
+  "Id":"10",
+  "Category":"A0002",
+  "Name":"Type",
+  "Value":"1"}}

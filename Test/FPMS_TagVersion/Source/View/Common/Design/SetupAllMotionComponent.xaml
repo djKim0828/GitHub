@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="EmWorks.View.SetupAllMotionComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Luna"
+             xmlns:Microsoft_Windows_Themes1="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d" 
+             xmlns:motionUc="EmWorks.View"
+             Tag="Visible"
+             d:DesignHeight="840" d:DesignWidth="1112">
+    <Grid Name="Root" Background="{DynamicResource colorBgDialogSection}">
+        <Grid x:Name="grdDlgMain" Grid.Row="2" Height="840">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="48" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="0.6*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="0.4*" />
+                <ColumnDefinition Width="5" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1" Grid.ColumnSpan="4" >
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,0,10,0">
+                    <Button x:Name="btnSave" Content="Save" Width="200" Height="32" Style="{DynamicResource btnNormalENC}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="{DynamicResource colorBgDialog}">
+
+                </Grid>
+                <Grid Grid.Row="1" Background="{DynamicResource colorBgDialog}" >
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                        <Grid Background="Black" >
+                            <Label Content="Command" Margin="10,0,0,0" Style="{DynamicResource lblInformationTitle}" />
+                        </Grid>
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="10,10,0,0" >
+                            <ToggleButton x:Name="btnServerOn" Grid.Row="0" Style="{DynamicResource tgbbtnNormal}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="72" Height="72" Margin="4,0">
+                                <StackPanel >
+                                    <Path Data="{DynamicResource icoShutdown}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                                    <Label Content="Server On" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                                </StackPanel>
+                            </ToggleButton>
+                            <Button x:Name="btnHomeSearch" Grid.Row="1" Style="{DynamicResource btnNormal}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="72" Height="72" Margin="4,0" >
+                                <StackPanel>
+                                    <Path Data="{DynamicResource icoLoadingSpinner}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                                    <Label Content="Home" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="btnHomeStop" Style="{DynamicResource btnNormal}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="72" Height="72" Margin="4,0" >
+                                <StackPanel>
+                                    <Path Data="{DynamicResource icoStop}" Fill="White" Stretch="Fill" Width="32" Height="32"/>
+                                    <Label Content="Stop" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="1" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*" />
+                    <RowDefinition Height="0.65*" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="grdPosition" Grid.Row="0" Margin="0,0,0,0" Background="{DynamicResource colorBgDialog}">
+                    <Button x:Name="btnCenterSave" Content="Save" Width="100" Height="48" Style="{DynamicResource btnNormal}" Margin="120,-50,0,0"></Button>
+                    <Button x:Name="btnCenterGetPos" Content="Get Position" Width="100" Height="48" Style="{DynamicResource btnNormal}" Margin="120,60,0,0" ></Button>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                        <Grid Background="Black">
+                            <Label Content="Center Position" Margin="10,0,0,0" Style="{DynamicResource lblInformationTitle}" />
+                        </Grid>
+                        <Grid Margin="10,10,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="X" Width ="80" Style="{DynamicResource lblContentName}" />
+                                <Grid Background="{DynamicResource colorBgDialogLineENC}" Width="140" HorizontalAlignment="Left" Margin="0,0,10,0" >
+                                    <TextBox x:Name="txtCenterPosX" Text="0" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Margin="10,4,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="Y" Width ="80" Style="{DynamicResource lblContentName}" />
+                                <Grid Background="{DynamicResource colorBgDialogLineENC}" Width="140" HorizontalAlignment="Left" Margin="0,0,10,0" >
+                                    <TextBox x:Name="txtCenterPosY" Text="0" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Margin="10,4,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="Z" Width ="80" Style="{DynamicResource lblContentName}" />
+                                <Grid Background="{DynamicResource colorBgDialogLineENC}" Width="140" HorizontalAlignment="Left" Margin="0,0,10,0" >
+                                    <TextBox x:Name="txtCenterPosZ" Text="0" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Margin="10,4,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="V" Width ="80" Style="{DynamicResource lblContentName}" />
+                                <Grid Background="{DynamicResource colorBgDialogLineENC}" Width="140" HorizontalAlignment="Left" Margin="0,0,10,0" >
+                                    <TextBox x:Name="txtCenterPosV" Text="0" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Margin="10,4,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="H" Width ="80" Style="{DynamicResource lblContentName}" />
+                                <Grid Background="{DynamicResource colorBgDialogLineENC}" Width="140" HorizontalAlignment="Left" Margin="0,0,10,0" >
+                                    <TextBox x:Name="txtCenterPosH" Text="0" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Margin="10,4,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="R" Width ="80" Style="{DynamicResource lblContentName}" />
+                                <Grid Background="{DynamicResource colorBgDialogLineENC}" Width="140" HorizontalAlignment="Left" Margin="0,0,10,0" >
+                                    <TextBox x:Name="txtCenterPosR" Text="0" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="grdjog" Grid.Row="1" Margin="0,0,0,0" Background="{DynamicResource colorBgDialog}">
+                    <local:JogControlComponent x:Name="ucJogComponent"></local:JogControlComponent>
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

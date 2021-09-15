@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="EmWorks.View.TextBlockComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d"
+             Tag="1"
+             d:DesignHeight="251.674" d:DesignWidth="228.452">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="45" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="Black">
+            <Label Content="Log" Margin="5,0" Style="{DynamicResource lblInformationTitle}"/>
+            <Grid>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <CheckBox x:Name="autoscroll" IsChecked="True" Margin="0,0,5,0" Content="Autoscroll" HorizontalContentAlignment="Left" Style="{DynamicResource chkNormalforBlack2}" FlowDirection="RightToLeft"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Background="{DynamicResource colorBgDialogLineENC}">
+            <Grid Margin="1" Background="Black">
+            <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Auto" VerticalContentAlignment="Bottom" HorizontalScrollBarVisibility="Hidden" Style="{DynamicResource scrViewer_lsbGeneral}">
+                <TextBlock x:Name="txbLog" Margin="5" Style="{DynamicResource txbBlack}"/>
+                </ScrollViewer>
+                <Button x:Name="btnCopy" Height="32" Width="40" Margin="20,0" Content="Copy" VerticalAlignment="Top" HorizontalAlignment="Right" Style="{DynamicResource btnNormal}"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Button x:Name="btnClear" Content="Clear" Style="{DynamicResource btnNormal}"/>
+        </Grid>
+    </Grid>
+</UserControl>

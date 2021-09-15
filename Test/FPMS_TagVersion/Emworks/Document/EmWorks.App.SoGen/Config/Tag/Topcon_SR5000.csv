@@ -1,0 +1,37 @@
+Name,Index,Offset,IoType,Unit,Item,Action,DataType,IsAorB,IsSubscription,Default,Min,Max,Timeout,AlarmCode,ExeCmd,ActuatorId,SimCmd,Options,Desc
+sxDeviceSR5000,0,0,2,Device,SR5000,,0,0,1,0,0,0,0,0,Open,0,,,SR5000 Status
+syDeviceSR5000,0,0,3,Device,SR5000,,0,0,0,0,0,0,0,1,Open,1,sxDeviceSR5000/0/0/0/100;,C:\\Program Files\\TopconTechnohouse\\SR-5000\\Calibration,Open/Close SR5000 / Input calibration file path
+xSR5000Connect,0,0,0,SR5000,,Connect,0,0,0,0,0,0,0,0,,0,,,
+ySR5000Connect,0,0,1,SR5000,,Connect,0,0,0,0,0,0,0,1,,1,xSR5000Connect/0/0/0/100;,,
+xSR5000StartMeasurement,0,0,0,SR5000,,StartMeasurement,4,0,0,0,0,0,0,0,,0,,,Measurement start status and result
+ySR5000StartMeasurement,0,0,1,SR5000,,StartMeasurement,0,0,0,0,0,0,0,0,,1,xSR5000StartMeasurement/0/0/0/100;,,Measurement start command
+xSR5000StopMeasurement,0,0,0,SR5000,,StopMeasurement,0,0,0,0,0,0,0,0,,0,,,Measurement stop status
+ySR5000StopMeasurement,0,0,1,SR5000,,StopMeasurement,0,0,0,0,0,0,0,0,,1,xSR5000StopMeasurement/0/0/0/0;,,Measurement stop command
+xSR5000GetRGBImage,0,0,0,SR5000,,GetRGBImage,0,0,0,0,0,0,0,0,,0,,,
+ySR5000GetRGBImage,0,0,1,SR5000,,GetRGBImage,4,0,0,0,0,0,0,0,,3,xSR5000GetRGBImage/3/0/0/0;,,
+xSR5000GetPseudoImage,0,0,0,SR5000,,GetPseudoImage,0,0,0,0,0,0,0,0,,0,,,
+ySR5000GetPseudoImage,0,0,1,SR5000,,GetPseudoImage,4,0,0,0,0,0,0,0,,3,xSR5000GetPseudoImage/3/0/0/0;,,
+xSR5000LoadRecipe,0,0,0,SR5000,,LoadRecipe,0,0,0,0,0,0,0,0,,0,,,
+ySR5000LoadRecipe,0,0,1,SR5000,,LoadRecipe,0,0,0,0,0,0,0,0,,1,xSR5000LoadRecipe/0/0/0/0;,D:\\00_SVN\\Platform\\EmWork.App.SoGen\\Source\\Trunk\\bin\\Debug\\Config\\SR5000\\Recipe\\Recipe.xml,
+xSR5000SaveRecipe,0,0,0,SR5000,,SaveRecipe,0,0,0,0,0,0,0,0,,0,,,
+ySR5000SaveRecipe,0,0,1,SR5000,,SaveRecipe,0,0,0,0,0,0,0,0,,1,xSR5000SaveRecipe/0/0/0/0;,D:\\00_SVN\\Platform\\EmWork.App.SoGen\\Source\\Trunk\\bin\\Debug\\Config\\SR5000\\Recipe\\Recipe.xml,
+xSR5000LoadMeasurement,0,0,0,SR5000,,LoadMeasurement,0,0,0,0,0,0,0,0,,0,,,
+ySR5000LoadMeasurement,0,0,1,SR5000,,LoadMeasurement,0,0,0,0,0,0,0,0,,1,xSR5000LoadMeasurement/0/0/0/0;,D:\\00_SVN\\Platform\\EmWork.App.SoGen\\Source\\Trunk\\bin\\Debug\\Config\\SR5000\\Measurement\\Result0.hsm,
+xSR5000SaveMeasurement,0,0,0,SR5000,,SaveMeasurement,0,0,0,0,0,0,0,0,,0,,,
+ySR5000SaveMeasurement,0,0,1,SR5000,,SaveMeasurement,0,0,0,0,0,0,0,0,,1,xSR5000SaveMeasurement/0/0/0/0;,D:\\00_SVN\\Platform\\EmWork.App.SoGen\\Source\\Trunk\\bin\\Debug\\Config\\SR5000\\Measurement\\Result1.hsm,
+xSR5000DestroyMeasurement,0,0,0,SR5000,,DestroyMeasurement,0,0,0,0,0,0,0,0,,0,,,
+ySR5000DestroyMeasurement,0,0,1,SR5000,,DestroyMeasurement,0,0,0,0,0,0,0,0,,1,xSR5000DestroyMeasurement/0/0/0/0;,,
+xSR5000GetLiveViewFocus,0,0,0,SR5000,,GetLiveViewFocus,1,0,0,0,0,0,0,0,,0,,,
+xSR5000GetLiveViewImage,0,0,0,SR5000,,GetLiveViewImage,4,0,0,0,0,0,0,0,,0,,,
+ySR5000GetLiveViewImage,0,0,1,SR5000,,GetLiveViewImage,0,0,0,0,0,0,0,0,,3,xSR5000GetLiveViewImage/3/0/0/0;,,
+xSR5000StartLiveView,0,0,0,SR5000,,StartLiveView,0,0,0,0,0,0,0,0,,0,,,
+ySR5000StartLiveView,0,0,1,SR5000,,StartLiveView,0,0,0,0,0,0,0,0,,1,xSR5000StartLiveView/0/0/0/0;,,
+xSR5000StopLiveView,0,0,0,SR5000,,StopLiveView,0,0,0,0,0,0,0,0,,0,,,
+ySR5000StopLiveView,0,0,1,SR5000,,StopLiveView,0,0,0,0,0,0,0,0,,1,xSR5000StopLiveView/0/0/0/0;,,
+xSR5000SearchROI,0,0,0,SR5000,,SearchROI,4,0,0,0,0,0,0,0,,0,,,
+ySR5000SearchROI,0,0,1,SR5000,,SearchROI,0,0,0,0,0,0,0,0,,1,xSR5000SearchROI/0/0/0/0;,,
+ySR5000AutoSpotWidth,0,0,1,SR5000,,AutoSpotWidth,0,0,0,0,0,0,0,0,,0,,,
+ySR5000AutoSpotHeight,0,0,1,SR5000,,AutoSpotHeight,0,0,0,0,0,0,0,0,,0,,,
+ySR5000AutoSpotMin,0,0,1,SR5000,,AutoSpotMin,1,0,0,0,0,0,0,0,,0,,,
+ySR5000AutoSpotMax,0,0,1,SR5000,,AutoSpotMax,1,0,0,0,0,0,0,0,,0,,,
+ySR5000AutoSpotYTh,0,0,1,SR5000,,AutoSpotYTh,1,0,0,0,0,0,0,0,,0,,,

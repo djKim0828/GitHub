@@ -1,0 +1,223 @@
+﻿<UserControl x:Class="EmWorks.View.JogControlComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d" 
+             Tag="Visible"
+             d:DesignHeight="500" d:DesignWidth="500">
+    <Grid Background="{DynamicResource colorBgDialog}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="72"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                <Grid Background="Black">
+                    <Label x:Name="lblTitle" Content="Jog" Style="{DynamicResource lblInformationTitle}" Margin="10,0,0,0" />
+                </Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <Label Content="Step" Width ="80" Margin="10,0,0,0" Style="{DynamicResource lblContentName}" />
+                    <ComboBox x:Name="cmbStep" IsEditable="True" Width="140" Style="{DynamicResource cmbWhite}" FontSize="18" ItemContainerStyle="{DynamicResource cmbWhiteItem}"/>
+                    <Label Content="mm" Width ="25" Style="{DynamicResource lblContentName}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <Label x:Name="lblCurPosX" Width="80" Margin="10,0,0,0" Content="Cur. X" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                    <Grid Background="{DynamicResource colorBgDialogSection}" Grid.Column="1" Width="140" HorizontalAlignment="Left" Margin="0,4,0,0" >
+                        <Label x:Name="lblCurPosDataX" Content="0" Height="32"  Style="{DynamicResource lblContentData}" />
+                    </Grid>
+                    <Label x:Name="lblCurPosV" Width="80" Margin="30,0,0,0" Content="Cur. V" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                    <Grid Background="{DynamicResource colorBgDialogSection}" Grid.Column="1" Width="140" HorizontalAlignment="Left" Margin="0,4,0,0" >
+                        <Label x:Name="lblCurPosDataV" Content="0" Height="32"  Style="{DynamicResource lblContentData}" />
+                    </Grid>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <Label x:Name="lblCurPosY" Width="80" Margin="10,0,0,0" Content="Cur. Y" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                    <Grid Background="{DynamicResource colorBgDialogSection}" Grid.Column="1" Width="140" HorizontalAlignment="Left" Margin="0,4,0,0" >
+                        <Label x:Name="lblCurPosDataY" Content="0" Height="32"  Style="{DynamicResource lblContentData}" />
+                    </Grid>
+                    <Label x:Name="lblCurPosH" Width="80" Margin="30,0,0,0" Content="Cur. H" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                    <Grid Background="{DynamicResource colorBgDialogSection}" Grid.Column="1" Width="140" HorizontalAlignment="Left" Margin="0,4,0,0" >
+                        <Label x:Name="lblCurPosDataH" Content="0" Height="32"  Style="{DynamicResource lblContentData}" />
+                    </Grid>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <Label x:Name="lblCurPosZ" Width="80" Margin="10,0,0,0" Content="Cur. Z" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                    <Grid Background="{DynamicResource colorBgDialogSection}" Grid.Column="1" Width="140" HorizontalAlignment="Left" Margin="0,4,0,0" >
+                        <Label x:Name="lblCurPosDataZ" Content="0" Height="32"  Style="{DynamicResource lblContentData}" />
+                    </Grid>
+                    <Label x:Name="lblCurPosR" Width="80" Margin="30,0,0,0" Content="Cur. R" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                    <Grid Background="{DynamicResource colorBgDialogSection}" Grid.Column="1" Width="140" HorizontalAlignment="Left" Margin="0,4,0,0" >
+                        <Label x:Name="lblCurPosDataR" Content="0" Height="32"  Style="{DynamicResource lblContentData}" />
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="grdXYZ" Grid.Column="0">
+                <Button x:Name="btnMinueZ" Style="{DynamicResource btnJogBlue}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="80" Margin="185,44,5,124">
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoDoubleArrow_Up}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                        <Label Content="Z(-)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnPlusZ" Style="{DynamicResource btnJogBlue}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="80" Margin="185,134,5,34">
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoDoubleArrow_Down}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                        <Label Content="Z(+)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnMinueY" Style="{DynamicResource btnJog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="80" Margin="59,8,131,160">
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoDoubleArrow_Up}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                        <Label Content="Y(-)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnPlusY" Style="{DynamicResource btnJog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="80" Margin="59,160,131,8">
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoDoubleArrow_Down}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                        <Label Content="Y(+)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnMinueX" Style="{DynamicResource btnJog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="60" Width="80" Margin="5,94,165,94">
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoDoubleArrow_Left}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                        <Label Content="X(-)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnPlusX" Style="{DynamicResource btnJog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="60" Width="80" Margin="93,94,77,94">
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoDoubleArrow_Right}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                        <Label Content="X(+)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <Grid x:Name="grdVHR" Grid.Column="1">
+                <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="60" Margin="101,22,89,166">
+                    <StackPanel Orientation="Vertical">
+                        <Path Data="{DynamicResource icoCameraSide}" Fill="White" Stretch="Fill" Width="36" Height="41.666" RenderTransformOrigin="0.5,0.5" >
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </StackPanel>
+                </Label>
+                <Button x:Name="btnMinueV" Style="{DynamicResource btnJog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="60" Margin="33,18,157,170">
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoReturn01}" Fill="White" Stretch="Fill" Width="28" Height="36" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="-1"/>
+                                    <ScaleTransform ScaleY="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <Label Content="V(-)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnPlusV" Style="{DynamicResource btnJog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="60" Margin="154,18,36,170" >
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoReturn}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                        <Label Content="V(+)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+                <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="60" Margin="95,103,95,85" >
+                    <StackPanel Orientation="Vertical">
+                        <Path Data="{DynamicResource icoCameraTop}" Fill="White" Stretch="Fill" Width="48" Height="35.292" RenderTransformOrigin="0.5,0.5" >
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </StackPanel>
+                </Label>
+                <Button x:Name="btnMinueH" Style="{DynamicResource btnJog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="60" Margin="33,94,157,94" >
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoReturn01}" Fill="White" Stretch="Fill" Width="28" Height="36" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="-1"/>
+                                    <ScaleTransform ScaleY="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <Label Content="H(-)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnPlusH" Style="{DynamicResource btnJog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="60" Margin="154,94,36,94" >
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoReturn}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                        <Label Content="H(+)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+                <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="64" Height="64" Margin="95,181,91,3">
+                    <StackPanel Orientation="Vertical">
+                        <Path Data="{DynamicResource icoCameraFront}" Fill="White" Stretch="Fill" Width="48" Height="33.333" RenderTransformOrigin="0.5,0.5" >
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </StackPanel>
+                </Label>
+                <Button x:Name="btnMinueR" Style="{DynamicResource btnJog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="60" Margin="33,171,157,17" >
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoReturn01}" Fill="White" Stretch="Fill" Width="28" Height="36" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="-1"/>
+                                    <ScaleTransform ScaleY="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <Label Content="R(-)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnPlusR" Style="{DynamicResource btnJog}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="60" Height="60" Margin="154,172,36,16" >
+                    <StackPanel>
+                        <Path Data="{DynamicResource icoReturn}" Fill="White" Stretch="Fill" Width="32" Height="32" />
+                        <Label Content="R(+)" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <Button x:Name="btnStop" Style="{DynamicResource btnNormal}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="180" Height="60" Margin="4,0" >
+                <StackPanel>
+                    <Path Data="{DynamicResource icoStop}" Fill="White" Stretch="Fill" Width="32" Height="32"/>
+                    <Label Content="Stop" HorizontalAlignment="Center" Style="{DynamicResource lblNormal}" />
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

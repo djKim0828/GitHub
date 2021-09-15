@@ -1,0 +1,73 @@
+﻿Default Language (한국어),Multilingual
+Operation (F1),오퍼레이션
+Maintenance (F2),유지보수
+Recipe (F3),흐름도
+Data (F4),데이터
+Realignment,재정렬
+Start,시작
+Stop,정지
+Pause,일시정지
+Resume,재시작
+Abort,중지
+Master,마스터
+NO,아니오
+YES,예
+Maintenance,유지보수
+OK,확인
+Initialize,초기화
+Manual,메뉴얼
+Initialization,초기화
+Shutdown,종료
+Recipe,레시피
+I/O,입출력
+Data,데이터
+Alarm,알람
+Product,제품
+Log Type,로그 형식
+Date,날짜
+Search,검색
+LogTime,로그시간
+Open Folder,폴더 열기
+IO,입출력
+Sub Title,부제목
+Run Mode,동작모드
+LogLevel,로그레벨
+Message,메세지
+UserId,사용자 ID
+ThreadId, 스레드 ID
+Code,코드
+Alarm Name,알라명
+Type,타입
+Device Name,장비명
+Unit Name,유닛명
+Recovery File Name,복구파일명
+Offset,오프셋
+Input Name,입력명
+DataType,데이터타입
+Device,장비
+Unit,유닛
+State,상태
+Value,볼륨
+Description,상세
+Output Name,출력명
+Simulation,시뮬레이션
+Search,검색
+Open Folder,폴더 열기
+Realignment,재정렬
+Data,데이터
+Alarm,알람
+Product,제품
+Recipe,레시피
+Manual,메뉴얼
+I/O,입/출력
+Initialization,초기화
+Shutdown,종료
+Date,날짜
+Message,메세지
+Description,상세
+Open Drivers,드라이버 열기
+Input Number, 번호 입력
+Exit,종료
+Command,명령
+Cycle,주기
+Enter,확인(엔터)
