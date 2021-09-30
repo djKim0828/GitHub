@@ -28,6 +28,18 @@ namespace OpenCvTest
 
         #region Methods
 
+        private void btnCut_Click(object sender, EventArgs e)
+        {
+            Mat rect_img;
+
+            // 영역 좌표
+            Rect rect = new Rect(0, 0, 100, 30);
+
+            rect_img = _srcImage.SubMat(rect);
+
+            pictureBox2.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(rect_img);
+        }
+
         private void btnImage1_Click(object sender, EventArgs e)
         {
             _srcImage = Cv2.ImRead("hex.jpg");
@@ -66,8 +78,8 @@ namespace OpenCvTest
             int uppG = Convert.ToInt16(txtUppG.Text);
             int uppB = Convert.ToInt16(txtUppB.Text);
 
-            Cv2.InRange(_srcImage, new Scalar(lowR, lowG, lowB),
-                        new Scalar(uppR, uppG, uppB), yellow);
+            Cv2.InRange(_srcImage, new Scalar(lowB, lowG, lowR),
+                        new Scalar(uppB, uppG, uppR), yellow);
 
             SearchContours0(yellow, out contours);
 
@@ -89,13 +101,15 @@ namespace OpenCvTest
             Cv2.DrawContours(dst,
                             new_contours,
                             -1,
-                            new Scalar(255, 0, 0),
-                            1,
+                            new Scalar(0, 0, 255),   // 라인색
+                            1,   // 라인 굵기
                             OpenCvSharp.LineType.AntiAlias,
                             null,
                             1);
 
             pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(dst);
+
+            InsertLabel(new_contours);
 
             //Cv2.ImShow("dst", dst);
             //Cv2.WaitKey(0);
@@ -125,7 +139,9 @@ namespace OpenCvTest
 
             Cv2.DrawContours(dst,
                             new_contours,
-                            -1, new Scalar(255, 0, 0), 2, OpenCvSharp.LineType.AntiAlias, null, 1);
+                            -1,
+                            new Scalar(255, 0, 0),
+                            2, OpenCvSharp.LineType.AntiAlias, null, 1);
 
             pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(dst);
 
@@ -144,6 +160,78 @@ namespace OpenCvTest
             LoadConfig();
 
             btnImage2_Click(null, null);
+        }
+
+        private void InsertLabel(List<OpenCvSharp.CPlusPlus.Point[]> new_contours)
+        {
+            // 각 Contours의 좌상단 Point와 우하단 Point를 찾고 라벨을 입력
+            Point[] startPoints = new Point[new_contours.Count];
+            Point[] endPoints = new Point[new_contours.Count];
+
+            int indexCnt = 0;
+            foreach (OpenCvSharp.CPlusPlus.Point[] pt in new_contours)
+            {
+                Point min = new Point();
+                Point max = new Point();
+
+                for (int i = 0; i < pt.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        min.X = pt[i].X;
+                        min.Y = pt[i].Y;
+
+                        max.X = pt[i].X;
+                        max.Y = pt[i].Y;
+
+                        continue;
+                    } //else
+
+                    if (min.X > pt[i].X)
+                    {
+                        min.X = pt[i].X;
+                    } // else
+
+                    if (min.Y > pt[i].Y)
+                    {
+                        min.Y = pt[i].Y;
+                    }
+
+                    if (max.X < pt[i].Y)
+                    {
+                        max.X = pt[i].Y;
+                    }
+
+                    if (max.Y < pt[i].Y)
+                    {
+                        max.Y = pt[i].Y;
+                    }
+                }
+
+                startPoints[indexCnt] = min;
+                endPoints[indexCnt] = max;
+
+                indexCnt++;
+            }
+
+            System.Drawing.Graphics gfx = System.Drawing.Graphics.FromImage(pictureBox1.Image);
+
+            for (int i = 0; i < new_contours.Count; i++)
+            {
+                //System.Drawing.Rectangle rectTemp = new System.Drawing.Rectangle(
+                //                   startPoints[i].X,
+                //                   startPoints[i].Y,
+                //                   10,
+                //                   10);
+
+                //System.Drawing.Color drawColor = System.Drawing.Color.FromArgb(255, 0, 0, 255);
+
+                //System.Drawing.Pen pen = new System.Drawing.Pen(drawColor, 1);
+                //gfx.DrawRectangle(pen, rectTemp);
+                gfx.DrawString(i.ToString(), label2.Font, new System.Drawing.SolidBrush(label1.ForeColor),
+                                    startPoints[i].X,
+                                   startPoints[i].Y);
+            }
         }
 
         private void LoadConfig()

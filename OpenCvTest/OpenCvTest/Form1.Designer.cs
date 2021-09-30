@@ -51,8 +51,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnCut = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -278,11 +281,32 @@
             this.label8.TabIndex = 54;
             this.label8.Text = "Upper";
             // 
+            // btnCut
+            // 
+            this.btnCut.Location = new System.Drawing.Point(986, 202);
+            this.btnCut.Name = "btnCut";
+            this.btnCut.Size = new System.Drawing.Size(103, 43);
+            this.btnCut.TabIndex = 49;
+            this.btnCut.Text = "Cut";
+            this.btnCut.UseVisualStyleBackColor = true;
+            this.btnCut.Click += new System.EventHandler(this.btnCut_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(660, 188);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(320, 180);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 50;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1156, 523);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnCut);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.rcbOutput);
@@ -299,6 +323,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -328,6 +353,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnCut;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
