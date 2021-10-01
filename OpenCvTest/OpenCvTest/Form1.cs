@@ -13,6 +13,7 @@ namespace OpenCvTest
 
         private String _path = Application.StartupPath + @"\config.json";
 
+        private List<Spot> _spotList;
         private Mat _srcImage;
 
         #endregion Fields
@@ -28,18 +29,6 @@ namespace OpenCvTest
 
         #region Methods
 
-        private void btnCut_Click(object sender, EventArgs e)
-        {
-            Mat rect_img;
-
-            // 영역 좌표
-            Rect rect = new Rect(0, 0, 100, 30);
-
-            rect_img = _srcImage.SubMat(rect);
-
-            pictureBox2.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(rect_img);
-        }
-
         private void btnImage1_Click(object sender, EventArgs e)
         {
             _srcImage = Cv2.ImRead("hex.jpg");
@@ -50,6 +39,34 @@ namespace OpenCvTest
         {
             _srcImage = Cv2.ImRead("RGB.png");
             pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_srcImage);
+        }
+
+        private void btnInspection_Click(object sender, EventArgs e)
+        {
+            //Mat image = _spotList[0].img;
+            //for (int i = 0; i < image.Rows; i++)
+            //{
+            //    for (int j = 0; j < image.Cols; j++)
+            //    {
+            //        var pt = image.At<Vec3b>(i, j);
+
+            //        pt.Item0 = (byte)(255 - pt.Item0);
+            //        pt.Item1 = (byte)(255 - pt.Item1);
+            //        pt.Item2 = (byte)(255 - pt.Item2);
+
+            //        image.Set<Vec3b>(i, j, pt);
+            //    }
+            //}
+
+            //pb0.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(image);
+
+            Inspection(_spotList[0].img, pb0);
+            Inspection(_spotList[1].img, pb1);
+            Inspection(_spotList[2].img, pb2);
+            Inspection(_spotList[3].img, pb3);
+            Inspection(_spotList[4].img, pb4);
+            Inspection(_spotList[5].img, pb5);
+            Inspection(_spotList[6].img, pb6);
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -109,7 +126,7 @@ namespace OpenCvTest
 
             pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(dst);
 
-            InsertLabel(new_contours);
+            OutputSpot(new_contours);
 
             //Cv2.ImShow("dst", dst);
             //Cv2.WaitKey(0);
@@ -150,6 +167,41 @@ namespace OpenCvTest
             Cv2.WaitKey(0);
         }
 
+        private void ChangePixel(Mat img, int rowIndex, int colIndex)
+        {
+            var pt = img.At<Vec3b>(rowIndex, colIndex);
+
+            pt.Item0 = (byte)(255 - pt.Item0);
+            pt.Item1 = (byte)(255 - pt.Item1);
+            pt.Item2 = (byte)(255 - pt.Item2);
+
+            img.Set<Vec3b>(rowIndex, colIndex, pt);
+        }
+
+        private void DisplayExtractSpotImage()
+        {
+            pb0.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_spotList[0].img);
+            pb1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_spotList[1].img);
+            pb2.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_spotList[2].img);
+            pb3.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_spotList[3].img);
+            pb4.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_spotList[4].img);
+            pb5.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_spotList[5].img);
+            pb6.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_spotList[6].img);
+        }
+
+        private void DrawResultSpots()
+        {
+            //Draw
+            System.Drawing.Graphics gfx = System.Drawing.Graphics.FromImage(pictureBox1.Image);
+
+            for (int i = 0; i < _spotList.Count; i++)
+            {
+                gfx.DrawString(i.ToString(), label2.Font, new System.Drawing.SolidBrush(System.Drawing.Color.White),
+                                _spotList[i].endPoints.X,
+                                   _spotList[i].endPoints.Y - 5);
+            }
+        }
+
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             SaveConfig();
@@ -162,76 +214,37 @@ namespace OpenCvTest
             btnImage2_Click(null, null);
         }
 
-        private void InsertLabel(List<OpenCvSharp.CPlusPlus.Point[]> new_contours)
+        private void Inspection(Mat img, PictureBox pBox)
         {
-            // 각 Contours의 좌상단 Point와 우하단 Point를 찾고 라벨을 입력
-            Point[] startPoints = new Point[new_contours.Count];
-            Point[] endPoints = new Point[new_contours.Count];
+            Mat tempImage = img;
 
-            int indexCnt = 0;
-            foreach (OpenCvSharp.CPlusPlus.Point[] pt in new_contours)
+            int rowCenter = tempImage.Rows / 2;
+            int colQurd = tempImage.Cols / 4;
+
+            for (int i = 1; i < 4; i++)
             {
-                Point min = new Point();
-                Point max = new Point();
-
-                for (int i = 0; i < pt.Length; i++)
+                if (i == 2)
                 {
-                    if (i == 0)
-                    {
-                        min.X = pt[i].X;
-                        min.Y = pt[i].Y;
+                    continue;
+                } // else
 
-                        max.X = pt[i].X;
-                        max.Y = pt[i].Y;
+                int rowIndex = rowCenter;
+                int colIndex = colQurd * i;
 
-                        continue;
-                    } //else
+                ChangePixel(tempImage, rowIndex - 1, colIndex - 1);
+                ChangePixel(tempImage, rowIndex - 1, colIndex);
+                ChangePixel(tempImage, rowIndex - 1, colIndex + 1);
 
-                    if (min.X > pt[i].X)
-                    {
-                        min.X = pt[i].X;
-                    } // else
+                ChangePixel(tempImage, rowIndex, colIndex - 1);
+                ChangePixel(tempImage, rowIndex, colIndex);
+                ChangePixel(tempImage, rowIndex, colIndex + 1);
 
-                    if (min.Y > pt[i].Y)
-                    {
-                        min.Y = pt[i].Y;
-                    }
-
-                    if (max.X < pt[i].Y)
-                    {
-                        max.X = pt[i].Y;
-                    }
-
-                    if (max.Y < pt[i].Y)
-                    {
-                        max.Y = pt[i].Y;
-                    }
-                }
-
-                startPoints[indexCnt] = min;
-                endPoints[indexCnt] = max;
-
-                indexCnt++;
+                ChangePixel(tempImage, rowIndex + 1, colIndex - 1);
+                ChangePixel(tempImage, rowIndex + 1, colIndex);
+                ChangePixel(tempImage, rowIndex + 1, colIndex + 1);
             }
 
-            System.Drawing.Graphics gfx = System.Drawing.Graphics.FromImage(pictureBox1.Image);
-
-            for (int i = 0; i < new_contours.Count; i++)
-            {
-                //System.Drawing.Rectangle rectTemp = new System.Drawing.Rectangle(
-                //                   startPoints[i].X,
-                //                   startPoints[i].Y,
-                //                   10,
-                //                   10);
-
-                //System.Drawing.Color drawColor = System.Drawing.Color.FromArgb(255, 0, 0, 255);
-
-                //System.Drawing.Pen pen = new System.Drawing.Pen(drawColor, 1);
-                //gfx.DrawRectangle(pen, rectTemp);
-                gfx.DrawString(i.ToString(), label2.Font, new System.Drawing.SolidBrush(label1.ForeColor),
-                                    startPoints[i].X,
-                                   startPoints[i].Y);
-            }
+            pBox.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(tempImage);
         }
 
         private void LoadConfig()
@@ -248,6 +261,26 @@ namespace OpenCvTest
                 txtUppG.Text = _config.UppG;
                 txtUppB.Text = _config.UppB;
             }
+        }
+
+        private void OutputSpot(List<OpenCvSharp.CPlusPlus.Point[]> new_contours)
+        {
+            // 각 Contours의 좌상단 Point와 우하단 Point를 찾고 라벨을 입력
+            _spotList = new List<Spot>();
+
+            int indexCnt = 0;
+            foreach (OpenCvSharp.CPlusPlus.Point[] pt in new_contours)
+            {
+                Spot spot = new Spot();
+                SearchMinMaxInContours(pt, ref spot);
+                SortSpotList(spot);
+
+                indexCnt++;
+            }
+
+            DrawResultSpots();
+
+            DisplayExtractSpotImage();
         }
 
         private void SaveConfig()
@@ -385,6 +418,89 @@ namespace OpenCvTest
             }
         }
 
+        private void SearchMinMaxInContours(Point[] pt, ref Spot spot)
+        {
+            try
+            {
+                spot = new Spot();
+
+                Point min = new Point();
+                Point max = new Point();
+
+                for (int i = 0; i < pt.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        min.X = pt[i].X;
+                        min.Y = pt[i].Y;
+
+                        max.X = pt[i].X;
+                        max.Y = pt[i].Y;
+
+                        continue;
+                    } //else
+
+                    if (min.X > pt[i].X)
+                    {
+                        min.X = pt[i].X;
+                    } // else
+
+                    if (min.Y > pt[i].Y)
+                    {
+                        min.Y = pt[i].Y;
+                    }
+
+                    if (max.X < pt[i].X)
+                    {
+                        max.X = pt[i].X;
+                    }
+
+                    if (max.Y < pt[i].Y)
+                    {
+                        max.Y = pt[i].Y;
+                    }
+                }
+
+                spot.startPoints = min;
+                spot.endPoints = max;
+
+                // 영역 좌표
+                Rect rect = new Rect(spot.startPoints.X,
+                                    spot.startPoints.Y,
+                                    spot.endPoints.X - spot.startPoints.X,
+                                    spot.endPoints.Y - spot.startPoints.Y);
+
+                spot.img = _srcImage.SubMat(rect);
+            }
+            catch (System.Exception ex)
+            {
+                WriteLog(ex.ToString());
+            }
+        }
+
+        private void SortSpotList(Spot spot)
+        {
+            // X(좌측) 기준으로만 정렬
+            if (_spotList.Count == 0)
+            {
+                _spotList.Add(spot);
+            }
+            else
+            {
+                for (int j = 0; j < _spotList.Count; j++)
+                {
+                    if (spot.startPoints.X < _spotList[j].startPoints.X)
+                    {
+                        _spotList.Insert(j, spot);
+                        return;
+                    } // else
+                }
+
+                // 가장 크다.
+                _spotList.Add(spot);
+            }
+        }
+
         private void WriteLog(string message)
         {
             rcbOutput.Invoke(new MethodInvoker(() =>
@@ -399,5 +515,20 @@ namespace OpenCvTest
         }
 
         #endregion Methods
+
+        #region Classes
+
+        public class Spot
+        {
+            #region Fields
+
+            public Point endPoints;
+            public Mat img;
+            public Point startPoints;
+
+            #endregion Fields
+        }
+
+        #endregion Classes
     }
 }
