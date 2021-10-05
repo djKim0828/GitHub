@@ -1,22 +1,21 @@
-﻿using System;
+﻿using OpenCvSharp.CPlusPlus;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using OpenCvSharp.CPlusPlus;
 
 namespace OpenCvTest
 {
     public partial class UcDisplayPixel : UserControl
     {
+        #region Constructors
+
         public UcDisplayPixel()
         {
             InitializeComponent();
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         public void SetAllData(Mat img)
         {
@@ -27,7 +26,7 @@ namespace OpenCvTest
 
             this.Width = width;
             this.Height = height;
-                 
+
             for (int i = 0; i < img.Rows; i++)
             {
                 for (int j = 0; j < img.Cols; j++)
@@ -48,7 +47,7 @@ namespace OpenCvTest
                     //lb.Text = pt.Item0.ToString() + " " + pt.Item1.ToString() + " " + pt.Item2.ToString();
                     lb.Text = pt.Item1.ToString();
 
-                    pnlPixel.Controls.Add(lb);                    
+                    pnlPixel.Controls.Add(lb);
                 }
             }
         }
@@ -69,7 +68,7 @@ namespace OpenCvTest
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < cols; j++)
-                {                    
+                {
                     Label lb = new Label();
                     lb.AutoSize = false;
                     lb.Width = lblWidth;
@@ -88,6 +87,7 @@ namespace OpenCvTest
                 }
             }
         }
+
+        #endregion Methods
     }
 }
-

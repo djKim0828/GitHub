@@ -7,6 +7,8 @@ namespace OpenCvTest
 {
     public partial class Form2 : Form
     {
+        #region Fields
+
         private Config _config;
 
         private String _path = Application.StartupPath + @"\config2.json";
@@ -14,9 +16,39 @@ namespace OpenCvTest
         private List<Spot> _spotList;
         private Mat _srcImage;
 
+        #endregion Fields
+
+        #region Constructors
+
         public Form2()
         {
             InitializeComponent();
+        }
+
+        #endregion Constructors
+
+        #region Methods
+
+        private void btnDivide_Click(object sender, EventArgs e)
+        {
+            RunDivide(Convert.ToInt16(cmbH.Text), Convert.ToInt16(cmbV.Text));
+        }
+
+        private void btnInspection_Click(object sender, EventArgs e)
+        {
+            if (_spotList == null)
+            {
+                WriteLog("Please, Divide Image");
+                return;
+            }
+
+            for (int i = 0; i < _spotList.Count; i++)
+            {
+                if (_spotList[i].isSearch == true)
+                {
+                    Inspection(_spotList[i]);
+                } // else
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -30,13 +62,95 @@ namespace OpenCvTest
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (_spotList == null)
+            {
+                WriteLog("Please, Divide Image");
+                return;
+            }
+
+            for (int i = 0; i < _spotList.Count; i++)
+            {
+                bool isSearch = SearchLed(_spotList[i]);
+
+                if (isSearch == true)
+                {
+                    WriteLog("******************* Successful Searched - " + i.ToString());
+                    _spotList[i].isSearch = true;
+                }
+                else
+                {
+                    WriteLog("******************* Failed to Search - " + i.ToString());
+                    _spotList[i].resultLable.BackColor = System.Drawing.Color.Red;
+                    _spotList[i].resultLable.Text = "FAILED";
+
+                    _spotList[i].isSearch = false;
+                }
+            }
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SaveConfig();
+        }
+
         private void Form2_Load(object sender, EventArgs e)
         {
             LoadConfig();
 
             _srcImage = Cv2.ImRead("RGB2.png");
             pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_srcImage);
+        }
 
+        private void GetPixelData(Spot spot, Mat img, int rowIndex, int colIndex)
+        {
+            var pt = img.At<Vec3b>(rowIndex, colIndex);
+
+            spot.ptList.Add(pt);
+
+            pt.Item0 = (byte)(255 - pt.Item0);
+            pt.Item1 = (byte)(255 - pt.Item1);
+            pt.Item2 = (byte)(255 - pt.Item2);
+
+            img.Set<Vec3b>(rowIndex, colIndex, pt);
+        }
+
+        private void Inspection(Spot spot)
+        {
+            Mat tempImage = spot.img;
+
+            int rowCenter = tempImage.Rows / 2;
+            int colQurd = tempImage.Cols / 4;
+
+            spot.ptList = new List<Vec3b>();
+
+            for (int i = 1; i < 4; i++)
+            {
+                if (i == 2)
+                {
+                    continue;
+                } // else
+
+                int rowIndex = rowCenter;
+                int colIndex = colQurd * i;
+
+                GetPixelData(spot, tempImage, rowIndex - 1, colIndex - 1);
+                GetPixelData(spot, tempImage, rowIndex - 1, colIndex);
+                GetPixelData(spot, tempImage, rowIndex - 1, colIndex + 1);
+
+                GetPixelData(spot, tempImage, rowIndex, colIndex - 1);
+                GetPixelData(spot, tempImage, rowIndex, colIndex);
+                GetPixelData(spot, tempImage, rowIndex, colIndex + 1);
+
+                GetPixelData(spot, tempImage, rowIndex + 1, colIndex - 1);
+                GetPixelData(spot, tempImage, rowIndex + 1, colIndex);
+                GetPixelData(spot, tempImage, rowIndex + 1, colIndex + 1);
+
+                spot.isInspection = true;
+            }
+
+            spot.pictureBox.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(tempImage);
         }
 
         private void LoadConfig()
@@ -55,32 +169,42 @@ namespace OpenCvTest
             }
         }
 
-        private void SaveConfig()
+        private void Pb_Click(object sender, EventArgs e)
         {
-            if (_config == null)
+            Control temp = (Control)sender;
+
+            String strIndex = temp.Name.Substring(2, temp.Name.Length - 2);
+            int index = Convert.ToInt16(strIndex);
+            if (_spotList[index].isInspection == false)
             {
-                _config = new Config();
+                return;
+            } // else
+
+            List<string[]> lst = new List<string[]>();
+            string[] s;
+
+            for (int i = 0; i < _spotList[Convert.ToInt16(index)].ptList.Count / 2; i++)
+            {
+                s = new string[3];
+                s[0] = _spotList[Convert.ToInt16(index)].ptList[i].Item0.ToString();
+                s[1] = _spotList[Convert.ToInt16(index)].ptList[i].Item1.ToString();
+                s[2] = _spotList[Convert.ToInt16(index)].ptList[i].Item2.ToString();
+
+                lst.Add(s);
             }
+            ucDisplayPixel1.SetData(lst);
 
-            _config.LowR = txtLowR.Text;
-            _config.LowG = txtLowG.Text;
-            _config.LowB = txtLowB.Text;
+            lst = new List<string[]>();
+            for (int i = _spotList[Convert.ToInt16(index)].ptList.Count / 2; i < _spotList[Convert.ToInt16(index)].ptList.Count; i++)
+            {
+                s = new string[3];
+                s[0] = _spotList[Convert.ToInt16(index)].ptList[i].Item0.ToString();
+                s[1] = _spotList[Convert.ToInt16(index)].ptList[i].Item1.ToString();
+                s[2] = _spotList[Convert.ToInt16(index)].ptList[i].Item2.ToString();
 
-            _config.UppR = txtUppR.Text;
-            _config.UppG = txtUppG.Text;
-            _config.UppB = txtUppB.Text;
-
-            JSON.Save(_path, _config);
-        }
-
-        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            SaveConfig();
-        }
-
-        private void btnDivide_Click(object sender, EventArgs e)
-        {
-            RunDivide(Convert.ToInt16(cmbH.Text), Convert.ToInt16(cmbV.Text));
+                lst.Add(s);
+            }
+            ucDisplayPixel2.SetData(lst);
         }
 
         private void RunDivide(short h, short v)
@@ -107,7 +231,6 @@ namespace OpenCvTest
                     pb.Left = pbWidth * j + (lineThickness * j);
                     pb.Top = pbHeight * i + (lineThickness * i);
                     pb.Click += Pb_Click;
-
 
                     Label lb = new Label();
                     lb.AutoSize = false;
@@ -136,8 +259,6 @@ namespace OpenCvTest
                     pb.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(sp.img);
                     pnlImages.Controls.Add(pb);
 
-                    
-
                     pnlWidth += pbWidth + lineThickness;
                     pnlHeight += pbHeight + lineThickness;
                 }
@@ -148,139 +269,24 @@ namespace OpenCvTest
 
             pnlResult.Width = pnlWidth / v;
             pnlResult.Height = pnlHeight / h;
-            
         }
 
-        private void Pb_Click(object sender, EventArgs e)
+        private void SaveConfig()
         {
-            Control temp = (Control)sender;
-
-            String strIndex = temp.Name.Substring(2, temp.Name.Length - 2);
-            int index = Convert.ToInt16(strIndex);
-            if (_spotList[index].isInspection == false)
+            if (_config == null)
             {
-                return;
-            } // else
-
-            List<string[]> lst = new List<string[]>();
-            string[] s;
-
-            for (int i=0;i< _spotList[Convert.ToInt16(index)].ptList.Count / 2;i++)
-            {
-                s = new string[3];
-                s[0] = _spotList[Convert.ToInt16(index)].ptList[i].Item0.ToString();
-                s[1] = _spotList[Convert.ToInt16(index)].ptList[i].Item1.ToString();
-                s[2] = _spotList[Convert.ToInt16(index)].ptList[i].Item2.ToString();
-
-                lst.Add(s);
-            }
-            ucDisplayPixel1.SetData(lst);
-
-            lst = new List<string[]>();
-            for (int i = _spotList[Convert.ToInt16(index)].ptList.Count / 2; i < _spotList[Convert.ToInt16(index)].ptList.Count; i++)
-            {
-                s = new string[3];
-                s[0] = _spotList[Convert.ToInt16(index)].ptList[i].Item0.ToString();
-                s[1] = _spotList[Convert.ToInt16(index)].ptList[i].Item1.ToString();
-                s[2] = _spotList[Convert.ToInt16(index)].ptList[i].Item2.ToString();
-
-                lst.Add(s);
-            }
-            ucDisplayPixel2.SetData(lst);
-
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (_spotList == null)
-            {
-                WriteLog("Please, Divide Image");
-                return;
+                _config = new Config();
             }
 
-            for (int i = 0; i < _spotList.Count; i++)
-            {
-                bool isSearch = SearchLed(_spotList[i]);  
-                
-                if (isSearch == true)
-                {
-                    WriteLog("******************* Successful Searched - " + i.ToString());
-                    _spotList[i].isSearch = true;
-                }
-                else
-                {
-                    WriteLog("******************* Failed to Search - " + i.ToString());
-                    _spotList[i].resultLable.BackColor = System.Drawing.Color.Red;
-                    _spotList[i].resultLable.Text = "FAILED";
+            _config.LowR = txtLowR.Text;
+            _config.LowG = txtLowG.Text;
+            _config.LowB = txtLowB.Text;
 
-                    _spotList[i].isSearch = false;
-                }
-                              
-            }
-        }
+            _config.UppR = txtUppR.Text;
+            _config.UppG = txtUppG.Text;
+            _config.UppB = txtUppB.Text;
 
-        private bool SearchLed(Spot spot)
-        {
-        
-            Mat yellow = new Mat();
-            Mat dst = spot.img.Clone();
-
-            OpenCvSharp.CPlusPlus.Point[][] contours;
-
-            int lowR = Convert.ToInt16(txtLowR.Text);
-            int lowG = Convert.ToInt16(txtLowG.Text);
-            int lowB = Convert.ToInt16(txtLowB.Text);
-
-            int uppR = Convert.ToInt16(txtUppR.Text);
-            int uppG = Convert.ToInt16(txtUppG.Text);
-            int uppB = Convert.ToInt16(txtUppB.Text);
-
-            Cv2.InRange(spot.img, new Scalar(lowB, lowG, lowR),
-                        new Scalar(uppB, uppG, uppR), yellow);
-
-            SearchContours(yellow, out contours);
-
-            if (contours.Length < 1)
-            {
-                return false;
-            } // else            
-
-            List<OpenCvSharp.CPlusPlus.Point[]> new_contours = new List<OpenCvSharp.CPlusPlus.Point[]>();
-            foreach (OpenCvSharp.CPlusPlus.Point[] p in contours)
-            {
-                double length = Cv2.ArcLength(p, true);
-                if (length > 100)
-                {
-                    new_contours.Add(p);
-                }
-            }
-
-            Cv2.DrawContours(dst,
-                            new_contours,
-                            -1,
-                            new Scalar(0, 0, 255),   // 라인색
-                            1,   // 라인 굵기
-                            OpenCvSharp.LineType.AntiAlias,
-                            null,
-                            1);
-
-            //string a = spot.pictureBox.Name;
-            spot.pictureBox.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(dst);
-
-            return true;
-        }
-
-        private void WriteLog(string message)
-        {
-            rcbOutput.Invoke(new MethodInvoker(() =>
-            {
-                String nowTime = "[" + System.DateTime.Now.ToString() + "] ";
-
-                rcbOutput.AppendText(nowTime + message + "\r\n");
-
-                rcbOutput.SelectionStart = rcbOutput.Text.Length;
-                rcbOutput.ScrollToCaret();
-            }));
+            JSON.Save(_path, _config);
         }
 
         private void SearchContours(Mat yellow, out OpenCvSharp.CPlusPlus.Point[][] contours)
@@ -340,73 +346,69 @@ namespace OpenCvTest
             WriteLog("Failed to Search");
         }
 
-        private void btnInspection_Click(object sender, EventArgs e)
+        private bool SearchLed(Spot spot)
         {
-            if (_spotList == null)
-            {
-                WriteLog("Please, Divide Image");
-                return;
-            }
+            Mat yellow = new Mat();
+            Mat dst = spot.img.Clone();
 
-            for (int i = 0; i < _spotList.Count; i++)
+            OpenCvSharp.CPlusPlus.Point[][] contours;
+
+            int lowR = Convert.ToInt16(txtLowR.Text);
+            int lowG = Convert.ToInt16(txtLowG.Text);
+            int lowB = Convert.ToInt16(txtLowB.Text);
+
+            int uppR = Convert.ToInt16(txtUppR.Text);
+            int uppG = Convert.ToInt16(txtUppG.Text);
+            int uppB = Convert.ToInt16(txtUppB.Text);
+
+            Cv2.InRange(spot.img, new Scalar(lowB, lowG, lowR),
+                        new Scalar(uppB, uppG, uppR), yellow);
+
+            SearchContours(yellow, out contours);
+
+            if (contours.Length < 1)
             {
-                if (_spotList[i].isSearch == true)
+                return false;
+            } // else
+
+            List<OpenCvSharp.CPlusPlus.Point[]> new_contours = new List<OpenCvSharp.CPlusPlus.Point[]>();
+            foreach (OpenCvSharp.CPlusPlus.Point[] p in contours)
+            {
+                double length = Cv2.ArcLength(p, true);
+                if (length > 100)
                 {
-                    Inspection(_spotList[i]);
-                } // else
+                    new_contours.Add(p);
+                }
             }
+
+            Cv2.DrawContours(dst,
+                            new_contours,
+                            -1,
+                            new Scalar(0, 0, 255),   // 라인색
+                            1,   // 라인 굵기
+                            OpenCvSharp.LineType.AntiAlias,
+                            null,
+                            1);
+
+            //string a = spot.pictureBox.Name;
+            spot.pictureBox.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(dst);
+
+            return true;
         }
 
-        private void Inspection(Spot spot)
+        private void WriteLog(string message)
         {
-         
-            Mat tempImage = spot.img;
-
-            int rowCenter = tempImage.Rows / 2;
-            int colQurd = tempImage.Cols / 4;
-
-            spot.ptList = new List<Vec3b>();
-
-            for (int i = 1; i < 4; i++)
+            rcbOutput.Invoke(new MethodInvoker(() =>
             {
-                if (i == 2)
-                {
-                    continue;
-                } // else
+                String nowTime = "[" + System.DateTime.Now.ToString() + "] ";
 
-                int rowIndex = rowCenter;
-                int colIndex = colQurd * i;
-                
-                GetPixelData(spot, tempImage, rowIndex - 1, colIndex - 1);
-                GetPixelData(spot, tempImage, rowIndex - 1, colIndex);
-                GetPixelData(spot, tempImage, rowIndex - 1, colIndex + 1);
+                rcbOutput.AppendText(nowTime + message + "\r\n");
 
-                GetPixelData(spot, tempImage, rowIndex, colIndex - 1);
-                GetPixelData(spot, tempImage, rowIndex, colIndex);
-                GetPixelData(spot, tempImage, rowIndex, colIndex + 1);
-
-                GetPixelData(spot, tempImage, rowIndex + 1, colIndex - 1);
-                GetPixelData(spot, tempImage, rowIndex + 1, colIndex);
-                GetPixelData(spot, tempImage, rowIndex + 1, colIndex + 1);
-
-                spot.isInspection = true;
-            }
-
-            spot.pictureBox.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(tempImage);
+                rcbOutput.SelectionStart = rcbOutput.Text.Length;
+                rcbOutput.ScrollToCaret();
+            }));
         }
 
-
-        private void GetPixelData(Spot spot, Mat img, int rowIndex, int colIndex)
-        {
-            var pt = img.At<Vec3b>(rowIndex, colIndex);
-
-            spot.ptList.Add(pt);
-
-            pt.Item0 = (byte)(255 - pt.Item0);
-            pt.Item1 = (byte)(255 - pt.Item1);
-            pt.Item2 = (byte)(255 - pt.Item2);
-
-            img.Set<Vec3b>(rowIndex, colIndex, pt);
-        }
+        #endregion Methods
     }
 }
