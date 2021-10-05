@@ -408,12 +408,12 @@ namespace OpenCvTest
 
                 if (contours.Length > 1)
                 {
-                    WriteLog("searching success : " + i.ToString());
+                    WriteLog("Successfully searched. : " + i.ToString());
                     break;
                 }
                 else
                 {
-                    WriteLog("Can not searching : " + i.ToString());
+                    WriteLog("Failed to search. : " + i.ToString());
                 }
             }
         }
@@ -514,21 +514,6 @@ namespace OpenCvTest
             }));
         }
 
-        #endregion Methods
-
-        #region Classes
-
-        public class Spot
-        {
-            #region Fields
-
-            public Point endPoints;
-            public Mat img;
-            public Point startPoints;
-
-            #endregion Fields
-        }
-
-        #endregion Classes
+        #endregion Methods        
     }
 }
