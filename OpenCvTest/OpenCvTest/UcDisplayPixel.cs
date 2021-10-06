@@ -52,22 +52,21 @@ namespace OpenCvTest
             }
         }
 
-        public void SetData(List<string[]> data)
+        public void SetData(string[] data)
         {
+            int rowCnt = 3;
+            int colCnt = 3;
             int lblWidth = 90;
             int lblHeight = 20;
 
             pnlPixel.Controls.Clear();
+            
+            this.Width = lblWidth * colCnt;
+            this.Height = lblHeight * rowCnt;
 
-            int rows = data.Count;
-            int cols = data[0].Length;
-
-            this.Width = cols * lblWidth;
-            this.Height = rows * lblHeight;
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
+            for (int i = 0; i < rowCnt; i++)
+            {                
+                for (int j = 0; j < colCnt; j++)
                 {
                     Label lb = new Label();
                     lb.AutoSize = false;
@@ -75,14 +74,18 @@ namespace OpenCvTest
                     lb.Height = lblHeight;
                     lb.Left = lb.Width * j;
                     lb.Top = lb.Height * i;
-                    lb.Name = "lbl" + i.ToString() + j.ToString();
+                    lb.Name = "lbl" + i.ToString();
                     lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                     lb.BackColor = System.Drawing.Color.White;
                     lb.BorderStyle = BorderStyle.FixedSingle;
                     lb.Font = new System.Drawing.Font("Arial", 10);
-                    //lb.Text = pt.Item0.ToString() + " " + pt.Item1.ToString() + " " + pt.Item2.ToString();
-                    lb.Text = data[i].GetValue(j).ToString();
 
+                    string content = string.Empty;
+                    content = data[i * rowCnt] + " " 
+                            + data[i * rowCnt + 1] + " " 
+                            + data[i * rowCnt + 2];
+
+                    lb.Text = content.Trim();
                     pnlPixel.Controls.Add(lb);
                 }
             }

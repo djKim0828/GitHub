@@ -179,32 +179,26 @@ namespace OpenCvTest
             {
                 return;
             } // else
+            
+            int dataHalfCnt = _spotList[Convert.ToInt16(index)].ptList.Count / 2;
+            string[] s = new string[dataHalfCnt * 3];           
 
-            List<string[]> lst = new List<string[]>();
-            string[] s;
-
-            for (int i = 0; i < _spotList[Convert.ToInt16(index)].ptList.Count / 2; i++)
+            for (int i = 0; i < dataHalfCnt; i++)
             {
-                s = new string[3];
-                s[0] = _spotList[Convert.ToInt16(index)].ptList[i].Item0.ToString();
-                s[1] = _spotList[Convert.ToInt16(index)].ptList[i].Item1.ToString();
-                s[2] = _spotList[Convert.ToInt16(index)].ptList[i].Item2.ToString();
-
-                lst.Add(s);
+                s[i * 3] = _spotList[Convert.ToInt16(index)].ptList[i].Item0.ToString();
+                s[i * 3 + 1] = _spotList[Convert.ToInt16(index)].ptList[i].Item1.ToString();
+                s[i * 3 + 2] = _spotList[Convert.ToInt16(index)].ptList[i].Item2.ToString();
             }
-            ucDisplayPixel1.SetData(lst);
+            ucDisplayPixel1.SetData(s);
 
-            lst = new List<string[]>();
-            for (int i = _spotList[Convert.ToInt16(index)].ptList.Count / 2; i < _spotList[Convert.ToInt16(index)].ptList.Count; i++)
+            s = new string[dataHalfCnt * 3];
+            for (int i = 0; i < dataHalfCnt; i++)
             {
-                s = new string[3];
-                s[0] = _spotList[Convert.ToInt16(index)].ptList[i].Item0.ToString();
-                s[1] = _spotList[Convert.ToInt16(index)].ptList[i].Item1.ToString();
-                s[2] = _spotList[Convert.ToInt16(index)].ptList[i].Item2.ToString();
-
-                lst.Add(s);
+                s[i * 3] = _spotList[Convert.ToInt16(index)].ptList[dataHalfCnt + i].Item0.ToString();
+                s[i * 3 + 1] = _spotList[Convert.ToInt16(index)].ptList[dataHalfCnt + i].Item1.ToString();
+                s[i * 3 + 2] = _spotList[Convert.ToInt16(index)].ptList[dataHalfCnt + i].Item2.ToString();
             }
-            ucDisplayPixel2.SetData(lst);
+            ucDisplayPixel2.SetData(s);
         }
 
         private void RunDivide(short h, short v)
