@@ -181,24 +181,26 @@ namespace OpenCvTest
             } // else
             
             int dataHalfCnt = _spotList[Convert.ToInt16(index)].ptList.Count / 2;
-            string[] s = new string[dataHalfCnt * 3];           
+            string[] data1 = new string[dataHalfCnt * 3];           
 
             for (int i = 0; i < dataHalfCnt; i++)
             {
-                s[i * 3] = _spotList[Convert.ToInt16(index)].ptList[i].Item0.ToString();
-                s[i * 3 + 1] = _spotList[Convert.ToInt16(index)].ptList[i].Item1.ToString();
-                s[i * 3 + 2] = _spotList[Convert.ToInt16(index)].ptList[i].Item2.ToString();
+                data1[i * 3] = _spotList[Convert.ToInt16(index)].ptList[i].Item0.ToString();
+                data1[i * 3 + 1] = _spotList[Convert.ToInt16(index)].ptList[i].Item1.ToString();
+                data1[i * 3 + 2] = _spotList[Convert.ToInt16(index)].ptList[i].Item2.ToString();
             }
-            ucDisplayPixel1.SetData(s);
-
-            s = new string[dataHalfCnt * 3];
+            
+            string[] data2 = new string[dataHalfCnt * 3];
             for (int i = 0; i < dataHalfCnt; i++)
             {
-                s[i * 3] = _spotList[Convert.ToInt16(index)].ptList[dataHalfCnt + i].Item0.ToString();
-                s[i * 3 + 1] = _spotList[Convert.ToInt16(index)].ptList[dataHalfCnt + i].Item1.ToString();
-                s[i * 3 + 2] = _spotList[Convert.ToInt16(index)].ptList[dataHalfCnt + i].Item2.ToString();
+                data2[i * 3] = _spotList[Convert.ToInt16(index)].ptList[dataHalfCnt + i].Item0.ToString();
+                data2[i * 3 + 1] = _spotList[Convert.ToInt16(index)].ptList[dataHalfCnt + i].Item1.ToString();
+                data2[i * 3 + 2] = _spotList[Convert.ToInt16(index)].ptList[dataHalfCnt + i].Item2.ToString();
             }
-            ucDisplayPixel2.SetData(s);
+
+            frmDetail f = new frmDetail("Spot Detail Data - Index : " + strIndex, data1, data2);
+            f.Show();
+            
         }
 
         private void RunDivide(short h, short v)

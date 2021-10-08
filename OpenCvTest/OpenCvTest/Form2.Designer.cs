@@ -56,8 +56,6 @@
             this.rcbOutput = new System.Windows.Forms.RichTextBox();
             this.pnlResult = new System.Windows.Forms.Panel();
             this.btnInspection = new System.Windows.Forms.Button();
-            this.ucDisplayPixel1 = new OpenCvTest.UcDisplayPixel();
-            this.ucDisplayPixel2 = new OpenCvTest.UcDisplayPixel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -101,7 +99,7 @@
             this.groupBox1.Controls.Add(this.txtLowR);
             this.groupBox1.Controls.Add(this.txtLowG);
             this.groupBox1.Controls.Add(this.txtLowB);
-            this.groupBox1.Location = new System.Drawing.Point(885, 12);
+            this.groupBox1.Location = new System.Drawing.Point(472, -4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(232, 192);
             this.groupBox1.TabIndex = 49;
@@ -287,9 +285,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(338, 193);
+            this.btnSearch.Location = new System.Drawing.Point(121, 193);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(103, 99);
+            this.btnSearch.Size = new System.Drawing.Size(103, 43);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -297,9 +295,9 @@
             // 
             // btndivide
             // 
-            this.btndivide.Location = new System.Drawing.Point(338, 160);
+            this.btndivide.Location = new System.Drawing.Point(12, 193);
             this.btndivide.Name = "btndivide";
-            this.btndivide.Size = new System.Drawing.Size(103, 27);
+            this.btndivide.Size = new System.Drawing.Size(103, 43);
             this.btndivide.TabIndex = 50;
             this.btndivide.Text = "Divide";
             this.btndivide.UseVisualStyleBackColor = true;
@@ -309,7 +307,7 @@
             // 
             this.pnlImages.BackColor = System.Drawing.Color.Transparent;
             this.pnlImages.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlImages.Location = new System.Drawing.Point(12, 193);
+            this.pnlImages.Location = new System.Drawing.Point(13, 242);
             this.pnlImages.Name = "pnlImages";
             this.pnlImages.Size = new System.Drawing.Size(320, 180);
             this.pnlImages.TabIndex = 51;
@@ -317,9 +315,9 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 684);
+            this.splitter1.Location = new System.Drawing.Point(0, 431);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1129, 3);
+            this.splitter1.Size = new System.Drawing.Size(721, 3);
             this.splitter1.TabIndex = 57;
             this.splitter1.TabStop = false;
             // 
@@ -328,10 +326,10 @@
             this.rcbOutput.BackColor = System.Drawing.Color.Black;
             this.rcbOutput.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.rcbOutput.ForeColor = System.Drawing.SystemColors.Window;
-            this.rcbOutput.Location = new System.Drawing.Point(0, 687);
+            this.rcbOutput.Location = new System.Drawing.Point(0, 434);
             this.rcbOutput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rcbOutput.Name = "rcbOutput";
-            this.rcbOutput.Size = new System.Drawing.Size(1129, 146);
+            this.rcbOutput.Size = new System.Drawing.Size(721, 146);
             this.rcbOutput.TabIndex = 56;
             this.rcbOutput.Text = "";
             // 
@@ -339,42 +337,26 @@
             // 
             this.pnlResult.BackColor = System.Drawing.Color.Transparent;
             this.pnlResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlResult.Location = new System.Drawing.Point(12, 379);
+            this.pnlResult.Location = new System.Drawing.Point(343, 242);
             this.pnlResult.Name = "pnlResult";
             this.pnlResult.Size = new System.Drawing.Size(320, 180);
             this.pnlResult.TabIndex = 52;
             // 
             // btnInspection
             // 
-            this.btnInspection.Location = new System.Drawing.Point(338, 379);
+            this.btnInspection.Location = new System.Drawing.Point(230, 193);
             this.btnInspection.Name = "btnInspection";
-            this.btnInspection.Size = new System.Drawing.Size(103, 75);
+            this.btnInspection.Size = new System.Drawing.Size(103, 43);
             this.btnInspection.TabIndex = 58;
             this.btnInspection.Text = "Inspection";
             this.btnInspection.UseVisualStyleBackColor = true;
             this.btnInspection.Click += new System.EventHandler(this.btnInspection_Click);
             // 
-            // ucDisplayPixel1
-            // 
-            this.ucDisplayPixel1.Location = new System.Drawing.Point(462, 250);
-            this.ucDisplayPixel1.Name = "ucDisplayPixel1";
-            this.ucDisplayPixel1.Size = new System.Drawing.Size(300, 300);
-            this.ucDisplayPixel1.TabIndex = 59;
-            // 
-            // ucDisplayPixel2
-            // 
-            this.ucDisplayPixel2.Location = new System.Drawing.Point(776, 250);
-            this.ucDisplayPixel2.Name = "ucDisplayPixel2";
-            this.ucDisplayPixel2.Size = new System.Drawing.Size(300, 300);
-            this.ucDisplayPixel2.TabIndex = 60;
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1129, 833);
-            this.Controls.Add(this.ucDisplayPixel2);
-            this.Controls.Add(this.ucDisplayPixel1);
+            this.ClientSize = new System.Drawing.Size(721, 580);
             this.Controls.Add(this.btnInspection);
             this.Controls.Add(this.pnlResult);
             this.Controls.Add(this.splitter1);
@@ -427,7 +409,5 @@
         private System.Windows.Forms.Panel pnlResult;
         private System.Windows.Forms.Button btnInspection;
         private System.Windows.Forms.Label label10;
-        private UcDisplayPixel ucDisplayPixel1;
-        private UcDisplayPixel ucDisplayPixel2;
     }
 }
