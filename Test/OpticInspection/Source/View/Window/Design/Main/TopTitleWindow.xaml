@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="EmWorks.View.TopTitleWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d"
+             d:DesignHeight="90" d:DesignWidth="1280">
+
+    <Grid x:Name="grdRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2"></RowDefinition>
+            <!--Edge bule line-->
+            <RowDefinition Height="38" ></RowDefinition>
+            <!--top view 01area-->
+            <RowDefinition Height="50"></RowDefinition>
+            <!--top view 02 area-->
+        </Grid.RowDefinitions>
+        <GridSplitter x:Name="gdsEdgeBlueLine"  Grid.Row="0" Grid.RowSpan="3" Style ="{DynamicResource gstEnc}" />
+        <Grid x:Name="grdTopView01" Grid.Row="1"  Background ="{DynamicResource colorGrdBgDark}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <!--reserved-->
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="128"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+            </Grid>
+            <Grid Grid.Column="1"></Grid>
+            <Grid Grid.Column="2"></Grid>
+            <!--reserved-->
+            <Grid Grid.Column="3"></Grid>
+            <Grid Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="38"></ColumnDefinition>
+                        <ColumnDefinition Width="38"></ColumnDefinition>
+                        <ColumnDefinition Width="38"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnMinimise" Grid.Column="0" Style="{DynamicResource btnMinimize}" />
+                    <Button x:Name="btnMax" Grid.Column="1" Style="{DynamicResource btnMax}" />
+                    <Button x:Name="btnDlgClose" Grid.Column="2" Style="{DynamicResource btnClose}" />
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid x:Name="grdTopStatusTower" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2" />
+                            <RowDefinition Height="8" />
+                            <RowDefinition Height="2" />
+                            <RowDefinition Height="8" />
+                            <RowDefinition Height="2" />
+                            <RowDefinition Height="8" />
+                            <RowDefinition Height="2" />
+                            <RowDefinition Height="48" />
+                        </Grid.RowDefinitions>
+                        <GridSplitter x:Name="grdStatusRed" Grid.Row="1" Style ="{DynamicResource gstRed}" Width="2" Height="10" />
+                        <GridSplitter x:Name="grdStatusGreen" Grid.Row="3" Style ="{DynamicResource gstGreen}" Width="2" Height="10" />
+                        <GridSplitter x:Name="grdStatusBlue" Grid.Row="5" Style ="{DynamicResource gstBlue}" Width="2" Height="10" />
+                        <Grid Background="{DynamicResource colorGrdBgMain}" Grid.Row="7" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="grdTopView02" Grid.Row="2" Background="{DynamicResource colorGrdBgMain}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <!--reserved-->
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="128"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Label x:Name="lblMainTitle" Content="Project Name" Grid.Column="0" Style="{DynamicResource lblDialogTitle}" HorizontalAlignment="Left" FontSize="16" Margin="13,16,0,1" />
+            </Grid>
+            <Grid Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="imgAccunt" Source="/EmWorks.App.OpticInspection;component/Resources/Images/Common/Icon/loginSymbol.png" Height="24" Width="24" Margin="30,19,0,4" Cursor="Hand" />
+                    <Label x:Name="lblAccount" Content="Master" Style="{DynamicResource lblDialogTitle}" FontSize="12" Margin="5,20,0,0" />
+                    <Label x:Name="lblSlash" Content="/" Style="{DynamicResource lblDialogTitle}" FontSize="12" Margin="0,20,0,0" />
+                    <Label x:Name="lblDate" Content="yyyy-mm-dd hh:mm:ss" Style="{DynamicResource lblDialogTitle}" FontSize="12" Margin="0,20,0,0" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2"></Grid>
+            <!--reserved-->
+            <Grid Grid.Column="3">
+                <Button x:Name="btnLocale" Content="[ KOR ]" Style="{DynamicResource btnNormalBlack}" HorizontalAlignment="Right" Margin="0,20,0,0"  FontSize="12" />
+            </Grid>
+            <Grid Grid.Column="4">
+                <Label x:Name="lblWatch" Content="" Style="{DynamicResource lblNormal}" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="12" />
+            </Grid>
+        </Grid>
+        <Image x:Name="imgCustomerLogo" Margin="19,17,0,45" Source="/EmWorks.App.OpticInspection;component/Resources/Images/Common/Logo/CustomerLogo.png" Height="26" Width="214" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.RowSpan="2" />
+        <ToggleButton x:Name="btnAlarm" Grid.Row="2" Style="{DynamicResource tgbAlarm}" Width="36" Height="36" Margin="0,5,52,9" HorizontalAlignment="Right">
+            <ToggleButton.Background>
+                <ImageBrush ImageSource="/EmWorks.App.OpticInspection;component/Resources/Images/Common/Icon/AlarmGray.png" Stretch="Uniform" TileMode="None" />
+            </ToggleButton.Background>
+        </ToggleButton>
+    </Grid>
+</UserControl>

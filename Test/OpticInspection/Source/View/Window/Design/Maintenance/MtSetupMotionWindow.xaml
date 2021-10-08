@@ -1,0 +1,461 @@
+﻿<UserControl x:Class="EmWorks.View.MtSetupMotionWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d" 
+             xmlns:motionUc="EmWorks.View"
+             d:DesignHeight="880" d:DesignWidth="740">
+    <Grid Name="Root">
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>-->
+        <!--<Rectangle Grid.Row="0" Style="{DynamicResource recBgDailogMain}" Margin="8,8,10,8"/>-->
+        <Grid x:Name="grdDlgMain" Grid.Row="2" Height="850">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="5" />
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="grdLeft" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="192"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid x:Name="grdInformation" Background="{DynamicResource colorBgDialog}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="32"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="grdTitleInformation" Grid.Row="0" Background="Black">
+                        <Label x:Name="lblTitle" Content="Information" Style="{DynamicResource lblInformationTitle}" />
+                    </Grid>
+                    <Label x:Name="lblContentName" Content="Name" Grid.Row="1" Margin="10,0,0,0" Style="{DynamicResource lblContentName}" />
+                    <Label x:Name="lblMotionName" Content="InShuttle" Grid.Row="2" Margin="20,0,0,0" Style="{DynamicResource lblContentData}" />
+                    <Label x:Name="lblContentAxisNo" Content="Axis Number" Grid.Row="3" Margin="10,0,0,0" Style="{DynamicResource lblContentName}" />
+                    <Label x:Name="lblAxixNoNo" Content="0" Grid.Row="4" Margin="20,0,0,0" Style="{DynamicResource lblContentData}" />
+                </Grid>
+                <Grid x:Name="grdPosition" Grid.Row="1" Margin="0,5,0,0" Background="{DynamicResource colorBgDialog}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.7*"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="grdTitlePosition" Grid.Row="0" Background="Black">
+                        <Label x:Name="lblPosition" Content="Position" Style="{DynamicResource lblInformationTitle}" />
+                    </Grid>
+                    <DataGrid Grid.Row="1" x:Name="lstPosition"
+                            HeadersVisibility="Column"
+                            Style ="{DynamicResource dtgNormal}"
+                            ColumnHeaderStyle="{DynamicResource dtgNormal_ColumnHeader}"
+                            CellStyle="{DynamicResource dtgNormal_CellStyle}"
+                            CanUserSortColumns="False"
+                            AutoGenerateColumns="False"
+                            HorizontalScrollBarVisibility="Hidden"
+                            Margin ="3,10,5,10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Path=Name}" />
+                            <DataGridTextColumn Header="Type" Width="60" Binding="{Binding Path=MoveType}" />
+                            <DataGridTextColumn Header="Position" Width="80" Binding="{Binding Path=Position}" />
+                            <DataGridTextColumn Header="Speed" Width="80" Binding="{Binding Path=Speed}" />
+                            <DataGridTextColumn Header="Accel" Width="80" Binding="{Binding Path=Accel}" />
+                            <DataGridTextColumn Header="Decel" Width="80" Binding="{Binding Path=Decel}" />
+                            <!--<DataGridTextColumn Width="100" />-->
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel x:Name="pnlMain" Grid.Row="2" Orientation="Vertical" Margin="0,4,0,0">
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="▶" Margin="10,0,0,0" Grid.Column="0" Style="{DynamicResource lblContentName}" />
+                            <Label x:Name="lblData" Content="Move Information" Grid.Column="1" Style="{DynamicResource lblContentName}" />
+                        </Grid>
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblCurrentPositionLabel" Grid.Column="0" Margin="30,0,0,0" Content="Current Pos." Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <Grid Background="{DynamicResource colorBgDialogLineENC}" Grid.Column="1" Margin="0,0,10,0" >
+                                <Label x:Name="lblCurrentPositionData" Content="0" Height="32" Style="{DynamicResource lblContentData}" />
+                            </Grid>
+                        </Grid>
+                        <Grid Margin="10,10,10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.5*" />
+                                <RowDefinition Height="0.5*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblJogSlowVelocity" Grid.Row="0" Grid.Column="0" Content="Slow Velocity" Style="{DynamicResource lblContentName}" HorizontalAlignment="Center" />
+                            <Label x:Name="lblJogFastVelocity" Grid.Row="0" Grid.Column="1" Content="Fast Velocity" Style="{DynamicResource lblContentName}" HorizontalAlignment="Center" />
+                            <Label x:Name="lblJogAcc" Grid.Row="0" Grid.Column="2" Content="Accel"  Style="{DynamicResource lblContentName}" HorizontalAlignment="Center" />
+                            <Label x:Name="lblJogDec" Grid.Row="0" Grid.Column="3" Content="Decel" Style="{DynamicResource lblContentName}" HorizontalAlignment="Center" />
+                            <TextBox x:Name="txtJogSlowVel" Text="0" Grid.Row="1" Grid.Column="0" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" />
+                            <TextBox x:Name="txtJogFastVel" Text="0" Grid.Row="1" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" />
+                            <TextBox x:Name="txtJogAcc" Text="0" Grid.Row="1" Grid.Column="2" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" />
+                            <TextBox x:Name="txtJogDec" Text="0" Grid.Row="1" Grid.Column="3" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" />
+                        </Grid>
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <RadioButton x:Name="rdbFast" Content="Fast" Grid.Column="0" Style="{DynamicResource rdbNormalforBlack}" HorizontalAlignment="Center" Margin="80,0,0,0" />
+                            <RadioButton x:Name="rdbSlow" Content="Slow" Grid.Column="1" Style="{DynamicResource rdbNormalforBlack}" HorizontalAlignment="Center" Margin="0,0,80,0" />
+                        </Grid>
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="▶" Margin="10,0,0,0" Grid.Column="0" Style="{DynamicResource lblContentName}" />
+                            <Label x:Name="lblRelativeMove" Content="Relative Move" Grid.Column="1" Style="{DynamicResource lblContentName}" />
+                        </Grid>
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblRelativeDistance" Grid.Column="0" Margin="30,0,0,0" Content="Distance" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtRelativeDistance" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0" />
+                        </Grid>
+                        <Grid Margin="0,10,0,0">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                <Button x:Name="btnRelativeMinus" Content="Move(-)" Width="72" Height="32" Margin="4,0" Style="{DynamicResource btnNormal}" />
+                                <Button x:Name="btnRelativePlus" Content="Move(+)" Width="72" Height="32" Margin="4,0" Style="{DynamicResource btnNormal}" />
+                                <Button x:Name="btnRelativeAdd" Content="Add" Width="72" Height="32" Margin="4,0" Style="{DynamicResource btnNormal}" />
+                                <Button x:Name="btnRelativeUpdate" Content="Update" Width="72" Height="32" Margin="4,0" Style="{DynamicResource btnNormal}" />
+                            </StackPanel>
+                        </Grid>
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="▶" Margin="10,0,0,0" Grid.Column="0" Style="{DynamicResource lblContentName}" />
+                            <Label x:Name="lblJog" Content="Jog" Grid.Column="1" Style="{DynamicResource lblContentName}" />
+                        </Grid>
+                        <Grid Margin="0,10,0,0">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                <Button x:Name="btnJogMinus" Content="Move(-)" Width="72" Height="32" Margin="4,0" Style="{DynamicResource btnNormal}" />
+                                <Button x:Name="btnJogPlus" Content="Move(+)" Width="72" Height="32" Margin="4,0" Style="{DynamicResource btnNormal}" />
+                                <Button x:Name="btnJogAdd" Content="Add" Width="72" Height="32" Margin="4,0" Style="{DynamicResource btnNormal}" />
+                                <Button x:Name="btnJogUpdate" Content="Update" Width="72" Height="32" Margin="4,0" Style="{DynamicResource btnNormal}" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid x:Name="grdRight" Grid.Column="3" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="192" />
+                    <RowDefinition Height="180" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="grdStatus" Grid.Row="0" Background="{DynamicResource colorBgDialog}" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="160"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="grdTitleStatus" Grid.Row="0" Background="Black" Grid.ColumnSpan="3" >
+                        <Label x:Name="lblStatus" Content="Status" Grid.Row="0" Margin="10,0,0,0" Style="{DynamicResource lblInformationTitle}" />
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="elsStatusReady" Fill="Maroon" Margin="5,5,5,5" />
+                            <Label Grid.Column="1" HorizontalAlignment="Left" x:Name="lblStatusReady" Content="Ready" Background="Green" Style="{DynamicResource lblStatus}" />
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="elsStatusServo" Fill="Maroon" Margin="5,5,5,5" />
+                            <Label x:Name="lblStatusServo" Grid.Column="1" HorizontalAlignment="Left" Content="Servo On" Background="Green" Style="{DynamicResource lblStatus}" />
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="elsStatusAlarm" Fill="Maroon" Margin="5,5,5,5" />
+                            <Label x:Name="lblStatusAlarm" 
+                                   Grid.Column="1" 
+                                   HorizontalAlignment="Left" 
+                                   Content="Alarm" 
+                                   Background="Green"
+                                   Style="{DynamicResource lblStatus}" />
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="elsStatusBusy" Fill="Maroon" Margin="5,5,5,5" />
+                            <Label x:Name="lblStatusBusy" 
+                                   Grid.Column="1" 
+                                   HorizontalAlignment="Left" 
+                                   Content="Busy" 
+                                   Background="Green"
+                                   Style="{DynamicResource lblStatus}" />
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="elsStatusInPos" Fill="Maroon" Margin="5,5,5,5" />
+                            <Label x:Name="lblStatusInPos" 
+                                   Grid.Column="1" 
+                                   HorizontalAlignment="Left" 
+                                   Content="In Position" 
+                                   Background="Green"
+                                   Style="{DynamicResource lblStatus}" />
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="32" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="elsStatusMinus" Fill="Maroon" Margin="5,5,5,5" />
+                            <Label Grid.Column="1" 
+                                   HorizontalAlignment="Left" 
+                                   x:Name="lblStatusMinus" 
+                                   Content="Limit(-)"
+                                   Background="Green"
+                                   Style="{DynamicResource lblStatus}" />
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="elsStatusHoming" Fill="Maroon" Margin="5,5,5,5" />
+                            <Label x:Name="lblStatusHoming"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   Content="Homing"
+                                   Background="Green"
+                                   Style="{DynamicResource lblStatus}" />
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="elsStatusHome" Fill="Maroon" Margin="5,5,5,5" />
+                            <Label x:Name="lblStatusHome" 
+                                   Grid.Column="1" 
+                                   HorizontalAlignment="Left" 
+                                   Content="Home" 
+                                   Background="Green"
+                                   Style="{DynamicResource lblStatus}" />
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Ellipse x:Name="elsStatusPlus" Fill="Maroon" Margin="5,5,5,5" />
+                            <Label x:Name="lblStatusPlus" 
+                                   Grid.Column="1" 
+                                   HorizontalAlignment="Left" 
+                                   Content="Limit(+)" 
+                                   Background="Green"
+                                   Style="{DynamicResource lblStatus}" />
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid x:Name="grdCommand" Grid.Row="1" Background="{DynamicResource colorBgDialog}" Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="grdTitleCommnad" Grid.Row="0" Background="Black" Grid.ColumnSpan="3" >
+                        <Label x:Name="lblCommand" Content="Command" Grid.Row="0" Margin="10,0,0,0" Style="{DynamicResource lblInformationTitle}" />
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.3*" />
+                            <RowDefinition Height="0.3*" />
+                            <RowDefinition Height="0.3*" />
+                        </Grid.RowDefinitions>
+                        <ToggleButton x:Name="btnServerOn" Grid.Row="0" Content="Server On" Width="140" Height="32" Margin="0,0,4,0" Style="{DynamicResource tgbbtnNormal}" />
+                        <Button x:Name="btnAlarmReset" Grid.Row="1" Content="Alarm Reset" Width="140" Height="32" Margin="0,0,4,0" Style="{DynamicResource btnNormal}" />
+                        <Button x:Name="btnHomeSearch" Grid.Row="2" Width="140" Height="32" Content="Homing" Margin="0,0,4,0" Style="{DynamicResource btnNormal}"/>
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.3*" />
+                            <RowDefinition Height="0.3*" />
+                            <RowDefinition Height="0.3*" />
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnMove" Content="Move" Grid.Row="0" Width="140" Height="32" Margin="0,0,4,0" Style="{DynamicResource btnNormal}" />
+                        <Button x:Name="btnMoveStop" Content="Stop" Grid.Row="1" Width="140" Margin="0,0,4,0" Style="{DynamicResource btnNormal}" Grid.RowSpan="2" />
+                    </Grid>
+                    
+                </Grid>
+
+                <Grid x:Name="grdSetting" Grid.Row="2" Background="{DynamicResource colorBgDialog}" Margin="0,5,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="grdTitleSetting" Grid.Row="0" Background="Black" Grid.ColumnSpan="3" >
+                        <Label x:Name="lblSetting" Content="Setting" Grid.Row="0" Margin="10,0,0,0" Style="{DynamicResource lblInformationTitle}" />
+                    </Grid>
+                    <StackPanel x:Name="pnlSetting" Grid.Row="1" Orientation="Vertical">
+                        <Grid Margin="0,16,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="▶" Margin="10,0,0,0" Grid.Column="0" Style="{DynamicResource lblContentName}" />
+                            <Label x:Name="lblHome" Content="Home" Grid.Column="1" Style="{DynamicResource lblContentName}" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblVelocity1" Content="Vel 1st" Grid.Column="0" Margin="30,0,0,0" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtHomeVel1" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblVelocity2" Content="Vel 2nd" Grid.Column="0" Margin="30,0,0,0" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtHomeVel2" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblVelocity3" Content="Vel 3nd" Grid.Column="0" Margin="30,0,0,0" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtHomeVel3" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblVelocity4" Content="Vel 4th" Grid.Column="0" Margin="30,0,0,0" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtHomeVel4" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblHomeAcc1" Content="Acc 1st" Grid.Column="0" Margin="30,0,0,0" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtHomeAcc1" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblHomeAcc2" Content="Acc 2nd" Grid.Column="0" Margin="30,0,0,0" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtHomeAcc2" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0" />
+                        </Grid>
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="▶" Margin="10,0,0,0" Grid.Column="0" Style="{DynamicResource lblContentName}" />
+                            <Label x:Name="lblEtc" Content="Etc" Grid.Column="1" Style="{DynamicResource lblContentName}" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblPositiveLimit" Content="Positive Limit" Grid.Column="0" Margin="30,0,0,0" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtPotLimit" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblNegativeLimit" Content="Negative Limit" Grid.Column="0" Margin="30,0,0,0" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtNatLimit" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblVelocityMin" Content="Velocity Min" Grid.Column="0" Margin="30,0,0,0" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtVelocityMin" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0" />
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="7*" />
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="lblVelocityMax" Content="Velocity Max" Grid.Column="0" Margin="30,0,0,0" Style="{DynamicResource lblContentName}" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtVelocityMax" Text="0" Grid.Column="1" Style="{DynamicResource txtInputData}" Height="32" TextAlignment="Left" Margin="0,0,10,0" />
+                        </Grid>
+                        <Grid x:Name="grdEtcButtons" Margin="0,10,0,0">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                            <Button x:Name="btnSave" Content="Save" Width="96" Height="32" Margin="0,0,4,0" Style="{DynamicResource btnNormal}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

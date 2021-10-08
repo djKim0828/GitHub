@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="EmWorks.View.BottomMenuWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d"
+             d:DesignHeight="50" d:DesignWidth="1280">
+
+    <Grid x:Name="grdMainMenu" Grid.Row ="0" Margin="0,0,0,0" Background ="{DynamicResource colorBgDialog}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="2" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="2" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="2" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="128" />
+        </Grid.ColumnDefinitions>
+        <Image x:Name="imgLogo" Grid.Column="0" Source="/EmWorks.App.OpticInspection;component/Resources/Images/Common/Logo/logoEnc64.png" Height="28" HorizontalAlignment="Left" Margin="15,0,0,0" />
+        <RadioButton GroupName="grdBottomMenu" x:Name="btnOperation" Content="Operation (F1)" Grid.Column ="1" Style="{DynamicResource rdbToggleTypeforTabControl}" Margin="0,0,2,0" IsChecked="True" />
+        <Grid Background="Gray" Grid.Column="2" Margin="0,20,0,20" Width="2" ></Grid>
+        <RadioButton GroupName="grdBottomMenu" x:Name="btnMaintenance" Content="Maintenance (F2)" Grid.Column ="3" Style="{DynamicResource rdbToggleTypeforTabControl}" Margin="0,0,2,0" />
+        <Grid Background="Gray" Grid.Column="4" Margin="0,20,0,20" Width="2" ></Grid>
+        <RadioButton GroupName="grdBottomMenu" x:Name="btnRecipe" Content="Recipe (F3)" Grid.Column ="3" Style="{DynamicResource rdbToggleTypeforTabControl}" Margin="198,-1,6,1" Grid.ColumnSpan="3" />
+        <Grid Background="Gray" Grid.Column="6" Margin="0,20,0,20" Width="2" ></Grid>
+        <RadioButton GroupName="grdBottomMenu" x:Name="btnData" Content="Data (F4)" Grid.Column ="7" Style="{DynamicResource rdbToggleTypeforTabControl}" Margin="0,0,2,0" />
+        <Grid x:Name="grdBottomRgiht" Grid.Column="9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+            </Grid.RowDefinitions>
+            <Label x:Name="lblProgramName" Content="Project Name" Grid.Row="0" Style="{DynamicResource lblNormal}" HorizontalAlignment="Center" FontSize="8" Margin="0,10,0,0" />
+            <Label x:Name="lblVersion" Content="( Ver : 1.x.x.x )" Grid.Row="1" Style="{DynamicResource lblNormal}" HorizontalAlignment="Center" FontSize="8" Margin="0,-15,0,0" />
+        </Grid>
+    </Grid>
+</UserControl>

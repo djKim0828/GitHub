@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="EmWorks.View.InspectorStageComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EmWorks.View"
+             xmlns:Device="clr-namespace:EmWorks.View"
+             mc:Ignorable="d" 
+             Width="150" Height="205">
+    <Grid Background="Transparent" >
+        <Grid Width="150" Height="205">
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="24" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Image x:Name="image" 
+                        Width="67" 
+                        Height="204"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"  
+                        Stretch="Fill" 
+                        Source="/EmWorks.App.OpticInspection;component/Resources/Images/Common/Device/InspectorX3.png" />
+                    <Slider x:Name="sldShtX3"                    
+                        Style="{DynamicResource SliderStyle_Cell}" 
+                        Orientation="Vertical"
+                        Maximum="200"
+                        Height="200" 
+                        Width="0" 
+                        VerticalAlignment="Top"
+                        RenderTransformOrigin="0.5,0.5" 
+                        LargeChange="1"
+                        SmallChange="1" 
+                        Value="0"
+                        TickFrequency="1" 
+                        />
+                </Grid>
+                <StackPanel x:Name="pnlMain" Grid.Column="1" VerticalAlignment="Bottom" Orientation="Vertical" Margin="0,0,0,0">
+                    <ToggleButton x:Name="tgbNeg" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                    <TextBlock Name="lblNeg" Text="Neg" Height="16" FontSize="10" />
+                    <ToggleButton x:Name="tgbServo" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                    <TextBlock Name="lblSrv" Text="Srv" Height="16" FontSize="10" HorizontalAlignment="Center"  />
+                    <ToggleButton x:Name="tgbAlarm" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                    <TextBlock Name="lblAlr" Text="Alr" Height="16" FontSize="10" HorizontalAlignment="Center"  />
+                    <ToggleButton x:Name="tgbBusy" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False"  />
+                    <TextBlock Name="lblBsy" Text="Bsy" Height="16" FontSize="10" HorizontalAlignment="Center"  />
+                    <ToggleButton x:Name="tgbOrg" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                    <TextBlock Name="lblOrg" Text="Org" Height="16" FontSize="10" HorizontalAlignment="Center"  />
+                    <ToggleButton x:Name="tgbPos" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                    <TextBlock Name="lblPos" Text="Pos" Height="16" FontSize="10" HorizontalAlignment="Center" />
+                </StackPanel>
+                <Grid Grid.Column="0">
+                    <Image x:Name="image2" 
+                        Width="126" 
+                        Height="90"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"  
+                        Stretch="Fill" 
+                        Source="/EmWorks.App.OpticInspection;component/Resources/Images/Common/Device/Detector.png" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="{Binding Value, ElementName=sldShtX3}"/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

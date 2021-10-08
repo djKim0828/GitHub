@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Recipe version="1.1" datetime="2021-05-10 14:35:18.478" comment="Recipe Data">
+	<BaseWhitePoint type="D65" x="0.00000" y="0.00000"/>
+	<MeasurementCondition>
+		<DeviceType type="SR5000"/>
+		<BinningType type="BINNING_TYPE1"/>
+		<LensType type="MACRO"/>
+		<MeasureDistance mm="1000"/>
+		<MeasureTimingType type="SERIAL">
+			<Serial count="1"/>
+			<IntervalConditionList>
+				<IntervalCondition sec="0" count="0"/>
+				<IntervalCondition sec="0" count="0"/>
+				<IntervalCondition sec="0" count="0"/>
+				<IntervalCondition sec="0" count="0"/>
+				<IntervalCondition sec="0" count="0"/>
+			</IntervalConditionList>
+			<OptimizeFirstOnly enable="TRUE"/>
+			<IntervalInterrupt enable="TRUE"/>
+		</MeasureTimingType>
+		<LayerMode enable="FALSE" count="2"/>
+		<MeasurementType type="SPECTRAL"/>
+		<FilterCondition>
+			<SpectralFilter enable="TRUE" integration_time_type="AUTO" integration_time="35.600017547607401" gain_type="AUTO" gain="GAIN_TYPE8" frequency_calc_enable="FALSE" frequency_value="50" averaging_count="1" frame_rate_ratio="1" nd_filter_mode="MANUAL" nd_filter_type="ND_FILTER_TYPE_NONE"/>
+			<XFilter enable="TRUE" integration_time_type="AUTO" integration_time="100" gain_type="AUTO" gain="GAIN_TYPE1" frequency_calc_enable="FALSE" frequency_value="50" averaging_count="1" frame_rate_ratio="1" nd_filter_mode="MANUAL" nd_filter_type="ND_FILTER_TYPE_NONE"/>
+			<YFilter enable="TRUE" integration_time_type="AUTO" integration_time="100" gain_type="AUTO" gain="GAIN_TYPE1" frequency_calc_enable="FALSE" frequency_value="50" averaging_count="1" frame_rate_ratio="1" nd_filter_mode="MANUAL" nd_filter_type="ND_FILTER_TYPE_NONE"/>
+			<ZFilter enable="TRUE" integration_time_type="AUTO" integration_time="100" gain_type="AUTO" gain="GAIN_TYPE1" frequency_calc_enable="FALSE" frequency_value="50" averaging_count="1" frame_rate_ratio="1" nd_filter_mode="MANUAL" nd_filter_type="ND_FILTER_TYPE_NONE"/>
+		</FilterCondition>
+		<SaturationDetectionType type="INTERRUPT"/>
+		<TriggerConfig mode_type="SOFT" activation_type="RISING" delay_time="0"/>
+		<ScanType type="HIGH_SPEED"/>
+		<MeasurementWaveLength min="380" max="780" step="1"/>
+		<MeasurementRange x="0" y="222" width="1372" height="556"/>
+		<OptimizationArea x="0" y="222" width="1372" height="556"/>
+		<ImageRotationType type="NONE"/>
+		<ImageSmoothingType type="ON"/>
+		<ExternalNdFilter number="0"/>
+		<ProcessingROIs enable="FALSE">
+			<ROI x="20" y="248" width="50" height="50"/>
+			<ROI x="100" y="248" width="50" height="50"/>
+			<ROI x="180" y="248" width="50" height="50"/>
+			<ROI x="260" y="248" width="50" height="50"/>
+			<ROI x="340" y="248" width="50" height="50"/>
+			<ROI x="420" y="248" width="50" height="50"/>
+			<ROI x="500" y="248" width="50" height="50"/>
+			<ROI x="580" y="248" width="50" height="50"/>
+			<ROI x="660" y="248" width="50" height="50"/>
+			<ROI x="740" y="248" width="50" height="50"/>
+			<ROI x="820" y="248" width="50" height="50"/>
+			<ROI x="900" y="248" width="50" height="50"/>
+			<ROI x="980" y="248" width="50" height="50"/>
+			<ROI x="1060" y="248" width="50" height="50"/>
+			<ROI x="1140" y="248" width="50" height="50"/>
+			<ROI x="20" y="600" width="50" height="50"/>
+			<ROI x="100" y="600" width="50" height="50"/>
+			<ROI x="180" y="600" width="50" height="50"/>
+			<ROI x="260" y="600" width="50" height="50"/>
+			<ROI x="340" y="600" width="50" height="50"/>
+			<ROI x="420" y="600" width="50" height="50"/>
+			<ROI x="500" y="600" width="50" height="50"/>
+			<ROI x="580" y="600" width="50" height="50"/>
+			<ROI x="660" y="600" width="50" height="50"/>
+			<ROI x="740" y="600" width="50" height="50"/>
+			<ROI x="820" y="600" width="50" height="50"/>
+			<ROI x="900" y="600" width="50" height="50"/>
+			<ROI x="980" y="600" width="50" height="50"/>
+			<ROI x="1060" y="600" width="50" height="50"/>
+			<ROI x="1140" y="600" width="50" height="50"/>
+		</ProcessingROIs>
+		<CustomScanPitch value="1"/>
+	</MeasurementCondition>
+	<DiagonalCorrection enable="FALSE"/>
+	<ColorCorrection enable="FALSE"/>
+	<LuminosityCorrection enable="FALSE"/>
+	<AreaCorrection enable="FALSE"/>
+	<WhitePlateData enable="FALSE" filename="" xn="0" yn="0" zn="0" type="FILE"/>
+	<ImageCalculation enable="FALSE"/>
+	<MicroscopeCorrection enable="FALSE"/>
+	<RulerCorrection enable="FALSE"/>
+	<SpectrumCorrection enable="FALSE"/>
+</Recipe>

@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6609F7E0-D199-4BBE-99CE-33103407A2C5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EmWorks.App.OpticInspection</RootNamespace>
+    <AssemblyName>EmWorks.App.OpticInspection</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\MainOutput\Debug\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Luna" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Control\Common\AutoLocale.cs" />
+    <Compile Include="Control\Common\DataWriter.cs" />
+    <Compile Include="Control\Common\Func.cs" />
+    <Compile Include="Control\Common\Mvvm.cs" />
+    <Compile Include="Control\Common\StatusMachine.cs" />
+    <Compile Include="Control\Device\MotionControl.cs" />
+    <Compile Include="Control\Main\MainInitialize.cs" />
+    <Compile Include="Control\Main\MainStadium.cs" />
+    <Compile Include="Control\Scheduler\00_CommandCenter\CommandCenter.Cell.cs" />
+    <Compile Include="Control\Scheduler\00_CommandCenter\CommandCenter.Device.cs" />
+    <Compile Include="Control\Scheduler\00_CommandCenter\CommnadCenter.cs" />
+    <Compile Include="Control\Scheduler\00_CommandCenter\StageBase.cs" />
+    <Compile Include="Control\Scheduler\01_Shuttle\ShuttleCommander.cs" />
+    <Compile Include="Control\Scheduler\01_Shuttle\ShuttleSequence1.cs" />
+    <Compile Include="Control\Scheduler\02_Inspection\InspectionCommander.cs" />
+    <Compile Include="Control\Scheduler\02_Inspection\InspectionCommander.SR5000.cs" />
+    <Compile Include="Control\Scheduler\02_Inspection\InspectionSequence1.cs" />
+    <Compile Include="Model\Common\AlarmDefine.cs" />
+    <Compile Include="Model\Common\Cell.cs" />
+    <Compile Include="Model\Common\AlarmModel.cs" />
+    <Compile Include="Model\Common\CellModel.cs" />
+    <Compile Include="Model\Common\Def.cs" />
+    <Compile Include="Model\Common\Global.cs" />
+    <Compile Include="Model\Common\Idx.cs" />
+    <Compile Include="Model\Common\ProtoType.cs" />
+    <Compile Include="Model\Common\TimeDefinition.cs" />
+    <Compile Include="Model\Recipe\ModelRecipe.cs" />
+    <Compile Include="Model\SoGenClass\Config\ConfigAccount.cs" />
+    <Compile Include="Model\Common\ConfigGeneralModel.cs" />
+    <Compile Include="Model\SoGenClass\Config\ConfigMotion.cs" />
+    <Compile Include="Model\SoGenClass\Tag\DeltatauPmac.cs" />
+    <Compile Include="Model\SoGenClass\Tag\TopconSR5000.cs" />
+    <Compile Include="View\Common\Design\Chart\ChartWave.xaml.cs">
+      <DependentUpon>ChartWave.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\Chart\ChartUV.xaml.cs">
+      <DependentUpon>ChartUV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\Chart\ChartXY.xaml.cs">
+      <DependentUpon>ChartXY.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\Device\CameraStageComponent.xaml.cs">
+      <DependentUpon>CameraStageComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\Device\InspectorStageComponent.xaml.cs">
+      <DependentUpon>InspectorStageComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\Device\ShuttleStageComponent.xaml.cs">
+      <DependentUpon>ShuttleStageComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\Device\ShuttleX1Component.xaml.cs">
+      <DependentUpon>ShuttleX1Component.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\Device\ShuttleY2Component.xaml.cs">
+      <DependentUpon>ShuttleY2Component.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\Device\SR5000Stage.xaml.cs">
+      <DependentUpon>SR5000Stage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\Device\WaferChuckComponent.xaml.cs">
+      <DependentUpon>WaferChuckComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\FovComponent.xaml.cs">
+      <DependentUpon>FovComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\FovRowComponent.xaml.cs">
+      <DependentUpon>FovRowComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\ImageComponent.xaml.cs">
+      <DependentUpon>ImageComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\WaferComponent.xaml.cs">
+      <DependentUpon>WaferComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Design\WaittingComponent.xaml.cs">
+      <DependentUpon>WaittingComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\Implement\Device\CameraStage.cs" />
+    <Compile Include="View\Common\Implement\Device\InspectorStage.cs" />
+    <Compile Include="View\Common\Implement\Device\ShuttleStage.cs" />
+    <Compile Include="View\Common\Implement\Device\SR5000Stage.cs" />
+    <Compile Include="View\Common\Implement\Fov.cs" />
+    <Compile Include="View\Common\Implement\Wafer.cs" />
+    <Compile Include="View\Dialog\Design\AlarmBoxDialog.xaml.cs">
+      <DependentUpon>AlarmBoxDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\Design\AnalogCommandDialog.xaml.cs">
+      <DependentUpon>AnalogCommandDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\Design\CommandCheckDialog.xaml.cs">
+      <DependentUpon>CommandCheckDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\Design\DigitalCommandDialog.xaml.cs">
+      <DependentUpon>DigitalCommandDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\Design\InitalizeBoxDialog.xaml.cs">
+      <DependentUpon>InitalizeBoxDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\Design\InputBoxDialog.xaml.cs">
+      <DependentUpon>InputBoxDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\Design\LogSearchDialog.xaml.cs">
+      <DependentUpon>LogSearchDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\Design\MessageBoxDialog.xaml.cs">
+      <DependentUpon>MessageBoxDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\Design\ProcessDialog.xaml.cs">
+      <DependentUpon>ProcessDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\Design\SelectLanguageDialog.xaml.cs">
+      <DependentUpon>SelectLanguageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\Implement\AlarmBox.cs" />
+    <Compile Include="View\Dialog\Implement\AnalogCommand.cs" />
+    <Compile Include="View\Dialog\Implement\CommandCheck.cs" />
+    <Compile Include="View\Dialog\Implement\DigitalCommand.cs" />
+    <Compile Include="View\Dialog\Implement\InitializeBox.cs" />
+    <Compile Include="View\Dialog\Implement\InputBox.cs" />
+    <Compile Include="View\Dialog\Implement\LogSearch.cs" />
+    <Compile Include="View\Dialog\Implement\MessageBox.cs" />
+    <Compile Include="View\Dialog\Implement\ProcessBox.cs" />
+    <Compile Include="View\Dialog\Implement\SelectLanguage.cs" />
+    <Compile Include="View\Window\Design\Data\DtAlarmWindow.xaml.cs">
+      <DependentUpon>DtAlarmWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Data\DtLogWindow.xaml.cs">
+      <DependentUpon>DtLogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Maintenance\MtManualWindow.xaml.cs">
+      <DependentUpon>MtManualWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Maintenance\MaintIOWindow.xaml.cs">
+      <DependentUpon>MaintIOWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Maintenance\MtMenuWindow.xaml.cs">
+      <DependentUpon>MtMenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Maintenance\MtSetupMotionWindow.xaml.cs">
+      <DependentUpon>MtSetupMotionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Main\BottomMenuWindow.xaml.cs">
+      <DependentUpon>BottomMenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Main\TopTitleWindow.xaml.cs">
+      <DependentUpon>TopTitleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Operation\OpMainWindow.xaml.cs">
+      <DependentUpon>OpMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Operation\OpMenuWindow.xaml.cs">
+      <DependentUpon>OpMenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Recipe\RpMainWindow.xaml.cs">
+      <DependentUpon>RpMainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Window\Design\Recipe\RpMenuWindow.xaml.cs">
+      <DependentUpon>RpMenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Design\Data\DtMenuWindow.xaml.cs">
+      <DependentUpon>DtMenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\Implement\Data\DtAlarm.cs" />
+    <Compile Include="View\Window\Implement\Data\DtLog.cs" />
+    <Compile Include="View\Window\Implement\Data\DtMenu.cs" />
+    <Compile Include="View\Window\Implement\Maintenance\MaintIO.cs" />
+    <Compile Include="View\Window\Implement\Maintenance\MtManual.cs" />
+    <Compile Include="View\Window\Implement\Maintenance\MtMenu.cs" />
+    <Compile Include="View\Window\Implement\Maintenance\MtSetupMotion.cs" />
+    <Compile Include="View\Window\Implement\Main\Main.cs" />
+    <Compile Include="View\Window\Implement\Operation\OpMain.cs" />
+    <Compile Include="View\Window\Implement\Operation\OpMenu.cs" />
+    <Compile Include="View\Window\Implement\Recipe\RpMenu.cs" />
+    <Compile Include="View\Window\Implement\Recipe\RpMain.cs" />
+    <Page Include="Resources\resBrushColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\resIconPathData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\resStyleCommon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Common\Design\Chart\ChartWave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\Chart\ChartUV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\Chart\ChartXY.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\Device\CameraStageComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\Device\InspectorStageComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\Device\ShuttleStageComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\Device\ShuttleX1Component.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\Device\ShuttleY2Component.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\Device\SR5000Stage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\Device\WaferChuckComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\FovComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\FovRowComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\ImageComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\WaferComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\Design\WaittingComponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialog\Design\AlarmBoxDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialog\Design\AnalogCommandDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialog\Design\CommandCheckDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialog\Design\DigitalCommandDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialog\Design\InitalizeBoxDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialog\Design\InputBoxDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialog\Design\LogSearchDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialog\Design\MessageBoxDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialog\Design\ProcessDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialog\Design\SelectLanguageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Window\Design\Data\DtAlarmWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\Design\Data\DtLogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\Design\Maintenance\MtManualWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\Design\Maintenance\MaintIOWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\Design\Maintenance\MtMenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\Design\Maintenance\MtSetupMotionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\Design\Main\BottomMenuWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Window\Design\Main\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Window\Design\Main\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\Window\Design\Main\TopTitleWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Window\Design\Operation\OpMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\Design\Operation\OpMenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\Design\Recipe\RpMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\Design\Recipe\RpMenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window\Design\Data\DtMenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\SoGenClass\Alarm\" />
+    <Folder Include="Resources\Images\Dialog\LoginDialog\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Common\Icon\Account.png" />
+    <Resource Include="Resources\Images\Common\Icon\AlarmGray.png" />
+    <Resource Include="Resources\Images\Common\Icon\AlarmRed.png" />
+    <Resource Include="Resources\Images\Common\Icon\loginSymbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Dialog\MessageDialog\dlgError.png" />
+    <Resource Include="Resources\Images\Dialog\MessageDialog\dlgInfo.png" />
+    <Resource Include="Resources\Images\Dialog\MessageDialog\dlgQuestion.png" />
+    <Resource Include="Resources\Images\Dialog\MessageDialog\dlgWarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Window\Maintenance\AllDevice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Emworks\Source\EmWorks.DevDrv.MotionStandard\EmWorks.DevDrv.MotionStandard.csproj">
+      <Project>{b12d5970-91d8-4733-b365-54ae58fbe67f}</Project>
+      <Name>EmWorks.DevDrv.MotionStandard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Emworks\Source\EmWorks.DevDrv.TopconSR5000\EmWorks.DevDrv.TopconSR5000.csproj">
+      <Project>{22a6db51-17ed-4bf6-84c6-b5bda3abcc8a}</Project>
+      <Name>EmWorks.DevDrv.TopconSR5000</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Emworks\Source\EmWorks.Lib.Common\EmWorks.Lib.Common.csproj">
+      <Project>{ab8ec9a7-4fb6-40a9-83d8-537bcde3bef7}</Project>
+      <Name>EmWorks.Lib.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Emworks\Source\EmWorks.Lib.Core\EmWorks.Lib.Core.csproj">
+      <Project>{1954f4da-1443-45e9-841d-1d8c399f2d9d}</Project>
+      <Name>EmWorks.Lib.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Emworks\Source\EmWorks.Lib.Identity\EmWorks.Lib.Identity.csproj">
+      <Project>{16256d46-2650-4a6f-83ba-076b336f5d76}</Project>
+      <Name>EmWorks.Lib.Identity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Common\Device\ShuttleX1.png" />
+    <Resource Include="Resources\Images\Common\Device\ShuttleY2.png" />
+    <Resource Include="Resources\Images\Common\Device\WaferChuck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Common\Device\Camera.png" />
+    <Resource Include="Resources\Images\Common\Device\Detector.png" />
+    <Resource Include="Resources\Images\Common\Device\DetectorBody.png" />
+    <Resource Include="Resources\Images\Common\Device\InspectorX3.png" />
+    <Resource Include="Resources\Images\Common\Device\Probe.png" />
+    <Resource Include="Resources\Images\Common\Device\SR5000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Common\Device\Wafer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Common\Chart\ChromaticityUV.PNG" />
+    <Resource Include="Resources\Images\Common\Chart\ChromaticityXY.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Test\Result_Pseudo.PNG" />
+    <Resource Include="Resources\Images\Test\Result_RGB.PNG" />
+    <Resource Include="Resources\Images\Test\Result_SearchROI.PNG" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy "$(ProjectDir)\..\ResourceFiles\Default\*.*" "$(ProjectDir)\..\Output\MainOutput\$(ConfigurationName)" /D /S /E /Y
+
+</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

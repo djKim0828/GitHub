@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="EmWorks.View.CameraStageComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="88">
+    <Grid Background="Transparent" >
+        <Border BorderBrush="Black" BorderThickness="2" />
+        <Grid Width="88" 
+              Height="200" 
+              Background="White" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="24" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid VerticalAlignment="Top" Margin="0,4,0,0">
+                    <Image x:Name="image" 
+                        Width="59" 
+                        Height="121"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"  
+                        Stretch="Fill" 
+                        Source="/EmWorks.App.OpticInspection;component/Resources/Images/Common/Device/DetectorBody.png" />
+                    <Slider x:Name="sldMotion"                    
+                        Style="{DynamicResource SliderStyle_Cell}" 
+                        Orientation="Vertical"
+                        Maximum="168"
+                        Height="120" 
+                        Width="0" 
+                        VerticalAlignment="Top"
+                        RenderTransformOrigin="0.5,0.5" 
+                        LargeChange="1"
+                        SmallChange="1" 
+                        Value="0"
+                        TickFrequency="1" 
+                        />
+                </Grid>
+                <Grid Margin="0,4,0,0">
+                    <Image x:Name="image2" 
+                        Width="42" 
+                        Height="68"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"  
+                        Stretch="Fill" 
+                        Source="/EmWorks.App.OpticInspection;component/Resources/Images/Common/Device/Camera.png" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="{Binding Value, ElementName=sldMotion}"/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <StackPanel x:Name="pnlMain" Grid.Column="1" VerticalAlignment="Bottom" Orientation="Vertical" Margin="0,0,0,0">
+                    <ToggleButton x:Name="tgbNeg" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                    <TextBlock Name="lblNeg" Text="Neg" Height="16" FontSize="10" HorizontalAlignment="Center" />
+                    <ToggleButton x:Name="tgbServo" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                    <TextBlock Name="lblSrv" Text="Srv" Height="16" FontSize="10" HorizontalAlignment="Center"  />
+                    <ToggleButton x:Name="tgbAlarm" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                    <TextBlock Name="lblAlr" Text="Alr" Height="16" FontSize="10" HorizontalAlignment="Center"  />
+                    <ToggleButton x:Name="tgbBusy" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False"  />
+                    <TextBlock Name="lblBsy" Text="Bsy" Height="16" FontSize="10" HorizontalAlignment="Center"  />
+                    <ToggleButton x:Name="tgbOrg" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                    <TextBlock Name="lblOrg" Text="Org" Height="16" FontSize="10" HorizontalAlignment="Center"  />
+                    <ToggleButton x:Name="tgbPos" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                    <TextBlock Name="lblPos" Text="Pos" Height="16" FontSize="10" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

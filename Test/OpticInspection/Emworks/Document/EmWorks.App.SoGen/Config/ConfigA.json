@@ -1,0 +1,26 @@
+{
+  "A":{
+  "Id":0,
+  "Category":"",
+  "Name":"A",
+  "Value":"1"},
+  "B":{
+  "Id":0,
+  "Category":"",
+  "Name":"B",
+  "Value":"2"},
+  "C":{
+  "Id":0,
+  "Category":"",
+  "Name":"C",
+  "Value":"3"},
+  "D":{
+  "Id":0,
+  "Category":"",
+  "Name":"D",
+  "Value":"4"},
+  "":{
+  "Id":0,
+  "Category":"",
+  "Name":"",
+  "Value":""}}

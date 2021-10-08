@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="EmWorks.App.OpticInspection.View.Window.Design.Recipe.RpMenuWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="884" d:DesignWidth="128">
+    <Grid x:Name ="grdMenu" Grid.Column="1" Background ="{DynamicResource colorBgSubMenu}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="211*"/>
+            <RowDefinition Height="673*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="grdMainControls" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal">
+                    <Path Data="{DynamicResource icoPaste}" Fill="LightGray" Width="18" Height="18" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="18,7,0,7"/>
+                    <Label Content="Recipe" VerticalAlignment="Center" FontSize="12" Foreground="#FF7E7E7E"></Label>
+                </StackPanel>
+            </Grid>
+
+            <RadioButton x:Name="rdbRecipe" Grid.Row="1" Content="Recipe" Style="{DynamicResource tgbControlSubMenuText}" />
+        </Grid>
+    </Grid>
+</UserControl>

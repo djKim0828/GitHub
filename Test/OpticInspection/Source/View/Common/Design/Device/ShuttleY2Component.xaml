@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="EmWorks.View.ShuttleY2Component"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EmWorks.View"
+             mc:Ignorable="d" 
+             Width="173" Height="90">
+    <Grid Background="Transparent" >
+        <Grid Width="173" Height="90">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="32" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Image x:Name="image" 
+                   Width="173" 
+                   Height="54"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center"  
+                   Stretch="Fill" 
+                   Source="/EmWorks.App.OpticInspection;component/Resources/Images/Common/Device/ShuttleY2.png" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel x:Name="pnlStatus" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right"  Orientation="Horizontal" >
+                    <Grid Margin="0,0,4,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ToggleButton x:Name="tgbNeg" Grid.Row="0" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                        <TextBlock Name="lblNeg" HorizontalAlignment="Center" Grid.Row="1" Text="Neg" Height="16" FontSize="10" />
+                    </Grid>
+                    <Grid Margin="0,0,4,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ToggleButton x:Name="tgbServo" Grid.Row="0" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                        <TextBlock Name="lblSrv" HorizontalAlignment="Center" Grid.Row="1" Text="Srv" Height="16" FontSize="10" />
+                    </Grid>
+                    <Grid Margin="0,0,4,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ToggleButton x:Name="tgbAlarm" Grid.Row="0" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                        <TextBlock Name="lblAlr" HorizontalAlignment="Center" Grid.Row="1" Text="Alr" Height="16" FontSize="10" />
+                    </Grid>
+                    <Grid Margin="0,0,4,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ToggleButton x:Name="tgbBusy" Grid.Row="0" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                        <TextBlock Name="lblBsy" HorizontalAlignment="Center" Grid.Row="1" Text="Bsy" Height="16" FontSize="10" />
+                    </Grid>
+                    <Grid Margin="0,0,4,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ToggleButton x:Name="tgbOrg" Grid.Row="0" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                        <TextBlock Name="lblOrg" HorizontalAlignment="Center" Grid.Row="1" Text="Org" Height="16" FontSize="10" />
+                    </Grid>
+                    <Grid Margin="0,0,4,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ToggleButton x:Name="tgbPos" Grid.Row="0" Width="16" Height="16" Style="{DynamicResource tgbRamp}" IsChecked="False" />
+                        <TextBlock Name="lblPos" HorizontalAlignment="Center" Grid.Row="1" Text="Pos" Height="16" FontSize="10" />
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

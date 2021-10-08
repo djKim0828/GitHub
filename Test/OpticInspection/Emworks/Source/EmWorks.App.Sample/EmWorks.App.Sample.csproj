@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EA62F8DA-1DEA-4757-B954-F3B99C91160B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EmWorks.App.Sample</RootNamespace>
+    <AssemblyName>EmWorks.App.Sample</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\EmWork.App.SoGen\Source\Trunk\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\..\..\EmWork.App.SoGen\Source\Trunk\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Control\initializeControl.cs" />
+    <Compile Include="Control\InRobotControl.cs" />
+    <Compile Include="Control\OutRobotControl.cs" />
+    <Compile Include="Control\SoGenFiles\AjinIo.cs" />
+    <Compile Include="Control\SoGenFiles\AjinMotion.cs" />
+    <Compile Include="Control\SoGenFiles\Config.cs" />
+    <Compile Include="Control\SoGenFiles\EncMotionStandard.cs" />
+    <Compile Include="Control\SoGenFiles\Mcr.cs" />
+    <Compile Include="Control\SoGenFiles\NachiInRobot.cs" />
+    <Compile Include="Control\SoGenFiles\NachiOutRobot.cs" />
+    <Compile Include="Control\SoGenFiles\TopconSR5000.cs" />
+    <Compile Include="View\Dialog\AutoSpotResultDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\AutoSpotResultDialog.Designer.cs">
+      <DependentUpon>AutoSpotResultDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\DigitalCommandDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\DigitalCommandDialog.Designer.cs">
+      <DependentUpon>DigitalCommandDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\InputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\InputDialog.Designer.cs">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\ProcessingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ProcessingDialog.Designer.cs">
+      <DependentUpon>ProcessingDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dialog\ProgressType3Dlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Dialog\ProgressType3Dlg.Designer.cs">
+      <DependentUpon>ProgressType3Dlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ChartUV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControls\ChartUV.Designer.cs">
+      <DependentUpon>ChartUV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ChartXY.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserControls\ChartXY.Designer.cs">
+      <DependentUpon>ChartXY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\AjinIoTestWinodw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Window\AjinIoTestWinodw.Designer.cs">
+      <DependentUpon>AjinIoTestWinodw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\AjinMotionTestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Window\AjinMotionTestWindow.Designer.cs">
+      <DependentUpon>AjinMotionTestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\ConfigTestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Window\ConfigTestWindow.Designer.cs">
+      <DependentUpon>ConfigTestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\InRobotTestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Window\InRobotTestWindow.Designer.cs">
+      <DependentUpon>InRobotTestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Window\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Window\McrTestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Window\McrTestWindow.Designer.cs">
+      <DependentUpon>McrTestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\MotionStandardTestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Window\MotionStandardTestWindow.Designer.cs">
+      <DependentUpon>MotionStandardTestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\NachiRobotTestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Window\NachiRobotTestWindow.Designer.cs">
+      <DependentUpon>NachiRobotTestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window\TopconSR500Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Window\TopconSR500Window.Designer.cs">
+      <DependentUpon>TopconSR500Window.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\Dialog\AutoSpotResultDialog.resx">
+      <DependentUpon>AutoSpotResultDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ProcessingDialog.resx">
+      <DependentUpon>ProcessingDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Dialog\ProgressType3Dlg.resx">
+      <DependentUpon>ProgressType3Dlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControls\ChartUV.resx">
+      <DependentUpon>ChartUV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserControls\ChartXY.resx">
+      <DependentUpon>ChartXY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Window\AjinIoTestWinodw.resx">
+      <DependentUpon>AjinIoTestWinodw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Window\AjinMotionTestWindow.resx">
+      <DependentUpon>AjinMotionTestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Window\ConfigTestWindow.resx">
+      <DependentUpon>ConfigTestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Window\InRobotTestWindow.resx">
+      <DependentUpon>InRobotTestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Window\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\Window\McrTestWindow.resx">
+      <DependentUpon>McrTestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Window\MotionStandardTestWindow.resx">
+      <DependentUpon>MotionStandardTestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Window\NachiRobotTestWindow.resx">
+      <DependentUpon>NachiRobotTestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Window\TopconSR500Window.resx">
+      <DependentUpon>TopconSR500Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmWorks.DevDrv.AjinMotionIo\EmWorks.DevDrv.AjinMotionIo.csproj">
+      <Project>{5e7869ed-88f6-4bba-91f8-ef64850ecae1}</Project>
+      <Name>EmWorks.DevDrv.AjinMotionIo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\EmWork.DevDrv.CognixMcr\Source\Trunk\EmWorks.DevDrv.CognixMcr.csproj">
+      <Project>{47da1dd2-02bf-41b6-a5bc-e09042f146f5}</Project>
+      <Name>EmWorks.DevDrv.CognixMcr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\EmWork.DevDrv.MotionStandard\Source\EmWorks.DevDrv.MotionStandard\EmWorks.DevDrv.MotionStandard.csproj">
+      <Project>{b9d7820b-8e74-4a85-bd99-44370efc602a}</Project>
+      <Name>EmWorks.DevDrv.MotionStandard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\EmWork.DevDrv.NachiRobot\Source\Trunk\EmWorks.DevDrv.NachiRobot.csproj">
+      <Project>{b1517166-b854-4b87-99d4-9c6580ae1a5e}</Project>
+      <Name>EmWorks.DevDrv.NachiRobot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmWorks.DevDrv.TopconSR5000\EmWorks.DevDrv.TopconSR5000.csproj">
+      <Project>{22a6db51-17ed-4bf6-84c6-b5bda3abcc8a}</Project>
+      <Name>EmWorks.DevDrv.TopconSR5000</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmWorks.Lib.Common\EmWorks.Lib.Common.csproj">
+      <Project>{ab8ec9a7-4fb6-40a9-83d8-537bcde3bef7}</Project>
+      <Name>EmWorks.Lib.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmWorks.Lib.Core\EmWorks.Lib.Core.csproj">
+      <Project>{1954f4da-1443-45e9-841d-1d8c399f2d9d}</Project>
+      <Name>EmWorks.Lib.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmWorks.Lib.Identity\EmWorks.Lib.Identity.csproj">
+      <Project>{16256d46-2650-4a6f-83ba-076b336f5d76}</Project>
+      <Name>EmWorks.Lib.Identity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Image\ChromaticityUV.PNG" />
+    <Content Include="Resources\Image\ChromaticityXY.PNG" />
+    <Content Include="Resources\Image\loadingBox.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
