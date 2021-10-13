@@ -1,0 +1,15 @@
+﻿<Application x:Class="StyleTest.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:StyleTest"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/CStyle;component/resStyleCommon.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/CStyle;component/resBrushColor.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/CStyle;component/resIconPathData.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

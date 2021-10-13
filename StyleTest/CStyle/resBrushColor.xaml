@@ -1,0 +1,337 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="colorTransparent" Color="#01000000" />
+
+    <!--ENC -->
+    <SolidColorBrush x:Key="colorENC" Color="#FF5ABCE2" />
+    <SolidColorBrush x:Key="colorENC_MouseOver" Color="#FF2A8FCD" />
+    <SolidColorBrush x:Key="colorENC_Pressed" Color="#FF4CAEEA" />
+
+    <SolidColorBrush x:Key="colorGrdBgDark" Color="#FF000000" />
+    <SolidColorBrush x:Key="colorGrdBgBlue" Color="#FF071689" />
+    <SolidColorBrush x:Key="colorGrdBgMain" Color="#FF252525" />
+    <SolidColorBrush x:Key="colorGrdBgSub" Color="#FF4CAEEA" />
+
+    <SolidColorBrush x:Key="colorControlBg" Color="#FF505050" />
+    <SolidColorBrush x:Key="colorControlUnSelect" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="colorControlSelect" Color="#FFA5A5A5" />
+    <SolidColorBrush x:Key="colorControlMove" Color="#FF5A5A5A" />
+
+    <!--Toggle Button-->
+    <SolidColorBrush x:Key="colorToggleUnChecked" Color="#FF242525" />
+    <SolidColorBrush x:Key="colorToggleMouseOver" Color="#FF1F5124" />
+    <SolidColorBrush x:Key="colorToggleButton" Color="#d1d1d1" />
+
+    <!-- CheckBox -->
+    <SolidColorBrush x:Key="colorCheckBoxMouseOver" Color="#FF3843C4" />
+    <SolidColorBrush x:Key="colorCheckBoxPressedColor" Color="#FF211AA9" />
+    <SolidColorBrush x:Key="colorCheckBoxBorderLight" Color="#FFCCCCCC" />
+    <SolidColorBrush x:Key="colorCheckBoxBorderDark" Color="#FF444444" />
+
+    <!--00. Common-->
+    <!--00.1    Background -->
+    <!--00.1.1  BG General-->
+    <SolidColorBrush x:Key="colorBgRoot" Color="#070606" />
+    <SolidColorBrush x:Key="colorBgMainTopBar" Color="#202121" />
+    <SolidColorBrush x:Key="colorBgMainBottomBar" Color="#000000" />
+    <!--00.1.2  BG List-->
+    <SolidColorBrush x:Key="colorBgSearchPanel" Color="#242323" />
+    <SolidColorBrush x:Key="colorBgRightPanel" Color="#191919" />
+    <SolidColorBrush x:Key="colorBgRightList" Color="#242323" />
+    <!--00.1.3  BG Viewer-->
+    <SolidColorBrush x:Key="colorBgViewerToolPanel" Color="#070606" />
+    <SolidColorBrush x:Key="colorBgToolGroup" Color="#202020" />
+    <SolidColorBrush x:Key="colorBgToolGroupToolArea" Color="#070606" />
+    <SolidColorBrush x:Key="colorBgToolGroupScrollArea" Color="#202020" />
+    <SolidColorBrush x:Key="colorBgViewerArea" Color="#202121" />
+    <SolidColorBrush x:Key="colorBgViewerAreaLine" Color="#434343" />
+    <SolidColorBrush x:Key="colorBgViewerStudyTitle" Color="#434343" />
+    <SolidColorBrush x:Key="colorBgCaptureModeSection" Color="#070606" />
+    <!--00.1.4  BG Processing-->
+    <SolidColorBrush x:Key="colorBgProcessingPanel" Color="#202020" />
+    <SolidColorBrush x:Key="colorBgParameterPanel" Color="#070606" />
+    <SolidColorBrush x:Key="colorBgProcessingSection1" Color="#161718" />
+    <SolidColorBrush x:Key="colorBgProcessingSection2" Color="#1f2021" />
+    <!--00.1.5  BG Dialog-->
+    <SolidColorBrush x:Key="colorBgDialog" Color="#FF252525" />
+    <SolidColorBrush x:Key="colorBgOperation" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="colorBgSubMenu" Color="#FF505050" />
+    <SolidColorBrush x:Key="colorFgText" Color="LightGray" />
+    <SolidColorBrush x:Key="colorBgDialogLine" Color="#6e6e6e" />
+    <SolidColorBrush x:Key="colorBgDialogLineENC" Color="#FF3F9FD9" />
+    <SolidColorBrush x:Key="colorBgDialogLineCBX" Color="#FF071689" />
+    <SolidColorBrush x:Key="colorBgDialogContents" Color="#2d2d2d" />
+    <SolidColorBrush x:Key="colorBgDialogSection" Color="#393939" />
+    <SolidColorBrush x:Key="colorBgSettingTabPanel" Color="#464646" />
+    <SolidColorBrush x:Key="colorBgProcedureBodyPart" Color="#464647" />
+    <SolidColorBrush x:Key="colorBgProcedureCode" Color="#282828" />
+    <SolidColorBrush x:Key="colorBgProcedureStepExam" Color="#3a3a3a" />
+    <SolidColorBrush x:Key="colorBgProcedureStepDiscription" Color="#282828" />
+    <SolidColorBrush x:Key="colorBgProcedureScheduledStep" Color="#202121" />
+
+    <!--00.1.6  BG Etc.-->
+    <SolidColorBrush x:Key="colorBgGenSetUnitTitle" Color="#802c2c2c" />
+
+    <!--00.2    Gradient-->
+    <LinearGradientBrush x:Key="colorMainGrd" StartPoint="0,1" EndPoint="1,1">
+        <GradientStop Offset="0" Color="#24c3ea" />
+        <GradientStop Offset="0.3" Color="#3baaed" />
+        <GradientStop Offset="0.7" Color="#307cbc" />
+        <GradientStop Offset="1" Color="#3167b6" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="colorPointGrd" StartPoint="0,1" EndPoint="1,1">
+        <GradientStop Offset="0" Color="#ffa49b" />
+        <GradientStop Offset="0.1" Color="#f67ea0" />
+        <GradientStop Offset="0.4" Color="#af57b7" />
+        <GradientStop Offset="0.8" Color="#562592" />
+        <GradientStop Offset="1" Color="#2f1879" />
+    </LinearGradientBrush>
+
+    <!--00.3    Divider-->
+    <SolidColorBrush x:Key="colorDivMain" Color="#7d7d7d" />
+    <SolidColorBrush x:Key="colorDivSearchOptions" Color="#4e4e4e" />
+    <SolidColorBrush x:Key="colorDivScrollButton" Color="#3c3b3b" />
+    <SolidColorBrush x:Key="colorDivCaptureSetting_H" Color="#2d2d2d" />
+    <SolidColorBrush x:Key="colorDivCaptureSetting_V" Color="#232323" />
+    <SolidColorBrush x:Key="colorDivTableItem" Color="#393939" />
+    <SolidColorBrush x:Key="colorDivTableHeader" Color="#ccddf3" />
+    <SolidColorBrush x:Key="colorDivListItem" Color="#323232" />
+    <SolidColorBrush x:Key="colorDivThumbnailItem" Color="#474747" />
+    <SolidColorBrush x:Key="colorDivSettingTabGroup" Color="#373737" />
+    <SolidColorBrush x:Key="colorDivSettingTabGroupItem" Color="#4a4949" />
+    <!--00.4    Line-->
+    <SolidColorBrush x:Key="colorGuideLine" Color="#24c3ea" />
+
+    <!--01. Text-->
+    <!--01.0    Basic Rules-->
+    <SolidColorBrush x:Key="colorLblDialogTitle" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorLblMain" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorLblSub" Color="#a2adbf" />
+    <SolidColorBrush x:Key="colorLblGroupTitle" Color="#b8cad8" />
+    <SolidColorBrush x:Key="colorLblMessage" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorLblGDPR" Color="#FFFFF272" />
+    <SolidColorBrush x:Key="colorLblPoint" Color="#ffe3a0" />
+
+    <SolidColorBrush x:Key="colorlblCheck" Color="#fcbb38" />
+    <SolidColorBrush x:Key="colorlblError" Color="#ff0000" />
+    <SolidColorBrush x:Key="colorLblTooltip" Color="#FF88D4FF" />
+
+    <!--01.2    Tab Button-->
+    <SolidColorBrush x:Key="colorLblMainTab_N" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorLblMainTab_S" Color="#e6e6e6" />
+    <SolidColorBrush x:Key="colorLblModeTab_N" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorLblModeTab_S" Color="#ffffff" />
+
+    <!--01.3    Button-->
+    <SolidColorBrush x:Key="colorLblBtn" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorLblSeg_N" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorLblSeg_S" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorLblSegProcedure" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorLblCmb_N" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorLblCmb_S" Color="#ffffff" />
+
+    <!--01.4    Check Box / Radio Button-->
+    <SolidColorBrush x:Key="colorRdbUnchecked" Color="#FF898686" />
+    <SolidColorBrush x:Key="colorLblChkRdo_N" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorLblChkRdo_S" Color="#ffffff" />
+    <!--01.5    TextBox-->
+    <SolidColorBrush x:Key="colorLblTxb" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorLblTxbSelection" Color="#307cbc" />
+    <SolidColorBrush x:Key="colorLblTxbExposureParameter" Color="#FF88D4FF" />
+    <!--01.6    Table/List-->
+    <SolidColorBrush x:Key="colorLblListItem_N" Color="#dedede" />
+    <SolidColorBrush x:Key="colorLblListItem_S" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorLblListItem_Demo" Color="#FF88D4FF" />
+    <SolidColorBrush x:Key="colorLblListHeader" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorLblListBottom" Color="#ffffff" />
+    <!--01.7    Viewer-->
+    <SolidColorBrush x:Key="colorLblToolGroupTitle" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorLblStudyLayout" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorLblTree_S" Color="#82e6ff" />
+
+    <!--01.10    Etc-->
+    <SolidColorBrush x:Key="colorLblPrgRing" Color="#82e6ff" />
+
+    <!--02. Icon-->
+    <!--02.0    General-->
+    <SolidColorBrush x:Key="colorIcon" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorViewerIcon" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorViewerIcon_H" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorViewerIcon_S" Color="#FFE5F9FD" />
+    <!--02.1    Button-->
+    <SolidColorBrush x:Key="colorScrollArrow_N" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorScrollArrow_F" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorViewerToolIcon" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorTopBar_N" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorTopBar_H" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorTopBar_P" Color="#ffffff" />
+    <!--02.2    Check/Radio-->
+    <SolidColorBrush x:Key="colorChkRdoBullet_S" Color="#a6edff" />
+    <SolidColorBrush x:Key="colorChkRdoBullet_SH" Color="#daf8ff" />
+    <SolidColorBrush x:Key="colorThumbChkBullet_S" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorThumbChkBullet_SH" Color="#ffffff" />
+    <!--02.3    Thumb-->
+    <SolidColorBrush x:Key="colorThumbItemClone" Color="#FF25D3FF" />
+    <SolidColorBrush x:Key="colorThumbItemDrag" Color="#608d8d8d" />
+    <SolidColorBrush x:Key="colorThumbItemLink" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorThumbPoint" Color="#c5edfa" />
+
+    <!--03. Control-->
+    <!--03.1    Tab-->
+    <SolidColorBrush x:Key="colorMainTab_N" Color="#161717" />
+    <SolidColorBrush x:Key="colorMainTab_H" Color="#1b1c1c" />
+    <SolidColorBrush x:Key="colorMainTab_S" Color="#070606" />
+    <SolidColorBrush x:Key="colorMainTabBullet_N" Color="#161717" />
+    <SolidColorBrush x:Key="colorMainTabBullet_H" Color="#383838" />
+    <SolidColorBrush x:Key="colorMainTabBullet_P" Color="#505050" />
+    <SolidColorBrush x:Key="colorModeTabBullet_N" Color="#505050" />
+    <SolidColorBrush x:Key="colorModeTabBullet_H" Color="#7d7d7d" />
+    <SolidColorBrush x:Key="colorModeTabBullet_D" Color="#383838" />
+    <SolidColorBrush x:Key="colorSettingTabGroup_N" Color="#464646" />
+    <SolidColorBrush x:Key="colorSettingTabGroup_H" Color="#525354" />
+    <SolidColorBrush x:Key="colorSettingTabItem_N" Color="#373737" />
+    <SolidColorBrush x:Key="colorSettingTabItem_H" Color="#3c3c3c" />
+    <SolidColorBrush x:Key="colorSettingTabItem_S" Color="#2d2d2d" />
+    <!--03.2    Button-->
+    <SolidColorBrush x:Key="colorBtnMainNormal_N" Color="#414143" />
+    <SolidColorBrush x:Key="colorBtnMainNormal_H" Color="#4b4b4e" />
+    <SolidColorBrush x:Key="colorBtnMainNormal_S" Color="#353537" />
+    <SolidColorBrush x:Key="colorBtnMainLine_S" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorBtnText_N" Color="#141414" />
+    <SolidColorBrush x:Key="colorBtnTextLine_N" Color="#FF3C3A3A" />
+    <SolidColorBrush x:Key="colorBtnText_H" Color="#141414" />
+    <SolidColorBrush x:Key="colorBtnTextLine_H" Color="#939393" />
+    <SolidColorBrush x:Key="colorBtnText_S" Color="#000000" />
+    <SolidColorBrush x:Key="colorBtnTextLine_S" Color="#61d7f4" />
+    <SolidColorBrush x:Key="colorBtnArea_N" Color="#01000000" />
+    <SolidColorBrush x:Key="colorBtnArea_H" Color="#323232" />
+    <SolidColorBrush x:Key="colorBtnArea_P" Color="#222222" />
+    <SolidColorBrush x:Key="colorBtnScroll_N" Color="#01000000" />
+    <SolidColorBrush x:Key="colorBtnScroll_H" Color="#323232" />
+    <SolidColorBrush x:Key="colorBtnScroll_P" Color="#121212" />
+    <SolidColorBrush x:Key="colorBtnFolding_N" Color="#191919" />
+    <SolidColorBrush x:Key="colorBtnFolding_H" Color="#333333" />
+    <SolidColorBrush x:Key="colorBtnFolding_P" Color="#282828" />
+    <SolidColorBrush x:Key="colorBtnTextIcon_N" Color="#01000000" />
+    <SolidColorBrush x:Key="colorBtnTextIcon_H" Color="#262626" />
+    <SolidColorBrush x:Key="colorBtnTextIcon_S" Color="#0e0e0e" />
+    <SolidColorBrush x:Key="colorBtnTextIconLine_S" Color="#363636" />
+    <SolidColorBrush x:Key="colorBtnListTool_N" Color="#070606" />
+    <SolidColorBrush x:Key="colorBtnListToolLine_N" Color="#070606" />
+    <SolidColorBrush x:Key="colorBtnListTool_H" Color="#1e1e1e" />
+    <SolidColorBrush x:Key="colorBtnListToolLine_H" Color="#666666" />
+    <SolidColorBrush x:Key="colorBtnListTool_S" Color="#1e1e1e" />
+    <SolidColorBrush x:Key="colorBtnListToolLine_S" Color="#61d7f4" />
+    <SolidColorBrush x:Key="colorBtnListTool_SH" Color="#282828" />
+    <SolidColorBrush x:Key="colorBtnViewerTool_N" Color="#1e1e1e" />
+    <SolidColorBrush x:Key="colorBtnViewerToolLine_N" Color="#666666" />
+    <SolidColorBrush x:Key="colorBtnViewerTool_H" Color="#070606" />
+    <SolidColorBrush x:Key="colorBtnViewerToolLine_H" Color="#666666" />
+    <SolidColorBrush x:Key="colorBtnViewerTool_S" Color="#070606" />
+    <SolidColorBrush x:Key="colorBtnViewerToolLine_S" Color="#61d7f4" />
+    <SolidColorBrush x:Key="colorBtnViewerTool_SH" Color="#1e1e1e" />
+    <SolidColorBrush x:Key="colorBtnSettingAbout_N" Color="#3d3e3e" />
+    <SolidColorBrush x:Key="colorBtnSettingAbout_H" Color="#404142" />
+    <SolidColorBrush x:Key="colorBtnSettingAbout_P" Color="#363838" />
+    <LinearGradientBrush x:Key="colorBtnTouch" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#F3F3F3" Offset="0" />
+        <GradientStop Color="#EBEBEB" Offset="0.5" />
+        <GradientStop Color="#DDDDDD" Offset="0.5" />
+        <GradientStop Color="#CDCDCD" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="colorBtnTouchLine" Color="#FF707070" />
+    <!--03.3    Segment Button-->
+    <SolidColorBrush x:Key="colorSeg_N" Color="#10ffffff" />
+    <SolidColorBrush x:Key="colorSegLine_N" Color="#d8d8d8" />
+    <SolidColorBrush x:Key="colorSeg_H" Color="#20ffffff" />
+    <SolidColorBrush x:Key="colorSegLine_H" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorSeg_S" Color="#991B7B93" />
+    <SolidColorBrush x:Key="colorSegLine_S" Color="#50d0f0" />
+    <SolidColorBrush x:Key="colorSegProcedure_N" Color="#242424" />
+    <SolidColorBrush x:Key="colorSegProcedureLine_N" Color="#939393" />
+    <SolidColorBrush x:Key="colorSegProcedure_H" Color="#242424" />
+    <SolidColorBrush x:Key="colorSegProcedureLine_H" Color="#61d7f4" />
+    <SolidColorBrush x:Key="colorSegProcedure_S" Color="#131313" />
+    <SolidColorBrush x:Key="colorSegProcedureLine_S" Color="#61d7f4" />
+    <!--03.4    ComboBox-->
+    <SolidColorBrush x:Key="colorCmb_N" Color="#141515" />
+    <SolidColorBrush x:Key="colorCmbLine_N" Color="#898989" />
+    <SolidColorBrush x:Key="colorCmb_H" Color="#2b2c2c" />
+    <SolidColorBrush x:Key="colorCmbLine_H" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorCmb_S" Color="#000000" />
+    <SolidColorBrush x:Key="colorCmbLine_S" Color="#61d7f4" />
+    <SolidColorBrush x:Key="colorCmbRound_N" Color="#1e1e1e" />
+    <SolidColorBrush x:Key="colorCmbRoundLine_N" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorCmbRound_H" Color="#2b2c2c" />
+    <SolidColorBrush x:Key="colorCmbRoundLine_H" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorCmbRound_S" Color="#000000" />
+    <SolidColorBrush x:Key="colorCmbRoundLine_S" Color="#61d7f4" />
+    <!--03.5    CheckBox / RadioButton-->
+    <SolidColorBrush x:Key="colorChkRdoFrame_N" Color="#141515" />
+    <SolidColorBrush x:Key="colorChkRdoFrameLine_N" Color="#898989" />
+    <SolidColorBrush x:Key="colorChkRdoFrame_H" Color="#141515" />
+    <SolidColorBrush x:Key="colorChkRdoFrameLine_H" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorChkRdoFrame_S" Color="#000000" />
+    <SolidColorBrush x:Key="colorChkRdoFrameLine_S" Color="#61d7f4" />
+    <SolidColorBrush x:Key="colorThumbChkFrame_N" Color="#30000000" />
+    <SolidColorBrush x:Key="colorThumbChkFrameLine_N" Color="#d1d1d1" />
+    <SolidColorBrush x:Key="colorThumbChkFrame_H" Color="#70000000" />
+    <SolidColorBrush x:Key="colorThumbChkFrameLine_H" Color="#ffffff" />
+
+    <!--03.6    TextBox -->
+    <SolidColorBrush x:Key="colorTxb_N" Color="#141515" />
+    <SolidColorBrush x:Key="colorTxbLine_N" Color="#898989" />
+    <SolidColorBrush x:Key="colorTxb_H" Color="#2b2c2c" />
+    <SolidColorBrush x:Key="colorTxbLine_H" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorTxb_P" Color="#000000" />
+    <SolidColorBrush x:Key="colorTxbLine_P" Color="#61d7f4" />
+    <SolidColorBrush x:Key="colorTxbProcessingCode_N" Color="#28487e" />
+    <SolidColorBrush x:Key="colorTxbProcessingCode_F" Color="#1c376d" />
+    <SolidColorBrush x:Key="colorTxbProcessingCodeLine" Color="#FF979797" />
+    <!--03.7     Table / List -->
+    <SolidColorBrush x:Key="colorBgTableHeader" Color="#363535" />
+    <SolidColorBrush x:Key="colorBgTable" Color="#202020" />
+    <SolidColorBrush x:Key="colorBgTableItem_N" Color="#01000000" />
+    <SolidColorBrush x:Key="colorBgTableItem_H" Color="#2b3b55" />
+    <SolidColorBrush x:Key="colorBgTableItem_P" Color="#2b3b55" />
+    <SolidColorBrush x:Key="colorBgTableBottom" Color="#191919" />
+    <SolidColorBrush x:Key="colorBgList" Color="#202020" />
+    <SolidColorBrush x:Key="colorBgListLine" Color="#5e5e5e" />
+
+    <!--03.10    Scroll-->
+    <SolidColorBrush x:Key="colorBgScr" Color="#282828" />
+    <SolidColorBrush x:Key="colorBgScrThumb_N" Color="#3f3f3f" />
+    <SolidColorBrush x:Key="colorBgScrThumb_H" Color="#3c4146" />
+    <SolidColorBrush x:Key="colorBgScrThumb_P" Color="#303c53" />
+
+    <!--03.12    Slider-->
+    <SolidColorBrush x:Key="colorBgSld" Color="#282828" />
+    <SolidColorBrush x:Key="colorBgSldChunk" Color="#5bb9e0" />
+    <SolidColorBrush x:Key="colorBgSldThumbLine" Color="#ffffff" />
+    <SolidColorBrush x:Key="colorBgSldThumb_N" Color="#1476a8" />
+    <SolidColorBrush x:Key="colorBgSldThumb_H" Color="#228cc2" />
+    <SolidColorBrush x:Key="colorBgSldThumb_P" Color="#0a5676" />
+    <SolidColorBrush x:Key="colorBgSldParameter" Color="#3e3e3e" />
+    <SolidColorBrush x:Key="colorBgSldParameterChunk" Color="#6d9bae" />
+    <!--03.13    Progress-->
+    <SolidColorBrush x:Key="colorBgPrgBar" Color="#9c9c9c" />
+    <SolidColorBrush x:Key="colorBgPrgBarLine" Color="#dcdcdc" />
+    <SolidColorBrush x:Key="colorBgPrgBarChunk" Color="#FF167BD1" />
+    <SolidColorBrush x:Key="colorBgPrgBarChunk_HDDFull" Color="#FFF52F53" />
+    <SolidColorBrush x:Key="colorBgPrgRing" Color="#6e6e6e" />
+    <SolidColorBrush x:Key="colorBgPrgRingChunk" Color="#61d7f4" />
+    <LinearGradientBrush x:Key="colorBgLoadingPie" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+        <GradientStop Color="#61d7f4" />
+        <GradientStop Color="#2061d7f4" Offset="0.3" />
+        <GradientStop Color="Transparent" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="colorBgPrgBatteryChunk_Low" Color="#ff5454" />
+    <SolidColorBrush x:Key="colorBgPrgBatteryChunk_Mid" Color="#ffe26f" />
+    <SolidColorBrush x:Key="colorBgPrgBatteryChunk_High" Color="#0be17f" />
+
+    <!--03.14    Toast-->
+    <SolidColorBrush x:Key="colorBgToastWarning" Color="#80000000" />
+    <SolidColorBrush x:Key="colorBgToastWarningLine_Normal" Color="#ffd554" />
+    <SolidColorBrush x:Key="colorBgToastWarningLine_High" Color="#ff5454" />
+</ResourceDictionary>
