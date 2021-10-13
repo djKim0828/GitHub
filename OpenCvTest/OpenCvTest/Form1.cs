@@ -515,5 +515,26 @@ namespace OpenCvTest
         }
 
         #endregion Methods        
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            int cnt = 0;
+            for (int i = 0; i < _srcImage.Rows; i++)
+            {
+                for (int j = 0; j < _srcImage.Cols; j++)
+                {
+                    var pt = _srcImage.At<Vec3b>(i, j);
+
+                    if (pt.Item0 > 0 ||
+                        pt.Item1 > 0 ||
+                        pt.Item2 > 0)
+                    {
+                        cnt++;
+                    }
+                }
+            }
+
+            MessageBox.Show(cnt.ToString());                    
+        }
     }
 }
