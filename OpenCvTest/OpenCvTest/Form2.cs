@@ -56,7 +56,7 @@ namespace OpenCvTest
             OpenFileDialog dlg = new OpenFileDialog();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                _srcImage = Cv2.ImRead(dlg.FileName);
+                LoadImage(dlg.FileName);
 
                 pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_srcImage);
             }
@@ -97,10 +97,12 @@ namespace OpenCvTest
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            Form1 f1 = new Form1();
+            f1.Show();
+
             LoadConfig();
 
-            _srcImage = Cv2.ImRead("RGB2.png");
-            pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_srcImage);
+            LoadImage("RGB2.png");
         }
 
         private void GetPixelData(Spot spot, Mat img, int rowIndex, int colIndex)
@@ -169,6 +171,21 @@ namespace OpenCvTest
             }
         }
 
+        private void LoadImage(string imageFileName)
+        {
+            if (_srcImage != null)
+            {
+                _srcImage.Release();
+                _srcImage = null;
+
+                GC.Collect();
+                System.Threading.Thread.Sleep(100);
+            }
+
+            _srcImage = Cv2.ImRead(imageFileName);
+            pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_srcImage);
+        }
+
         private void Pb_Click(object sender, EventArgs e)
         {
             Control temp = (Control)sender;
@@ -179,9 +196,9 @@ namespace OpenCvTest
             {
                 return;
             } // else
-            
+
             int dataHalfCnt = _spotList[Convert.ToInt16(index)].ptList.Count / 2;
-            string[] data1 = new string[dataHalfCnt * 3];           
+            string[] data1 = new string[dataHalfCnt * 3];
 
             for (int i = 0; i < dataHalfCnt; i++)
             {
@@ -189,7 +206,7 @@ namespace OpenCvTest
                 data1[i * 3 + 1] = _spotList[Convert.ToInt16(index)].ptList[i].Item1.ToString();
                 data1[i * 3 + 2] = _spotList[Convert.ToInt16(index)].ptList[i].Item2.ToString();
             }
-            
+
             string[] data2 = new string[dataHalfCnt * 3];
             for (int i = 0; i < dataHalfCnt; i++)
             {
@@ -200,7 +217,6 @@ namespace OpenCvTest
 
             frmDetail f = new frmDetail("Spot Detail Data - Index : " + strIndex, data1, data2);
             f.Show();
-            
         }
 
         private void RunDivide(short h, short v)

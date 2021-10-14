@@ -31,14 +31,12 @@ namespace OpenCvTest
 
         private void btnImage1_Click(object sender, EventArgs e)
         {
-            _srcImage = Cv2.ImRead("hex.jpg");
-            pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_srcImage);
+            LoadImage("hex.jpg");
         }
 
         private void btnImage2_Click(object sender, EventArgs e)
         {
-            _srcImage = Cv2.ImRead("RGB.png");
-            pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_srcImage);
+            LoadImage("RGB.png");
         }
 
         private void btnInspection_Click(object sender, EventArgs e)
@@ -74,10 +72,8 @@ namespace OpenCvTest
             OpenFileDialog dlg = new OpenFileDialog();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                _srcImage = Cv2.ImRead(dlg.FileName);
-
-                pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_srcImage);
-            }
+                LoadImage(dlg.FileName);
+            } // else
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -263,6 +259,21 @@ namespace OpenCvTest
             }
         }
 
+        private void LoadImage(string imageFileName)
+        {
+            if (_srcImage != null)
+            {
+                _srcImage.Release();
+                _srcImage = null;
+
+                GC.Collect();
+                System.Threading.Thread.Sleep(100);
+            }
+
+            _srcImage = Cv2.ImRead(imageFileName);
+            pictureBox1.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(_srcImage);
+        }
+
         private void OutputSpot(List<OpenCvSharp.CPlusPlus.Point[]> new_contours)
         {
             // 각 Contours의 좌상단 Point와 우하단 Point를 찾고 라벨을 입력
@@ -281,6 +292,27 @@ namespace OpenCvTest
             DrawResultSpots();
 
             DisplayExtractSpotImage();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            int cnt = 0;
+            for (int i = 0; i < _srcImage.Rows; i++)
+            {
+                for (int j = 0; j < _srcImage.Cols; j++)
+                {
+                    var pt = _srcImage.At<Vec3b>(i, j);
+
+                    if (pt.Item0 > 0 ||
+                        pt.Item1 > 0 ||
+                        pt.Item2 > 0)
+                    {
+                        cnt++;
+                    }
+                }
+            }
+
+            MessageBox.Show(cnt.ToString());
         }
 
         private void SaveConfig()
@@ -514,27 +546,6 @@ namespace OpenCvTest
             }));
         }
 
-        #endregion Methods        
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            int cnt = 0;
-            for (int i = 0; i < _srcImage.Rows; i++)
-            {
-                for (int j = 0; j < _srcImage.Cols; j++)
-                {
-                    var pt = _srcImage.At<Vec3b>(i, j);
-
-                    if (pt.Item0 > 0 ||
-                        pt.Item1 > 0 ||
-                        pt.Item2 > 0)
-                    {
-                        cnt++;
-                    }
-                }
-            }
-
-            MessageBox.Show(cnt.ToString());                    
-        }
+        #endregion Methods
     }
 }
