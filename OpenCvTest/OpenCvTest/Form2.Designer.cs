@@ -315,9 +315,9 @@
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 431);
+            this.splitter1.Location = new System.Drawing.Point(0, 576);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(721, 3);
+            this.splitter1.Size = new System.Drawing.Size(895, 3);
             this.splitter1.TabIndex = 57;
             this.splitter1.TabStop = false;
             // 
@@ -326,10 +326,10 @@
             this.rcbOutput.BackColor = System.Drawing.Color.Black;
             this.rcbOutput.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.rcbOutput.ForeColor = System.Drawing.SystemColors.Window;
-            this.rcbOutput.Location = new System.Drawing.Point(0, 434);
+            this.rcbOutput.Location = new System.Drawing.Point(0, 579);
             this.rcbOutput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rcbOutput.Name = "rcbOutput";
-            this.rcbOutput.Size = new System.Drawing.Size(721, 146);
+            this.rcbOutput.Size = new System.Drawing.Size(895, 146);
             this.rcbOutput.TabIndex = 56;
             this.rcbOutput.Text = "";
             // 
@@ -356,7 +356,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 580);
+            this.ClientSize = new System.Drawing.Size(895, 725);
             this.Controls.Add(this.btnInspection);
             this.Controls.Add(this.pnlResult);
             this.Controls.Add(this.splitter1);
