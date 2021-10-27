@@ -1,0 +1,279 @@
+Name,Index,Offset,IoType,Unit,Item,Action,DataType,IsAorB,IsSubscription,Default,Min,Max,Timeout,AlarmCode,ExeCmd,ActuatorId,SimCmd,Options,Desc
+sxDeviceMotion,0,0,2,Device,Motion,,1,0,1,0,0,0,0,0,,0,,,Device Open / Close Status
+syDeviceMotion,0,0,3,Device,Motion,,1,0,0,0,0,0,0,0,,1,sxDeviceMotion/0/0/0/0,,Device Open / Close Command
+xDeviceLibraryVersion,0,0,0,Device,Library,Version,2,0,0,0,0,0,0,0,AxlGetLibVersion,0,,,Device Library Version
+yInShuttleX1ServoOn,0,0,1,InShuttle,X1,ServoOn,0,0,0,1,0,1,0,0,AxmSignalServoOn,1,xInShuttleX1ServoOn/0/0/0/0,,Servo On Command
+xInShuttleX1ServoOn,0,0,0,InShuttle,X1,ServoOn,0,0,1,0,0,1,0,0,AxmSignalIsServoOn,0,,,Servo On Status
+yInShuttleX1AlarmReset,0,0,1,InShuttle,X1,AlarmReset,0,0,0,0,0,0,0,0,AxmSignalServoAlarmReset,0,,,Alarm Reset Command
+xInShuttleX1AlarmStatus,0,0,0,InShuttle,X1,AlarmStatus,0,0,1,0,0,0,0,0,AxmSignalReadServoAlarm,0,,,Alarm Status
+xInShuttleX1AlarmCode,0,0,0,InShuttle,X1,AlarmCode,1,0,1,0,0,0,0,0,AxmSignalReadServoAlarmCode,0,,,Alarm Code
+yInShuttleX1Homing,0,0,1,InShuttle,X1,Homing,0,0,0,0,0,0,0,0,AxmHomeSetStart,0,,,Homing Command
+xInShuttleX1HomingStatus,0,0,0,InShuttle,X1,HomingStatus,1,0,1,0,0,0,0,0,AxmHomeGetResult,0,,,Homing Status
+yInShuttleX1PosMatch,0,0,1,InShuttle,X1,PosMatch,1,0,0,0,0,0,0,0,AxmStatusSetPosMatch,0,,,Position Matching (Zero Reset)
+yInShuttleX1Stop,0,0,1,InShuttle,X1,Stop,1,0,0,0,0,0,0,0,AxmMoveStop,0,,,Move Stop Command
+xInShuttleX1StopStatus,0,0,0,InShuttle,X1,StopStatus,0,0,1,0,0,0,0,0,AxmStatusReadStop,0,,,Move Stop Status
+yInShuttleX1EStop,0,0,1,InShuttle,X1,EStop,1,0,0,0,0,0,0,0,AxmMoveEStop,0,,,Move Sstop Command
+yInShuttleX1SStop,0,0,1,InShuttle,X1,SStop,0,0,0,0,0,0,0,0,AxmMoveSStop,0,,,Move Estop Command
+xInShuttleX1PositiveLimit,0,0,0,InShuttle,X1,PositiveLimit,0,0,1,0,0,0,0,0,AxmSignalReadLimitP,0,,,Plus Limit Sensor Status
+xInShuttleX1Home,0,0,0,InShuttle,X1,Home,0,0,1,0,0,0,0,0,AxmHomeReadSignal,0,,,Home Sensor Status
+xInShuttleX1NegativeLimit,0,0,0,InShuttle,X1,NegativeLimit,0,0,1,0,0,0,0,0,AxmSignalReadLimitN,0,,,Minus Limit Sensor Status
+yInShuttleX1InposEnable,0,0,1,InShuttle,X1,InposEnable,1,0,0,0,0,0,0,0,AxmSignalSetInpos,0,,,Inposition Enable Set Command
+xInShuttleX1InposEnable,0,0,0,InShuttle,X1,InposEnable,1,0,1,0,0,0,0,0,AxmSignalGetInpos,0,,,Low=0; High=1; Unused=2; Used=3
+yInShuttleX1InposRange,0,0,1,InShuttle,X1,InposRange,1,0,0,0,0,0,0,0,AxmSignalSetInposRange,0,,,Inposition Range Set
+xInShuttleX1InposRange,0,0,0,InShuttle,X1,InposRange,1,0,1,0,0,0,0,0,AxmSignalGetInposRange,0,,,Inposition Range Value
+xInShuttleX1Inpos,0,0,0,InShuttle,X1,Inpos,0,0,1,0,0,0,0,0,AxmSignalReadInpos,0,,,Inposition Status
+xInShuttleX1Busy,0,0,0,InShuttle,X1,Busy,0,0,1,0,0,0,0,0,AxmSignalReadInpos,0,,,Motion Busy Status
+yInShuttleX1MoveMode,0,0,1,InShuttle,X1,MoveMode,0,0,0,0,0,0,0,0,AxmMotSetAbsRelMode,0,,,Move Mode Set Command
+xInShuttleX1MoveMode,0,0,0,InShuttle,X1,MoveMode,0,0,1,0,0,0,0,0,AxmMotGetAbsRelMode,0,,,Move Mode Status ABS=0; REL=1;
+yInShuttleX1Move,0,0,1,InShuttle,X1,Move,1,0,0,0,0,0,0,0,AxmMoveStartPos,0,,,Move Command
+xInShuttleX1Command,0,0,0,InShuttle,X1,Command,1,0,1,0,0,0,0,0,AxmStatusGetCmdPos,0,,,Target Position
+xInShuttleX1Actual,0,0,0,InShuttle,X1,Actual,1,0,1,0,0,0,0,0,AxmStatusGetActPos,0,,,Current Position
+yInShuttleX1VelocityMin,0,0,1,InShuttle,X1,VelocityMin,1,0,0,0,0,0,0,0,AxmMotSetMinVel,0,,,Minimum Velocity Set Command
+yInShuttleX1VelocityMax,0,0,1,InShuttle,X1,VelocityMax,1,0,0,0,0,0,0,0,AxmMotSetMaxVel,0,,,Maximum Velocity Set Command
+xInShuttleX1VelocityMin,0,0,0,InShuttle,X1,VelocityMin,1,0,1,0,0,0,0,0,AxmMotGetMinVel,0,,,Current Minimum Velocity .
+xInShuttleX1VelocityMax,0,0,0,InShuttle,X1,VelocityMax,1,0,1,0,0,0,0,0,AxmMotSetMinVel,0,,,Current Maximum Velocity .
+yInShuttleX1Velocity,0,0,1,InShuttle,X1,Velocity,1,0,0,0,0,0,0,0,Velocity,0,,,Move Velocity Set Command.
+xInShuttleX1Velocity,0,0,0,InShuttle,X1,Velocity,1,0,1,0,0,0,0,0,Velocity,0,,,Current Move Velocity Value.
+yInShuttleX1Accel,0,0,1,InShuttle,X1,Accel,1,0,0,10,0,0,0,0,Accel,0,,,Move Acceleration Set Command.
+xInShuttleX1Accel,0,0,0,InShuttle,X1,Accel,1,0,1,10,0,0,0,0,Accel,0,,,Current Move Acceleration Value.
+yInShuttleX1Decel,0,0,1,InShuttle,X1,Decel,1,0,0,10,0,0,0,0,Decel,0,,,Move Deceleration Set Command.
+xInShuttleX1Decel,0,0,0,InShuttle,X1,Decel,1,0,1,10,0,0,0,0,Decel,0,,,Current Move Deceleration Value.
+yInShuttleX1HomeVelocity,0,0,1,InShuttle,X1,HomeVelocity,1,0,0,0,0,0,0,0,AxmHomeSetVel,0,,,Home Velocity & Accel Set Command.
+yInShuttleX1HomeVel1st,0,0,1,InShuttle,X1,HomeVel1st,1,0,0,0,0,0,0,0,HomeVel1st,0,,,Home 1st Velocity Buffer Write Only
+yInShuttleX1HomeVel2nd,0,0,1,InShuttle,X1,HomeVel2nd,1,0,0,0,0,0,0,0,HomeVel2nd,0,,,Home 2nf Velocity Buffer  Write Only
+yInShuttleX1HomeVel3rd,0,0,1,InShuttle,X1,HomeVel3rd,1,0,0,0,0,0,0,0,HomeVel3rd,0,,,Home 3rd Velocity Buffer  Write Only
+yInShuttleX1HomeVel4th,0,0,1,InShuttle,X1,HomeVel4th,1,0,0,0,0,0,0,0,HomeVel4th,0,,,Home 4th Velocity Buffer  Write Only
+yInShuttleX1HomeAcc1st,0,0,1,InShuttle,X1,HomeAcc1st,1,0,0,0,0,0,0,0,HomeAcc1st,0,,,Home 1st Acceleration Buffer  Write Only
+yInShuttleX1HomeAcc2nd,0,0,1,InShuttle,X1,HomeAcc2nd,1,0,0,0,0,0,0,0,HomeAcc2nd,0,,,Home 2nd Acceleration Buffer  Write Only
+yInShuttleX1HomeDec1st,0,0,1,InShuttle,X1,HomeDec1st,1,0,0,0,0,0,0,0,HomeDec1st,0,,,Home 1st Acceleration Buffer  Write Only
+yInShuttleX1HomeDec2nd,0,0,1,InShuttle,X1,HomeDec2nd,1,0,0,0,0,0,0,0,HomeDec2nd,0,,,Home 2nd Acceleration Buffer  Write Only
+xInShuttleX1HomeVelocity,0,0,0,InShuttle,X1,HomeVelocity,1,0,1,0,0,0,0,0,AxmHomeGetVel,0,,,Current Home Velocity & Accel Values
+xInShuttleX1HomeVel1st,0,0,0,InShuttle,X1,HomeVel1st,1,0,1,0,0,0,0,0,HomeVel1st,0,,,Current Home 1st Velocity Value
+xInShuttleX1HomeVel2nd,0,0,0,InShuttle,X1,HomeVel2nd,1,0,1,0,0,0,0,0,HomeVel2nd,0,,,Current Home 2nf Velocity Value
+xInShuttleX1HomeVel3rd,0,0,0,InShuttle,X1,HomeVel3rd,1,0,1,0,0,0,0,0,HomeVel3rd,0,,,Current Home 3rd Velocity Value
+xInShuttleX1HomeVel4th,0,0,0,InShuttle,X1,HomeVel4th,1,0,1,0,0,0,0,0,HomeVel4th,0,,,Current Home 4th Velocity Value
+xInShuttleX1HomeAcc1st,0,0,0,InShuttle,X1,HomeAcc1st,1,0,1,0,0,0,0,0,HomeAcc1st,0,,,Current Home 1st Acceleration Value
+xInShuttleX1HomeAcc2nd,0,0,0,InShuttle,X1,HomeAcc2nd,1,0,1,0,0,0,0,0,HomeAcc2nd,0,,,Current Home 2nd Acceleration Value
+xInShuttleX1HomeDec1st,0,0,0,InShuttle,X1,HomeDec1st,1,0,1,0,0,0,0,0,HomeDec1st,0,,,Current Home 1st Acceleration Value
+xInShuttleX1HomeDec2nd,0,0,0,InShuttle,X1,HomeDec2nd,1,0,1,0,0,0,0,0,HomeDec2nd,0,,,Current Home 2nd Acceleration Value
+yInShuttleX1JogVelocity,0,0,1,InShuttle,X1,JogVelocity,1,0,0,0,0,0,0,0,AxmMoveVel,0,,,Jog Velocity Set Command (Move)
+yInShuttleX1JogAccel,0,0,1,InShuttle,X1,JogAccel,1,0,0,0,0,0,0,0,JogAccel,0,,,Jog Acceleration Buffer
+yInShuttleX1JogDecel,0,0,1,InShuttle,X1,JogDecel,1,0,0,0,0,0,0,0,JogDecel,0,,,Jog Deceleration Buffer
+xInShuttleX1JogVelocity,0,0,0,InShuttle,X1,JogVelocity,1,0,1,0,0,0,0,0,JogVelocity,0,,,Current Jog Velocity Value
+xInShuttleX1JogAccel,0,0,0,InShuttle,X1,JogAccel,1,0,1,0,0,0,0,0,JogAccel,0,,,Current Jog Acceleration Value
+xInShuttleX1JogDecel,0,0,0,InShuttle,X1,JogDecel,1,0,1,0,0,0,0,0,JogDecel,0,,,Current Jog Deceleration Value
+yInShuttleX1JogVelocity2nd,0,0,1,InShuttle,X1,JogVelocity2nd,1,0,0,0,0,0,0,0,AxmMoveVel,0,,,Jog Velocity Set Command (Move)
+yInShuttleX1JogAccel2nd,0,0,1,InShuttle,X1,JogAccel2nd,1,0,0,0,0,0,0,0,JogAccel2nd,0,,,Jog Acceleration Buffer
+yInShuttleX1JogDecel2nd,0,0,1,InShuttle,X1,JogDecel2nd,1,0,0,0,0,0,0,0,JogDecel2nd,0,,,Jog Deceleration Buffer
+xInShuttleX1JogVelocity2nd,0,0,0,InShuttle,X1,JogVelocity2nd,1,0,1,0,0,0,0,0,JogVelocity2nd,0,,,Current Jog Velocity Value
+xInShuttleX1JogAccel2nd,0,0,0,InShuttle,X1,JogAccel2nd,1,0,1,0,0,0,0,0,JogAccel2nd,0,,,Current Jog Acceleration Value
+xInShuttleX1JogDecel2nd,0,0,0,InShuttle,X1,JogDecel2nd,1,0,1,0,0,0,0,0,JogDecel2nd,0,,,Current Jog Deceleration Value
+yMCRX2ServoOn,1,0,1,MCR,X2,ServoOn,0,0,0,1,0,1,0,0,AxmSignalServoOn,1,xMCRX2ServoOn/0/0/0/0,,Servo On Command
+xMCRX2ServoOn,1,0,0,MCR,X2,ServoOn,0,0,1,0,0,1,0,0,AxmSignalIsServoOn,0,,,Servo On Status
+yMCRX2AlarmReset,1,0,1,MCR,X2,AlarmReset,0,0,0,0,0,0,0,0,AxmSignalServoAlarmReset,0,,,Alarm Reset Command
+xMCRX2AlarmStatus,1,0,0,MCR,X2,AlarmStatus,0,0,1,0,0,0,0,0,AxmSignalReadServoAlarm,0,,,Alarm Status
+xMCRX2AlarmCode,1,0,0,MCR,X2,AlarmCode,1,0,1,0,0,0,0,0,AxmSignalReadServoAlarmCode,0,,,Alarm Code
+yMCRX2Homing,1,0,1,MCR,X2,Homing,0,0,0,0,0,0,0,0,AxmHomeSetStart,0,,,Homing Command
+xMCRX2HomingStatus,1,0,0,MCR,X2,HomingStatus,1,0,1,0,0,0,0,0,AxmHomeGetResult,0,,,Homing Status
+yMCRX2PosMatch,1,0,1,MCR,X2,PosMatch,1,0,0,0,0,0,0,0,AxmStatusSetPosMatch,0,,,Position Matching (Zero Reset)
+yMCRX2Stop,1,0,1,MCR,X2,Stop,1,0,0,0,0,0,0,0,AxmMoveStop,0,,,Move Stop Command
+xMCRX2StopStatus,1,0,0,MCR,X2,StopStatus,0,0,1,0,0,0,0,0,AxmStatusReadStop,0,,,Move Stop Status
+yMCRX2EStop,1,0,1,MCR,X2,EStop,1,0,0,0,0,0,0,0,AxmMoveEStop,0,,,Move Sstop Command
+yMCRX2SStop,1,0,1,MCR,X2,SStop,0,0,0,0,0,0,0,0,AxmMoveSStop,0,,,Move Estop Command
+xMCRX2PositiveLimit,1,0,0,MCR,X2,PositiveLimit,0,0,1,0,0,0,0,0,AxmSignalReadLimitP,0,,,Plus Limit Sensor Status
+xMCRX2Home,1,0,0,MCR,X2,Home,0,0,1,0,0,0,0,0,AxmHomeReadSignal,0,,,Home Sensor Status
+xMCRX2NegativeLimit,1,0,0,MCR,X2,NegativeLimit,0,0,1,0,0,0,0,0,AxmSignalReadLimitN,0,,,Minus Limit Sensor Status
+yMCRX2InposEnable,1,0,1,MCR,X2,InposEnable,1,0,0,0,0,0,0,0,AxmSignalSetInpos,0,,,Inposition Enable Set Command
+xMCRX2InposEnable,1,0,0,MCR,X2,InposEnable,1,0,1,0,0,0,0,0,AxmSignalGetInpos,0,,,Low=0; High=1; Unused=2; Used=3
+yMCRX2InposRange,1,0,1,MCR,X2,InposRange,1,0,0,0,0,0,0,0,AxmSignalSetInposRange,0,,,Inposition Range Set
+xMCRX2InposRange,1,0,0,MCR,X2,InposRange,1,0,1,0,0,0,0,0,AxmSignalGetInposRange,0,,,Inposition Range Value
+xMCRX2Inpos,1,0,0,MCR,X2,Inpos,0,0,1,0,0,0,0,0,AxmSignalReadInpos,0,,,Inposition Status
+xMCRX2Busy,1,0,0,MCR,X2,Busy,0,0,1,0,0,0,0,0,AxmSignalReadInpos,0,,,Motion Busy Status
+yMCRX2MoveMode,1,0,1,MCR,X2,MoveMode,0,0,0,0,0,0,0,0,AxmMotSetAbsRelMode,0,,,Move Mode Set Command
+xMCRX2MoveMode,1,0,0,MCR,X2,MoveMode,0,0,1,0,0,0,0,0,AxmMotGetAbsRelMode,0,,,Move Mode Status ABS=0; REL=1;
+yMCRX2Move,1,0,1,MCR,X2,Move,1,0,0,0,0,0,0,0,AxmMoveStartPos,0,,,Move Command
+xMCRX2Command,1,0,0,MCR,X2,Command,1,0,1,0,0,0,0,0,AxmStatusGetCmdPos,0,,,Target Position
+xMCRX2Actual,1,0,0,MCR,X2,Actual,1,0,1,0,0,0,0,0,AxmStatusGetActPos,0,,,Current Position
+yMCRX2VelocityMin,1,0,1,MCR,X2,VelocityMin,1,0,0,0,0,0,0,0,AxmMotSetMinVel,0,,,Minimum Velocity Set Command
+yMCRX2VelocityMax,1,0,1,MCR,X2,VelocityMax,1,0,0,0,0,0,0,0,AxmMotSetMaxVel,0,,,Maximum Velocity Set Command
+xMCRX2VelocityMin,1,0,0,MCR,X2,VelocityMin,1,0,1,0,0,0,0,0,AxmMotGetMinVel,0,,,Current Minimum Velocity .
+xMCRX2VelocityMax,1,0,0,MCR,X2,VelocityMax,1,0,1,0,0,0,0,0,AxmMotSetMinVel,0,,,Current Maximum Velocity .
+yMCRX2Velocity,1,0,1,MCR,X2,Velocity,1,0,0,0,0,0,0,0,Velocity,0,,,Move Velocity Set Command.
+xMCRX2Velocity,1,0,0,MCR,X2,Velocity,1,0,1,0,0,0,0,0,Velocity,0,,,Current Move Velocity Value.
+yMCRX2Accel,1,0,1,MCR,X2,Accel,1,0,0,10,0,0,0,0,Accel,0,,,Move Acceleration Set Command.
+xMCRX2Accel,1,0,0,MCR,X2,Accel,1,0,1,10,0,0,0,0,Accel,0,,,Current Move Acceleration Value.
+yMCRX2Decel,1,0,1,MCR,X2,Decel,1,0,0,10,0,0,0,0,Decel,0,,,Move Deceleration Set Command.
+xMCRX2Decel,1,0,0,MCR,X2,Decel,1,0,1,10,0,0,0,0,Decel,0,,,Current Move Deceleration Value.
+yMCRX2HomeVelocity,1,0,1,MCR,X2,HomeVelocity,1,0,0,0,0,0,0,0,AxmHomeSetVel,0,,,Home Velocity & Accel Set Command.
+yMCRX2HomeVel1st,1,0,1,MCR,X2,HomeVel1st,1,0,0,0,0,0,0,0,HomeVel1st,0,,,Home 1st Velocity Buffer Write Only
+yMCRX2HomeVel2nd,1,0,1,MCR,X2,HomeVel2nd,1,0,0,0,0,0,0,0,HomeVel2nd,0,,,Home 2nf Velocity Buffer  Write Only
+yMCRX2HomeVel3rd,1,0,1,MCR,X2,HomeVel3rd,1,0,0,0,0,0,0,0,HomeVel3rd,0,,,Home 3rd Velocity Buffer  Write Only
+yMCRX2HomeVel4th,1,0,1,MCR,X2,HomeVel4th,1,0,0,0,0,0,0,0,HomeVel4th,0,,,Home 4th Velocity Buffer  Write Only
+yMCRX2HomeAcc1st,1,0,1,MCR,X2,HomeAcc1st,1,0,0,0,0,0,0,0,HomeAcc1st,0,,,Home 1st Acceleration Buffer  Write Only
+yMCRX2HomeAcc2nd,1,0,1,MCR,X2,HomeAcc2nd,1,0,0,0,0,0,0,0,HomeAcc2nd,0,,,Home 2nd Acceleration Buffer  Write Only
+yMCRX2HomeDec1st,1,0,1,MCR,X2,HomeDec1st,1,0,0,0,0,0,0,0,HomeDec1st,0,,,Home 1st Acceleration Buffer  Write Only
+yMCRX2HomeDec2nd,1,0,1,MCR,X2,HomeDec2nd,1,0,0,0,0,0,0,0,HomeDec2nd,0,,,Home 2nd Acceleration Buffer  Write Only
+xMCRX2HomeVelocity,1,0,0,MCR,X2,HomeVelocity,1,0,1,0,0,0,0,0,AxmHomeGetVel,0,,,Current Home Velocity & Accel Values
+xMCRX2HomeVel1st,1,0,0,MCR,X2,HomeVel1st,1,0,1,0,0,0,0,0,HomeVel1st,0,,,Current Home 1st Velocity Value
+xMCRX2HomeVel2nd,1,0,0,MCR,X2,HomeVel2nd,1,0,1,0,0,0,0,0,HomeVel2nd,0,,,Current Home 2nf Velocity Value
+xMCRX2HomeVel3rd,1,0,0,MCR,X2,HomeVel3rd,1,0,1,0,0,0,0,0,HomeVel3rd,0,,,Current Home 3rd Velocity Value
+xMCRX2HomeVel4th,1,0,0,MCR,X2,HomeVel4th,1,0,1,0,0,0,0,0,HomeVel4th,0,,,Current Home 4th Velocity Value
+xMCRX2HomeAcc1st,1,0,0,MCR,X2,HomeAcc1st,1,0,1,0,0,0,0,0,HomeAcc1st,0,,,Current Home 1st Acceleration Value
+xMCRX2HomeAcc2nd,1,0,0,MCR,X2,HomeAcc2nd,1,0,1,0,0,0,0,0,HomeAcc2nd,0,,,Current Home 2nd Acceleration Value
+xMCRX2HomeDec1st,1,0,0,MCR,X2,HomeDec1st,1,0,1,0,0,0,0,0,HomeDec1st,0,,,Current Home 1st Acceleration Value
+xMCRX2HomeDec2nd,1,0,0,MCR,X2,HomeDec2nd,1,0,1,0,0,0,0,0,HomeDec2nd,0,,,Current Home 2nd Acceleration Value
+yMCRX2JogVelocity,1,0,1,MCR,X2,JogVelocity,1,0,0,0,0,0,0,0,AxmMoveVel,0,,,Jog Velocity Set Command (Move)
+yMCRX2JogAccel,1,0,1,MCR,X2,JogAccel,1,0,0,0,0,0,0,0,JogAccel,0,,,Jog Acceleration Buffer
+yMCRX2JogDecel,1,0,1,MCR,X2,JogDecel,1,0,0,0,0,0,0,0,JogDecel,0,,,Jog Deceleration Buffer
+xMCRX2JogVelocity,1,0,0,MCR,X2,JogVelocity,1,0,1,0,0,0,0,0,JogVelocity,0,,,Current Jog Velocity Value
+xMCRX2JogAccel,1,0,0,MCR,X2,JogAccel,1,0,1,0,0,0,0,0,JogAccel,0,,,Current Jog Acceleration Value
+xMCRX2JogDecel,1,0,0,MCR,X2,JogDecel,1,0,1,0,0,0,0,0,JogDecel,0,,,Current Jog Deceleration Value
+yMCRX2JogVelocity2nd,1,0,1,MCR,X2,JogVelocity2nd,1,0,0,0,0,0,0,0,AxmMoveVel,0,,,Jog Velocity Set Command (Move)
+yMCRX2JogAccel2nd,1,0,1,MCR,X2,JogAccel2nd,1,0,0,0,0,0,0,0,JogAccel2nd,0,,,Jog Acceleration Buffer
+yMCRX2JogDecel2nd,1,0,1,MCR,X2,JogDecel2nd,1,0,0,0,0,0,0,0,JogDecel2nd,0,,,Jog Deceleration Buffer
+xMCRX2JogVelocity2nd,1,0,0,MCR,X2,JogVelocity2nd,1,0,1,0,0,0,0,0,JogVelocity2nd,0,,,Current Jog Velocity Value
+xMCRX2JogAccel2nd,1,0,0,MCR,X2,JogAccel2nd,1,0,1,0,0,0,0,0,JogAccel2nd,0,,,Current Jog Acceleration Value
+xMCRX2JogDecel2nd,1,0,0,MCR,X2,JogDecel2nd,1,0,1,0,0,0,0,0,JogDecel2nd,0,,,Current Jog Deceleration Value
+yINSPECTIONX3ServoOn,2,0,1,INSPECTION,X3,ServoOn,0,0,0,1,0,1,0,0,AxmSignalServoOn,1,xINSPECTIONX3ServoOn/0/0/0/0,,Servo On Command
+xINSPECTIONX3ServoOn,2,0,0,INSPECTION,X3,ServoOn,0,0,1,0,0,1,0,0,AxmSignalIsServoOn,0,,,Servo On Status
+yINSPECTIONX3AlarmReset,2,0,1,INSPECTION,X3,AlarmReset,0,0,0,0,0,0,0,0,AxmSignalServoAlarmReset,0,,,Alarm Reset Command
+xINSPECTIONX3AlarmStatus,2,0,0,INSPECTION,X3,AlarmStatus,0,0,1,0,0,0,0,0,AxmSignalReadServoAlarm,0,,,Alarm Status
+xINSPECTIONX3AlarmCode,2,0,0,INSPECTION,X3,AlarmCode,1,0,1,0,0,0,0,0,AxmSignalReadServoAlarmCode,0,,,Alarm Code
+yINSPECTIONX3Homing,2,0,1,INSPECTION,X3,Homing,0,0,0,0,0,0,0,0,AxmHomeSetStart,0,,,Homing Command
+xINSPECTIONX3HomingStatus,2,0,0,INSPECTION,X3,HomingStatus,1,0,1,0,0,0,0,0,AxmHomeGetResult,0,,,Homing Status
+yINSPECTIONX3PosMatch,2,0,1,INSPECTION,X3,PosMatch,1,0,0,0,0,0,0,0,AxmStatusSetPosMatch,0,,,Position Matching (Zero Reset)
+yINSPECTIONX3Stop,2,0,1,INSPECTION,X3,Stop,1,0,0,0,0,0,0,0,AxmMoveStop,0,,,Move Stop Command
+xINSPECTIONX3StopStatus,2,0,0,INSPECTION,X3,StopStatus,0,0,1,0,0,0,0,0,AxmStatusReadStop,0,,,Move Stop Status
+yINSPECTIONX3EStop,2,0,1,INSPECTION,X3,EStop,1,0,0,0,0,0,0,0,AxmMoveEStop,0,,,Move Sstop Command
+yINSPECTIONX3SStop,2,0,1,INSPECTION,X3,SStop,0,0,0,0,0,0,0,0,AxmMoveSStop,0,,,Move Estop Command
+xINSPECTIONX3PositiveLimit,2,0,0,INSPECTION,X3,PositiveLimit,0,0,1,0,0,0,0,0,AxmSignalReadLimitP,0,,,Plus Limit Sensor Status
+xINSPECTIONX3Home,2,0,0,INSPECTION,X3,Home,0,0,1,0,0,0,0,0,AxmHomeReadSignal,0,,,Home Sensor Status
+xINSPECTIONX3NegativeLimit,2,0,0,INSPECTION,X3,NegativeLimit,0,0,1,0,0,0,0,0,AxmSignalReadLimitN,0,,,Minus Limit Sensor Status
+yINSPECTIONX3InposEnable,2,0,1,INSPECTION,X3,InposEnable,1,0,0,0,0,0,0,0,AxmSignalSetInpos,0,,,Inposition Enable Set Command
+xINSPECTIONX3InposEnable,2,0,0,INSPECTION,X3,InposEnable,1,0,1,0,0,0,0,0,AxmSignalGetInpos,0,,,Low=0; High=1; Unused=2; Used=3
+yINSPECTIONX3InposRange,2,0,1,INSPECTION,X3,InposRange,1,0,0,0,0,0,0,0,AxmSignalSetInposRange,0,,,Inposition Range Set
+xINSPECTIONX3InposRange,2,0,0,INSPECTION,X3,InposRange,1,0,1,0,0,0,0,0,AxmSignalGetInposRange,0,,,Inposition Range Value
+xINSPECTIONX3Inpos,2,0,0,INSPECTION,X3,Inpos,0,0,1,0,0,0,0,0,AxmSignalReadInpos,0,,,Inposition Status
+xINSPECTIONX3Busy,2,0,0,INSPECTION,X3,Busy,0,0,1,0,0,0,0,0,AxmSignalReadInpos,0,,,Motion Busy Status
+yINSPECTIONX3MoveMode,2,0,1,INSPECTION,X3,MoveMode,0,0,0,0,0,0,0,0,AxmMotSetAbsRelMode,0,,,Move Mode Set Command
+xINSPECTIONX3MoveMode,2,0,0,INSPECTION,X3,MoveMode,0,0,1,0,0,0,0,0,AxmMotGetAbsRelMode,0,,,Move Mode Status ABS=0; REL=1;
+yINSPECTIONX3Move,2,0,1,INSPECTION,X3,Move,1,0,0,0,0,0,0,0,AxmMoveStartPos,0,,,Move Command
+xINSPECTIONX3Command,2,0,0,INSPECTION,X3,Command,1,0,1,0,0,0,0,0,AxmStatusGetCmdPos,0,,,Target Position
+xINSPECTIONX3Actual,2,0,0,INSPECTION,X3,Actual,1,0,1,0,0,0,0,0,AxmStatusGetActPos,0,,,Current Position
+yINSPECTIONX3VelocityMin,2,0,1,INSPECTION,X3,VelocityMin,1,0,0,0,0,0,0,0,AxmMotSetMinVel,0,,,Minimum Velocity Set Command
+yINSPECTIONX3VelocityMax,2,0,1,INSPECTION,X3,VelocityMax,1,0,0,0,0,0,0,0,AxmMotSetMaxVel,0,,,Maximum Velocity Set Command
+xINSPECTIONX3VelocityMin,2,0,0,INSPECTION,X3,VelocityMin,1,0,1,0,0,0,0,0,AxmMotGetMinVel,0,,,Current Minimum Velocity .
+xINSPECTIONX3VelocityMax,2,0,0,INSPECTION,X3,VelocityMax,1,0,1,0,0,0,0,0,AxmMotSetMinVel,0,,,Current Maximum Velocity .
+yINSPECTIONX3Velocity,2,0,1,INSPECTION,X3,Velocity,1,0,0,0,0,0,0,0,Velocity,0,,,Move Velocity Set Command.
+xINSPECTIONX3Velocity,2,0,0,INSPECTION,X3,Velocity,1,0,1,0,0,0,0,0,Velocity,0,,,Current Move Velocity Value.
+yINSPECTIONX3Accel,2,0,1,INSPECTION,X3,Accel,1,0,0,10,0,0,0,0,Accel,0,,,Move Acceleration Set Command.
+xINSPECTIONX3Accel,2,0,0,INSPECTION,X3,Accel,1,0,1,10,0,0,0,0,Accel,0,,,Current Move Acceleration Value.
+yINSPECTIONX3Decel,2,0,1,INSPECTION,X3,Decel,1,0,0,10,0,0,0,0,Decel,0,,,Move Deceleration Set Command.
+xINSPECTIONX3Decel,2,0,0,INSPECTION,X3,Decel,1,0,1,10,0,0,0,0,Decel,0,,,Current Move Deceleration Value.
+yINSPECTIONX3HomeVelocity,2,0,1,INSPECTION,X3,HomeVelocity,1,0,0,0,0,0,0,0,AxmHomeSetVel,0,,,Home Velocity & Accel Set Command.
+yINSPECTIONX3HomeVel1st,2,0,1,INSPECTION,X3,HomeVel1st,1,0,0,0,0,0,0,0,HomeVel1st,0,,,Home 1st Velocity Buffer Write Only
+yINSPECTIONX3HomeVel2nd,2,0,1,INSPECTION,X3,HomeVel2nd,1,0,0,0,0,0,0,0,HomeVel2nd,0,,,Home 2nf Velocity Buffer  Write Only
+yINSPECTIONX3HomeVel3rd,2,0,1,INSPECTION,X3,HomeVel3rd,1,0,0,0,0,0,0,0,HomeVel3rd,0,,,Home 3rd Velocity Buffer  Write Only
+yINSPECTIONX3HomeVel4th,2,0,1,INSPECTION,X3,HomeVel4th,1,0,0,0,0,0,0,0,HomeVel4th,0,,,Home 4th Velocity Buffer  Write Only
+yINSPECTIONX3HomeAcc1st,2,0,1,INSPECTION,X3,HomeAcc1st,1,0,0,0,0,0,0,0,HomeAcc1st,0,,,Home 1st Acceleration Buffer  Write Only
+yINSPECTIONX3HomeAcc2nd,2,0,1,INSPECTION,X3,HomeAcc2nd,1,0,0,0,0,0,0,0,HomeAcc2nd,0,,,Home 2nd Acceleration Buffer  Write Only
+yINSPECTIONX3HomeDec1st,2,0,1,INSPECTION,X3,HomeDec1st,1,0,0,0,0,0,0,0,HomeDec1st,0,,,Home 1st Acceleration Buffer  Write Only
+yINSPECTIONX3HomeDec2nd,2,0,1,INSPECTION,X3,HomeDec2nd,1,0,0,0,0,0,0,0,HomeDec2nd,0,,,Home 2nd Acceleration Buffer  Write Only
+xINSPECTIONX3HomeVelocity,2,0,0,INSPECTION,X3,HomeVelocity,1,0,1,0,0,0,0,0,AxmHomeGetVel,0,,,Current Home Velocity & Accel Values
+xINSPECTIONX3HomeVel1st,2,0,0,INSPECTION,X3,HomeVel1st,1,0,1,0,0,0,0,0,HomeVel1st,0,,,Current Home 1st Velocity Value
+xINSPECTIONX3HomeVel2nd,2,0,0,INSPECTION,X3,HomeVel2nd,1,0,1,0,0,0,0,0,HomeVel2nd,0,,,Current Home 2nf Velocity Value
+xINSPECTIONX3HomeVel3rd,2,0,0,INSPECTION,X3,HomeVel3rd,1,0,1,0,0,0,0,0,HomeVel3rd,0,,,Current Home 3rd Velocity Value
+xINSPECTIONX3HomeVel4th,2,0,0,INSPECTION,X3,HomeVel4th,1,0,1,0,0,0,0,0,HomeVel4th,0,,,Current Home 4th Velocity Value
+xINSPECTIONX3HomeAcc1st,2,0,0,INSPECTION,X3,HomeAcc1st,1,0,1,0,0,0,0,0,HomeAcc1st,0,,,Current Home 1st Acceleration Value
+xINSPECTIONX3HomeAcc2nd,2,0,0,INSPECTION,X3,HomeAcc2nd,1,0,1,0,0,0,0,0,HomeAcc2nd,0,,,Current Home 2nd Acceleration Value
+xINSPECTIONX3HomeDec1st,2,0,0,INSPECTION,X3,HomeDec1st,1,0,1,0,0,0,0,0,HomeDec1st,0,,,Current Home 1st Acceleration Value
+xINSPECTIONX3HomeDec2nd,2,0,0,INSPECTION,X3,HomeDec2nd,1,0,1,0,0,0,0,0,HomeDec2nd,0,,,Current Home 2nd Acceleration Value
+yINSPECTIONX3JogVelocity,2,0,1,INSPECTION,X3,JogVelocity,1,0,0,0,0,0,0,0,AxmMoveVel,0,,,Jog Velocity Set Command (Move)
+yINSPECTIONX3JogAccel,2,0,1,INSPECTION,X3,JogAccel,1,0,0,0,0,0,0,0,JogAccel,0,,,Jog Acceleration Buffer
+yINSPECTIONX3JogDecel,2,0,1,INSPECTION,X3,JogDecel,1,0,0,0,0,0,0,0,JogDecel,0,,,Jog Deceleration Buffer
+xINSPECTIONX3JogVelocity,2,0,0,INSPECTION,X3,JogVelocity,1,0,1,0,0,0,0,0,JogVelocity,0,,,Current Jog Velocity Value
+xINSPECTIONX3JogAccel,2,0,0,INSPECTION,X3,JogAccel,1,0,1,0,0,0,0,0,JogAccel,0,,,Current Jog Acceleration Value
+xINSPECTIONX3JogDecel,2,0,0,INSPECTION,X3,JogDecel,1,0,1,0,0,0,0,0,JogDecel,0,,,Current Jog Deceleration Value
+yINSPECTIONX3JogVelocity2nd,2,0,1,INSPECTION,X3,JogVelocity2nd,1,0,0,0,0,0,0,0,AxmMoveVel,0,,,Jog Velocity Set Command (Move)
+yINSPECTIONX3JogAccel2nd,2,0,1,INSPECTION,X3,JogAccel2nd,1,0,0,0,0,0,0,0,JogAccel2nd,0,,,Jog Acceleration Buffer
+yINSPECTIONX3JogDecel2nd,2,0,1,INSPECTION,X3,JogDecel2nd,1,0,0,0,0,0,0,0,JogDecel2nd,0,,,Jog Deceleration Buffer
+xINSPECTIONX3JogVelocity2nd,2,0,0,INSPECTION,X3,JogVelocity2nd,1,0,1,0,0,0,0,0,JogVelocity2nd,0,,,Current Jog Velocity Value
+xINSPECTIONX3JogAccel2nd,2,0,0,INSPECTION,X3,JogAccel2nd,1,0,1,0,0,0,0,0,JogAccel2nd,0,,,Current Jog Acceleration Value
+xINSPECTIONX3JogDecel2nd,2,0,0,INSPECTION,X3,JogDecel2nd,1,0,1,0,0,0,0,0,JogDecel2nd,0,,,Current Jog Deceleration Value
+yOutShuttleX10ServoOn,10,0,1,OutShuttle,X10,ServoOn,0,0,0,1,0,1,0,0,AxmSignalServoOn,1,xOutShuttleX10ServoOn/0/0/0/0,,Servo On Command
+xOutShuttleX10ServoOn,10,0,0,OutShuttle,X10,ServoOn,0,0,1,0,0,1,0,0,AxmSignalIsServoOn,0,,,Servo On Status
+yOutShuttleX10AlarmReset,10,0,1,OutShuttle,X10,AlarmReset,0,0,0,0,0,0,0,0,AxmSignalServoAlarmReset,0,,,Alarm Reset Command
+xOutShuttleX10AlarmStatus,10,0,0,OutShuttle,X10,AlarmStatus,0,0,1,0,0,0,0,0,AxmSignalReadServoAlarm,0,,,Alarm Status
+xOutShuttleX10AlarmCode,10,0,0,OutShuttle,X10,AlarmCode,1,0,1,0,0,0,0,0,AxmSignalReadServoAlarmCode,0,,,Alarm Code
+yOutShuttleX10Homing,10,0,1,OutShuttle,X10,Homing,0,0,0,0,0,0,0,0,AxmHomeSetStart,0,,,Homing Command
+xOutShuttleX10HomingStatus,10,0,0,OutShuttle,X10,HomingStatus,1,0,1,0,0,0,0,0,AxmHomeGetResult,0,,,Homing Status
+yOutShuttleX10PosMatch,10,0,1,OutShuttle,X10,PosMatch,1,0,0,0,0,0,0,0,AxmStatusSetPosMatch,0,,,Position Matching (Zero Reset)
+yOutShuttleX10Stop,10,0,1,OutShuttle,X10,Stop,1,0,0,0,0,0,0,0,AxmMoveStop,0,,,Move Stop Command
+xOutShuttleX10StopStatus,10,0,0,OutShuttle,X10,StopStatus,0,0,1,0,0,0,0,0,AxmStatusReadStop,0,,,Move Stop Status
+yOutShuttleX10EStop,10,0,1,OutShuttle,X10,EStop,1,0,0,0,0,0,0,0,AxmMoveEStop,0,,,Move Sstop Command
+yOutShuttleX10SStop,10,0,1,OutShuttle,X10,SStop,0,0,0,0,0,0,0,0,AxmMoveSStop,0,,,Move Estop Command
+xOutShuttleX10PositiveLimit,10,0,0,OutShuttle,X10,PositiveLimit,0,0,1,0,0,0,0,0,AxmSignalReadLimitP,0,,,Plus Limit Sensor Status
+xOutShuttleX10Home,10,0,0,OutShuttle,X10,Home,0,0,1,0,0,0,0,0,AxmHomeReadSignal,0,,,Home Sensor Status
+xOutShuttleX10NegativeLimit,10,0,0,OutShuttle,X10,NegativeLimit,0,0,1,0,0,0,0,0,AxmSignalReadLimitN,0,,,Minus Limit Sensor Status
+yOutShuttleX10InposEnable,10,0,1,OutShuttle,X10,InposEnable,1,0,0,0,0,0,0,0,AxmSignalSetInpos,0,,,Inposition Enable Set Command
+xOutShuttleX10InposEnable,10,0,0,OutShuttle,X10,InposEnable,1,0,1,0,0,0,0,0,AxmSignalGetInpos,0,,,Low=0; High=1; Unused=2; Used=3
+yOutShuttleX10InposRange,10,0,1,OutShuttle,X10,InposRange,1,0,0,0,0,0,0,0,AxmSignalSetInposRange,0,,,Inposition Range Set
+xOutShuttleX10InposRange,10,0,0,OutShuttle,X10,InposRange,1,0,1,0,0,0,0,0,AxmSignalGetInposRange,0,,,Inposition Range Value
+xOutShuttleX10Inpos,10,0,0,OutShuttle,X10,Inpos,0,0,1,0,0,0,0,0,AxmSignalReadInpos,0,,,Inposition Status
+xOutShuttleX10Busy,10,0,0,OutShuttle,X10,Busy,0,0,1,0,0,0,0,0,AxmSignalReadInpos,0,,,Motion Busy Status
+yOutShuttleX10MoveMode,10,0,1,OutShuttle,X10,MoveMode,0,0,0,0,0,0,0,0,AxmMotSetAbsRelMode,0,,,Move Mode Set Command
+xOutShuttleX10MoveMode,10,0,0,OutShuttle,X10,MoveMode,0,0,1,0,0,0,0,0,AxmMotGetAbsRelMode,0,,,Move Mode Status ABS=0; REL=1;
+yOutShuttleX10Move,10,0,1,OutShuttle,X10,Move,1,0,0,0,0,0,0,0,AxmMoveStartPos,0,,,Move Command
+xOutShuttleX10Command,10,0,0,OutShuttle,X10,Command,1,0,1,0,0,0,0,0,AxmStatusGetCmdPos,0,,,Target Position
+xOutShuttleX10Actual,10,0,0,OutShuttle,X10,Actual,1,0,1,0,0,0,0,0,AxmStatusGetActPos,0,,,Current Position
+yOutShuttleX10VelocityMin,10,0,1,OutShuttle,X10,VelocityMin,1,0,0,0,0,0,0,0,AxmMotSetMinVel,0,,,Minimum Velocity Set Command
+yOutShuttleX10VelocityMax,10,0,1,OutShuttle,X10,VelocityMax,1,0,0,0,0,0,0,0,AxmMotSetMaxVel,0,,,Maximum Velocity Set Command
+xOutShuttleX10VelocityMin,10,0,0,OutShuttle,X10,VelocityMin,1,0,1,0,0,0,0,0,AxmMotGetMinVel,0,,,Current Minimum Velocity .
+xOutShuttleX10VelocityMax,10,0,0,OutShuttle,X10,VelocityMax,1,0,1,0,0,0,0,0,AxmMotSetMinVel,0,,,Current Maximum Velocity .
+yOutShuttleX10Velocity,10,0,1,OutShuttle,X10,Velocity,1,0,0,0,0,0,0,0,Velocity,0,,,Move Velocity Set Command.
+xOutShuttleX10Velocity,10,0,0,OutShuttle,X10,Velocity,1,0,1,0,0,0,0,0,Velocity,0,,,Current Move Velocity Value.
+yOutShuttleX10Accel,10,0,1,OutShuttle,X10,Accel,1,0,0,10,0,0,0,0,Accel,0,,,Move Acceleration Set Command.
+xOutShuttleX10Accel,10,0,0,OutShuttle,X10,Accel,1,0,1,10,0,0,0,0,Accel,0,,,Current Move Acceleration Value.
+yOutShuttleX10Decel,10,0,1,OutShuttle,X10,Decel,1,0,0,10,0,0,0,0,Decel,0,,,Move Deceleration Set Command.
+xOutShuttleX10Decel,10,0,0,OutShuttle,X10,Decel,1,0,1,10,0,0,0,0,Decel,0,,,Current Move Deceleration Value.
+yOutShuttleX10HomeVelocity,10,0,1,OutShuttle,X10,HomeVelocity,1,0,0,0,0,0,0,0,AxmHomeSetVel,0,,,Home Velocity & Accel Set Command.
+yOutShuttleX10HomeVel1st,10,0,1,OutShuttle,X10,HomeVel1st,1,0,0,0,0,0,0,0,HomeVel1st,0,,,Home 1st Velocity Buffer Write Only
+yOutShuttleX10HomeVel2nd,10,0,1,OutShuttle,X10,HomeVel2nd,1,0,0,0,0,0,0,0,HomeVel2nd,0,,,Home 2nf Velocity Buffer  Write Only
+yOutShuttleX10HomeVel3rd,10,0,1,OutShuttle,X10,HomeVel3rd,1,0,0,0,0,0,0,0,HomeVel3rd,0,,,Home 3rd Velocity Buffer  Write Only
+yOutShuttleX10HomeVel4th,10,0,1,OutShuttle,X10,HomeVel4th,1,0,0,0,0,0,0,0,HomeVel4th,0,,,Home 4th Velocity Buffer  Write Only
+yOutShuttleX10HomeAcc1st,10,0,1,OutShuttle,X10,HomeAcc1st,1,0,0,0,0,0,0,0,HomeAcc1st,0,,,Home 1st Acceleration Buffer  Write Only
+yOutShuttleX10HomeAcc2nd,10,0,1,OutShuttle,X10,HomeAcc2nd,1,0,0,0,0,0,0,0,HomeAcc2nd,0,,,Home 2nd Acceleration Buffer  Write Only
+yOutShuttleX10HomeDec1st,10,0,1,OutShuttle,X10,HomeDec1st,1,0,0,0,0,0,0,0,HomeDec1st,0,,,Home 1st Acceleration Buffer  Write Only
+yOutShuttleX10HomeDec2nd,10,0,1,OutShuttle,X10,HomeDec2nd,1,0,0,0,0,0,0,0,HomeDec2nd,0,,,Home 2nd Acceleration Buffer  Write Only
+xOutShuttleX10HomeVelocity,10,0,0,OutShuttle,X10,HomeVelocity,1,0,1,0,0,0,0,0,AxmHomeGetVel,0,,,Current Home Velocity & Accel Values
+xOutShuttleX10HomeVel1st,10,0,0,OutShuttle,X10,HomeVel1st,1,0,1,0,0,0,0,0,HomeVel1st,0,,,Current Home 1st Velocity Value
+xOutShuttleX10HomeVel2nd,10,0,0,OutShuttle,X10,HomeVel2nd,1,0,1,0,0,0,0,0,HomeVel2nd,0,,,Current Home 2nf Velocity Value
+xOutShuttleX10HomeVel3rd,10,0,0,OutShuttle,X10,HomeVel3rd,1,0,1,0,0,0,0,0,HomeVel3rd,0,,,Current Home 3rd Velocity Value
+xOutShuttleX10HomeVel4th,10,0,0,OutShuttle,X10,HomeVel4th,1,0,1,0,0,0,0,0,HomeVel4th,0,,,Current Home 4th Velocity Value
+xOutShuttleX10HomeAcc1st,10,0,0,OutShuttle,X10,HomeAcc1st,1,0,1,0,0,0,0,0,HomeAcc1st,0,,,Current Home 1st Acceleration Value
+xOutShuttleX10HomeAcc2nd,10,0,0,OutShuttle,X10,HomeAcc2nd,1,0,1,0,0,0,0,0,HomeAcc2nd,0,,,Current Home 2nd Acceleration Value
+xOutShuttleX10HomeDec1st,10,0,0,OutShuttle,X10,HomeDec1st,1,0,1,0,0,0,0,0,HomeDec1st,0,,,Current Home 1st Acceleration Value
+xOutShuttleX10HomeDec2nd,10,0,0,OutShuttle,X10,HomeDec2nd,1,0,1,0,0,0,0,0,HomeDec2nd,0,,,Current Home 2nd Acceleration Value
+yOutShuttleX10JogVelocity,10,0,1,OutShuttle,X10,JogVelocity,1,0,0,0,0,0,0,0,AxmMoveVel,0,,,Jog Velocity Set Command (Move)
+yOutShuttleX10JogAccel,10,0,1,OutShuttle,X10,JogAccel,1,0,0,0,0,0,0,0,JogAccel,0,,,Jog Acceleration Buffer
+yOutShuttleX10JogDecel,10,0,1,OutShuttle,X10,JogDecel,1,0,0,0,0,0,0,0,JogDecel,0,,,Jog Deceleration Buffer
+xOutShuttleX10JogVelocity,10,0,0,OutShuttle,X10,JogVelocity,1,0,1,0,0,0,0,0,JogVelocity,0,,,Current Jog Velocity Value
+xOutShuttleX10JogAccel,10,0,0,OutShuttle,X10,JogAccel,1,0,1,0,0,0,0,0,JogAccel,0,,,Current Jog Acceleration Value
+xOutShuttleX10JogDecel,10,0,0,OutShuttle,X10,JogDecel,1,0,1,0,0,0,0,0,JogDecel,0,,,Current Jog Deceleration Value
+yOutShuttleX10JogVelocity2nd,10,0,1,OutShuttle,X10,JogVelocity2nd,1,0,0,0,0,0,0,0,AxmMoveVel,0,,,Jog Velocity Set Command (Move)
+yOutShuttleX10JogAccel2nd,10,0,1,OutShuttle,X10,JogAccel2nd,1,0,0,0,0,0,0,0,JogAccel2nd,0,,,Jog Acceleration Buffer
+yOutShuttleX10JogDecel2nd,10,0,1,OutShuttle,X10,JogDecel2nd,1,0,0,0,0,0,0,0,JogDecel2nd,0,,,Jog Deceleration Buffer
+xOutShuttleX10JogVelocity2nd,10,0,0,OutShuttle,X10,JogVelocity2nd,1,0,1,0,0,0,0,0,JogVelocity2nd,0,,,Current Jog Velocity Value
+xOutShuttleX10JogAccel2nd,10,0,0,OutShuttle,X10,JogAccel2nd,1,0,1,0,0,0,0,0,JogAccel2nd,0,,,Current Jog Acceleration Value
+xOutShuttleX10JogDecel2nd,10,0,0,OutShuttle,X10,JogDecel2nd,1,0,1,0,0,0,0,0,JogDecel2nd,0,,,Current Jog Deceleration Value
+xINSPECTIONX3TriggerTime,2,0,0,INSPECTION,X3,TriggerTime,1,0,1,0,0,0,0,0,TriggerTime,0,,,Trigger Set Time Level Parameter
+xINSPECTIONX3TriggerStartPos,2,0,0,INSPECTION,X3,TriggerStartPos,1,0,1,0,0,0,0,0,TriggerStartPos,0,,,Trigger Set Block Parameter
+xINSPECTIONX3TriggerEndPos,2,0,0,INSPECTION,X3,TriggerEndPos,1,0,1,0,0,0,0,0,TriggerEndPos,0,,,Trigger Set Block Parameter
+xINSPECTIONX3TriggerPeriodPos,2,0,0,INSPECTION,X3,TriggerPeriodPos,1,0,1,0,0,0,0,0,TriggerPeriodPos,0,,,Trigger Set Block Parameter
+yINSPECTIONX3TriggerTime,2,0,1,INSPECTION,X3,TriggerTime,1,0,0,0,0,0,0,0,TriggerTime,0,,,Trigger Set Time Level Parameter
+yINSPECTIONX3TriggerStartPos,2,0,1,INSPECTION,X3,TriggerStartPos,1,0,0,0,0,0,0,0,TriggerStartPos,0,,,Trigger Set Block Parameter
+yINSPECTIONX3TriggerEndPos,2,0,1,INSPECTION,X3,TriggerEndPos,1,0,0,0,0,0,0,0,TriggerEndPos,0,,,Trigger Set Block Parameter
+yINSPECTIONX3TriggerPeriodPos,2,0,1,INSPECTION,X3,TriggerPeriodPos,1,0,0,0,0,0,0,0,TriggerPeriodPos,0,,,Trigger Set Block Parameter
+yINSPECTIONX3TriggerSetTimeLevel,2,0,1,INSPECTION,X3,TriggerSetTimeLevel,1,0,0,0,0,0,0,0,AxmTriggerSetTimeLevel,0,,,Trigger Set Time Level
+yINSPECTIONX3TriggerSetBlock,2,0,1,INSPECTION,X3,TriggerSetBlock,1,0,0,0,0,0,0,0,AxmTriggerSetBlock,0,,,Trigger Set Block
+yINSPECTIONX3TriggerSetReset,2,0,1,INSPECTION,X3,TriggerSetReset,1,0,0,0,0,0,0,0,AxmTriggerSetReset,0,,,Trigger Set Reset

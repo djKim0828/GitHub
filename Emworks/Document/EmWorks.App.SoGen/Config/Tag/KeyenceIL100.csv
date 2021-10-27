@@ -1,0 +1,7 @@
+Name,Index,Offset,IoType,Unit,Item,Action,DataType,IsAorB,IsSubscription,Default,Min,Max,Timeout,AlarmCode,ExeCmd,SimCmd,Options,ActuatorId,Desc
+sxDeviceIL100,0,0,2,Device,IL100,,0,0,1,0,0,0,0,0,,,Com1/9600,0,IL100 #1 Open / Close Status
+syDeviceIL100,0,0,3,Device,IL100,,0,0,0,0,0,0,0,0,,sxDeviceIL/0/0/0/100;,,2,IL100 #1 Open / Close Command
+xIL100OnOffLazer,0,0,0,IL100,,OnOffLazer,1,0,0,0,0,0,0,0,OnOffLazer,,,0,Lazer OnOff Status
+yIL100OnOffLazer,0,0,1,IL100,,OnOffLazer,0,0,0,0,0,0,0,0,OnOffLazer,xILOnOffLazer/0/0/0/100;,,1,Lazer OnOff Command
+xIL100GetDistance,0,0,0,IL100,,GetDistance,2,0,0,0,0,0,0,0,GetDistance,,,0,Distance Result
+yIL100Comport,0,0,1,IL100,,Comport,4,0,0,0,0,0,0,0,Comport,,,0,Send Comport Data

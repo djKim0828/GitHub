@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{537443A6-C499-40F0-9E1D-A9EBB42CBCD5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EmWorks.App.EmIssoftLMK6</RootNamespace>
+    <AssemblyName>EmWorks.App.EmIssoftLMK6</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>D:\ENC\Source\LMKserver\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Luna" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Control\EmIssoftLMK6.cs" />
+    <Compile Include="Control\EmIssoftMicroshake.cs" />
+    <Compile Include="Control\EmIssoftServer.cs" />
+    <Compile Include="Control\ProcessMain.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\resBrushColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\resIconPathData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\resStyleCommon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Resources\Images\Dialog\LoginDialog\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Common\Icon\Account.png" />
+    <Resource Include="Resources\Images\Common\Icon\AlarmGray.png" />
+    <Resource Include="Resources\Images\Common\Icon\AlarmRed.png" />
+    <Resource Include="Resources\Images\Common\Icon\loginSymbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Dialog\MessageDialog\dlgError.png" />
+    <Resource Include="Resources\Images\Dialog\MessageDialog\dlgInfo.png" />
+    <Resource Include="Resources\Images\Dialog\MessageDialog\dlgQuestion.png" />
+    <Resource Include="Resources\Images\Dialog\MessageDialog\dlgWarning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Window\Maintenance\AllDevice.png" />
+    <Resource Include="Resources\Images\Window\Maintenance\InRobot.png" />
+    <Resource Include="Resources\Images\Window\Maintenance\InShuttle.png" />
+    <Resource Include="Resources\Images\Window\Maintenance\MainColor.PNG" />
+    <Resource Include="Resources\Images\Window\Maintenance\MainGray.PNG" />
+    <Resource Include="Resources\Images\Window\Maintenance\MCR.png" />
+    <Resource Include="Resources\Images\Window\Maintenance\MoveShuttle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Common\Logo\logoEnc64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmWorks.Lib.Common\EmWorks.Lib.Common.csproj">
+      <Project>{ab8ec9a7-4fb6-40a9-83d8-537bcde3bef7}</Project>
+      <Name>EmWorks.Lib.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmWorks.Lib.Core\EmWorks.Lib.Core.csproj">
+      <Project>{1954f4da-1443-45e9-841d-1d8c399f2d9d}</Project>
+      <Name>EmWorks.Lib.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmWorks.Lib.Identity\EmWorks.Lib.Identity.csproj">
+      <Project>{16256d46-2650-4a6f-83ba-076b336f5d76}</Project>
+      <Name>EmWorks.Lib.Identity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="lmk4Lib">
+      <Guid>{3EDE20B5-7357-45BB-9E7C-A08A745A68AB}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="MicroShakeConfiguratorLib">
+      <Guid>{F49C972A-5363-4B99-84EC-6DA7C915CB71}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if exist "$(ProjectDir)\..\ResourceFiles\Default\." (
+xcopy "$(ProjectDir)\..\ResourceFiles\Default\." "$(ProjectDir)\..\Output\MainOutput\$(ConfigurationName)" /D /S /E /Y
+)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
